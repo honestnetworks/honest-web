@@ -1,0 +1,18 @@
+<svg width="36" height="28" viewBox="0 0 36 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>arrow-left</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-18111 -9397)">
+<g id="arrow-left">
+<g id="Shape">
+<use xlink:href="#path0_stroke" transform="matrix(-1 0 0 1 18146 9411)" fill="#FFFFFF"/>
+</g>
+<g id="Shape">
+<use xlink:href="#path1_stroke" transform="matrix(-1 0 0 1 18146 9398)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 34 1C 34.5523 1 35 0.552285 35 0C 35 -0.552285 34.5523 -1 34 -1L 34 1ZM 0 -1C -0.552285 -1 -1 -0.552285 -1 0C -1 0.552285 -0.552285 1 0 1L 0 -1ZM 34 -1L 0 -1L 0 1L 34 1L 34 -1Z"/>
+<path id="path1_stroke" d="M 12.0361 26.7002C 12.4228 27.0945 13.0559 27.1007 13.4502 26.7139C 13.8445 26.3272 13.8507 25.6941 13.4639 25.2998L 12.0361 26.7002ZM 0 13L -0.713938 12.2998C -1.09535 12.6887 -1.09535 13.3113 -0.713938 13.7002L 0 13ZM 13.4639 0.700209C 13.8507 0.305911 13.8445 -0.327224 13.4502 -0.713938C 13.0559 -1.10065 12.4228 -1.09451 12.0361 -0.700209L 13.4639 0.700209ZM 13.4639 25.2998L 0.713938 12.2998L -0.713938 13.7002L 12.0361 26.7002L 13.4639 25.2998ZM 0.713938 13.7002L 13.4639 0.700209L 12.0361 -0.700209L -0.713938 12.2998L 0.713938 13.7002Z"/>
+</defs>
+</svg>

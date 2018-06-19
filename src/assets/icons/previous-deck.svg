@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>next-deck</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="next-deck" transform="translate(11.500000, 11.500000) rotate(180.000000) translate(-11.500000, -11.500000) " fill-rule="nonzero">
+            <g id="Ellipse-2" fill="#FFFFFF">
+                <g id="path0_fill-link">
+                    <path d="M23,11.5 C23,17.8513 17.8513,23 11.5,23 C5.14873,23 0,17.8513 0,11.5 C0,5.14873 5.14873,0 11.5,0 C17.8513,0 23,5.14873 23,11.5 Z" id="path0_fill"></path>
+                </g>
+            </g>
+            <g id="arrow-up" transform="translate(4.000000, 6.000000)" fill="#7B929E">
+                <g id="Vector" transform="translate(0.000000, 4.000000)">
+                    <g id="path1_stroke-link" transform="translate(7.100000, 1.870000) rotate(90.000000) translate(-7.100000, -1.870000) translate(6.100000, -5.130000)">
+                        <path d="M0.5,12.871 C0.5,13.1471 0.723858,13.371 1,13.371 C1.276142,13.371 1.5,13.1471 1.5,12.871 L0.5,12.871 Z M1.5,1 C1.5,0.723858 1.276142,0.5 1,0.5 C0.723858,0.5 0.5,0.723858 0.5,1 L1.5,1 Z M1.5,12.871 L1.5,1 L0.5,1 L0.5,12.871 L1.5,12.871 Z" id="path1_stroke"></path>
+                    </g>
+                </g>
+                <g id="Vector" transform="translate(8.000000, 0.000000)">
+                    <g id="path2_stroke-link" transform="translate(3.100000, 5.920000) rotate(90.000000) translate(-3.100000, -5.920000) translate(-2.400000, 2.920000)">
+                        <path d="M0.646447,5.09806 C0.451184,5.29332 0.451184,5.6099 0.646447,5.80517 C0.841709,6.00043 1.158291,6.00043 1.353553,5.80517 L0.646447,5.09806 Z M5.45161,1 L5.80517,0.646447 C5.6099,0.451184 5.29332,0.451184 5.09806,0.646447 L5.45161,1 Z M9.54967,5.80517 C9.74494,6.00043 10.06152,6.00043 10.25678,5.80517 C10.45204,5.6099 10.45204,5.29332 10.25678,5.09806 L9.54967,5.80517 Z M1.353553,5.80517 L5.80517,1.353553 L5.09806,0.646447 L0.646447,5.09806 L1.353553,5.80517 Z M5.09806,1.353553 L9.54967,5.80517 L10.25678,5.09806 L5.80517,0.646447 L5.09806,1.353553 Z" id="path2_stroke"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg width="19" height="18" viewBox="0 0 19 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group 4</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-11245 -8710)">
+<g id="Group 4">
+<g id="Ellipse">
+<use xlink:href="#path0_fill" transform="translate(11245 8710)" fill="url(#paint0_linear)"/>
+</g>
+<g id="Group 3">
+<g id="Rectangle 4">
+<use xlink:href="#path1_fill" transform="translate(11253.2 8714.5)" fill="#FFFFFF"/>
+</g>
+<g id="Rectangle 4.1">
+<use xlink:href="#path2_fill" transform="matrix(6.12323e-17 -1 1 6.12323e-17 11249.5 8719.84)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.10296e-15 18 -18.0126 1.10218e-15 18.0126 -1.10218e-15)">
+<stop offset="0" stop-color="#03D9C9"/>
+<stop offset="1" stop-color="#03C2FF"/>
+</linearGradient>
+<path id="path0_fill" d="M 18.0126 9C 18.0126 13.9706 13.9804 18 9.00632 18C 4.03227 18 0 13.9706 0 9C 0 4.02944 4.03227 0 9.00632 0C 13.9804 0 18.0126 4.02944 18.0126 9Z"/>
+<path id="path1_fill" d="M 0 0L 1.68869 0L 1.68869 9L 0 9L 0 0Z"/>
+<path id="path2_fill" d="M 0 0L 1.6875 0L 1.6875 9.00632L 0 9.00632L 0 0Z"/>
+</defs>
+</svg>

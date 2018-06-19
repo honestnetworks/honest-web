@@ -1,0 +1,126 @@
+.administration-company {
+  background: grey;
+}
+.administration-page {
+  margin: 10px 20px;
+  a {
+    text-decoration: none;
+  }
+  .ReactTable {
+    button.table-action-button {
+    min-width: 0px;
+    min-height: 0px;
+    padding: 5px 10px;
+    color:#00C0BF;
+    &:hover {
+      color:#fff;
+      background-color: lighten(#00C0BF,5%);
+    }
+    }
+    .rt-tr {
+      align-items: center;
+    }
+
+  }
+
+}
+.Admin-navigation {
+  display:flex;
+  background-color:rgba(255,255,255,0.3);
+  position: relative;
+  height:50px;
+  align-items:center;
+  .Profile-settings-navigation-body{
+    margin: 0 10% 0 10%;
+    position: relative;
+    align-items: center;
+  }
+  h2{
+    flex-grow: 1;
+    text-align: left;
+    font-size: 30px;
+    font-weight: lighter;
+  }
+  .Profile-settings-navigation-jobs {
+    position: absolute;
+    top:60px;
+    color:#7A919D;
+    font-size: 16px;
+    font-weight: lighter;
+    span {
+      padding-right: 10px;
+    }
+  }
+  .Profile-settings-button-default,
+  .Profile-settings-button-primary{
+    height: 41px;
+    border-radius: 25px;
+    width:124px;
+    box-shadow: none;
+    &:active {
+      box-shadow: none;
+    }
+  }
+  .Profile-settings-button-default {
+    margin-right: 10px;
+  }
+  .Profile-settings-button-primary{
+    background-color: #03D9C9;
+    &:hover {
+      background-color: #03D9C9;
+    }
+  }
+  .Admin-navigation-menu {
+    display: inline-flex;
+    margin-left: 20px;
+    z-index: 10;
+    bottom:0px;
+    position: absolute;
+    width: 100%;
+    button {
+      height: 30px;
+      min-width: 100px;
+    }
+    span {
+      padding-right: 30px;
+      text-transform: uppercase ;
+    }
+    a{
+      text-decoration: none;
+      color:#7B929E;
+      font-size: 14px;
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        transition: width .3s;
+        height: 2px;
+        background: #03D9C9;
+        margin-top: 14px;
+      }
+      &.active{
+        color:black;
+      }
+      &.active::after {
+        width: 100%;
+      }
+    }
+  }
+  .Profile-settings-indicator {
+    background-color: #03D9C9!important;
+  }
+}
+button.administration-create-button {
+  margin: 20px 0;
+  display: block;
+  background-color: #00C0BF;
+  &:hover {
+    background-color: lighten(#00C0BF,5%);
+  }
+}
+div#lightboxBackdrop {
+  background-color: rgba(230, 238, 242, 0.95);
+}
+.select-react {
+  height: 50px
+}
