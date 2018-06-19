@@ -42,7 +42,7 @@ ForgotPassword.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        session: state.session.data,
+        state: state,
     }
 };
 
