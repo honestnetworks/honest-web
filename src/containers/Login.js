@@ -21,7 +21,7 @@ class Login extends Component {
     }
 
     redirectToPreviusLocation = () => {
-        const {from} = this.props.location.state || {from: {pathname: '/dashboard'}};
+        const {from} = this.props.location.state || {from: {pathname: '/home'}};
         return (
             <Redirect to={from}/>
         )

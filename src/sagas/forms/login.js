@@ -11,7 +11,7 @@ function* handleLoginSaga(action) {
     try {
         let response = yield call(authAPI.login, {email, password}); // calling our api method
 
-        yield sleep(2000); //simulate call duration
+        yield sleep(500); //simulate call duration
 
         // yield put(loadSession(response.content));
         yield put(updateUserStore(response.content));

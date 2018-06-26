@@ -33,7 +33,7 @@ const LoginForm = props => {
     const {error, handleSubmit, pristine, reset, submitting} = props;
     const submit = handleSubmit(login);
     return (
-        submitting ? <RingLoader color={'red'} loading={submitting}/> :
+        submitting ? <RingLoader loading={submitting}/> :
         <form onSubmit={submit}>
             <div>
                 <Field name="email" component={renderTextField} label="Email" type="email"/>

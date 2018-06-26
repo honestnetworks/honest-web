@@ -24,7 +24,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SearchIcon from '@material-ui/icons/Search';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import HomeIcon from '@material-ui/icons/Home';
-import Home from '../Home/Home';
+import { NavLink } from 'react-router-dom';
 
 
 const drawerWidth = 240;
@@ -47,6 +47,9 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        backgroundColor:'transparent',
+        boxShadow:'none',
+        color:'grey'
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -77,7 +80,7 @@ const styles = theme => ({
         alignItems: 'center',
         justifyContent: 'flex-end',
         padding: '0 8px',
-        ...theme.mixins.toolbar,
+        //...theme.mixins.toolbar,
     },
     content: {
         flexGrow: 1,
@@ -87,6 +90,9 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        marginTop:'7vh',
+        overflow:'auto',
+        padding:'4vw'
     },
     'content-left': {
         marginLeft: -drawerWidth,
@@ -120,6 +126,9 @@ const styles = theme => ({
         padding: '-10px',
         display: 'inline-block'
     },
+    navList:{
+        a:{textDecoration:'none'}
+    }
 });
 
 class PersistentDrawer extends React.Component {
@@ -172,27 +181,26 @@ class PersistentDrawer extends React.Component {
                     </IconButton>
                 </div>
                 <Divider />
-                {/*<List>{mailFolderListItems}</List>*/}
-
-
-                <List component="nav">
+                <List component="nav" className={classes.navList}>
+                    <NavLink to="/home">
                     <ListItem button>
+
                         <ListItemIcon>
                             <HomeIcon />
                         </ListItemIcon>
                         <ListItemText primary="Home"/>
                     </ListItem>
+                    </NavLink>
+                    <NavLink to="/contacts">
                     <ListItem button>
                         <ListItemIcon>
                             <DraftsIcon />
                         </ListItemIcon>
                         <ListItemText primary="Contacts"/>
                     </ListItem>
+                    </NavLink>
                 </List>
-
-
                 <Divider />
-                {/*<List>{otherMailFolderListItems}</List>*/}
             </Drawer>
         );
 
@@ -223,24 +231,36 @@ class PersistentDrawer extends React.Component {
                             >
                                 <MenuIcon />
                             </IconButton>
-                            <Typography variant="title" color="inherit" className={classes.flex}>
-                                Welcome to the Honest
+                            <Typography variant="subheading" color="inherit" className={classes.flex}>
+                                {/*Welcome to the Honest*/}
+                                <div className={classes.margin}>
+                                    <Grid container alignItems="flex-end">
+                                        <Grid item>
+                                            <SearchIcon/>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField style={{color: 'white'}}
+                                                       id="input-with-icon-grid"
+                                                       label="Search"/>
+                                        </Grid>
+                                    </Grid>
+                                </div>
                             </Typography>
                             {auth && (
                                 <div   style={{display: 'flex', alignItems: 'center'}}>
 
-                                    <div className={classes.margin}>
-                                        <Grid container alignItems="flex-end">
-                                            <Grid item>
-                                                <SearchIcon/>
-                                            </Grid>
-                                            <Grid item>
-                                                <TextField style={{color: 'white'}}
-                                                           id="input-with-icon-grid"
-                                                           label="Search"/>
-                                            </Grid>
-                                        </Grid>
-                                    </div>
+                                    {/*<div className={classes.margin}>*/}
+                                        {/*<Grid container alignItems="flex-end">*/}
+                                            {/*<Grid item>*/}
+                                                {/*<SearchIcon/>*/}
+                                            {/*</Grid>*/}
+                                            {/*<Grid item>*/}
+                                                {/*<TextField style={{color: 'white'}}*/}
+                                                           {/*id="input-with-icon-grid"*/}
+                                                           {/*label="Search"/>*/}
+                                            {/*</Grid>*/}
+                                        {/*</Grid>*/}
+                                    {/*</div>*/}
 
                                     <IconButton
                                         aria-owns={openMenu ? 'menu-appbar' : null}
@@ -288,8 +308,7 @@ class PersistentDrawer extends React.Component {
                             [classes[`contentShift-${anchor}`]]: openDrawer,
                         })}
                     >
-                        <div className={classes.drawerHeader}/>
-                        <Home/>
+                        {this.props.children}
                     </main>
                     {after}
                 </div>

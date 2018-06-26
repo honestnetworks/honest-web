@@ -2,6 +2,21 @@
 @import "styles/Profile.scss";
 @import "styles/ResetPassword.scss";
 @import "styles/Boundle.scss";
+
+a {
+  text-decoration: none;
+}
+a.active>div:before {
+  content: "";
+  padding: 14px 0;
+  border-left: 2px solid blue;
+  left: 0;
+  position: absolute;
+}
+a.active>div>svg {
+  color:blue;
+}
+
 //body {
 //  overflow: hidden;
 //}

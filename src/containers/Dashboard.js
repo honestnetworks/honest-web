@@ -18,6 +18,7 @@ class Login extends Component {
         return (
             <div className={classes.dashboard}>
                 <NavBar/>
+                <div>Test message</div>
 
 
 
