@@ -28,10 +28,14 @@ class Details extends Component {
     };
 
     render() {
-        const {building} = this.props.location.state;
+        console.log('Building', this.props);
+        const {building} = this.props.location.state?this.props.location.state:false;
+        console.log('Building', building);
         const {classes} = this.props;
         return (
             <div>
+            { building ?
+                <div>
                 Details Component
                 <BuildingItem building={building} handleStreetView={this.handleStreetView}/>
                 <ExpansionBlock title={"Network"}>
@@ -42,15 +46,15 @@ class Details extends Component {
                 </ExpansionBlock>
                 <ExpansionBlock title={"Speedtest"}>
                     <div style={{display:'flex'}}>
-                    <div style={{width:'50%'}}>
-                        <Typography className={classes.heading} gutterBottom>Building Speedtest:1000Mbps</Typography>
-                        <Typography className={classes.heading} gutterBottom>Average User Speedtest is 930Mb/s</Typography>
-                        <Typography className={classes.heading} gutterBottom>Average latency is 1ms</Typography>
-                        <Typography className={classes.heading} gutterBottom>How we compare</Typography>
-                    </div>
-                    <div style={{width:'50%'}}>
-                        <img src={speedTestImage} alt="" style={{width:'75%'}}/>
-                    </div>
+                        <div style={{width:'50%'}}>
+                            <Typography className={classes.heading} gutterBottom>Building Speedtest:1000Mbps</Typography>
+                            <Typography className={classes.heading} gutterBottom>Average User Speedtest is 930Mb/s</Typography>
+                            <Typography className={classes.heading} gutterBottom>Average latency is 1ms</Typography>
+                            <Typography className={classes.heading} gutterBottom>How we compare</Typography>
+                        </div>
+                        <div style={{width:'50%'}}>
+                            <img src={speedTestImage} alt="" style={{width:'75%'}}/>
+                        </div>
                     </div>
                 </ExpansionBlock>
                 <ExpansionBlock title={"Contact Details"}>
@@ -65,8 +69,9 @@ class Details extends Component {
                 <ExpansionBlock title={"Wifi Access Points"}>
                     <div>test message</div>
                 </ExpansionBlock>
+            </div>:
+                null}
             </div>
-
         );
     }
 }

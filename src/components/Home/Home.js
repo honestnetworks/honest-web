@@ -41,13 +41,28 @@ const styles = theme => ({
     selectBlock:{
         width:'20%',
         marginBottom:'20px',
-        '@media(max-width: 1050px)' : {
+        '@media(max-width: 1092px)' : {
             width: '25%'
         },
-        '@media(max-width: 842px)' : {
-            width: '30%'
+        '@media(max-width: 887px)' : {
+            width: '30%',
+            marginLeft:'2vh'
+        },
+        '@media(max-width: 743px)' : {
+            width: '35%'
+        },
+        '@media(max-width: 644px)' : {
+            width: '40%'
+        },
+        '@media(max-width: 560px)' : {
+            width: '50%'
         }
     },
+    homeTitle:{
+        '@media(max-width: 887px)' : {
+            marginLeft:'2vh'
+        },
+    }
 
 });
 
@@ -82,13 +97,13 @@ class Home extends Component {
                 <BuildingItem key={item.id}
                               building = {item}
                               handleStreetView={this.handleStreetView}
-                              linkToDetails = {true}
+                              linkToDetails = {false}
                 />
             )
         });
         return (
             <div>
-                <Typography variant="subheading" gutterBottom>
+                <Typography variant="subheading" gutterBottom className={classes.homeTitle}>
                     Property Owner Name
                 </Typography>
                 <div className={classes.selectBlock}>

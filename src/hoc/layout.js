@@ -15,8 +15,6 @@ import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Grid from '@material-ui/core/Grid';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -25,13 +23,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import HomeIcon from '@material-ui/icons/Home';
 import { NavLink } from 'react-router-dom';
+import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles";
 
 
 const drawerWidth = 240;
+const closeDrawerWidth = 25;
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     appFrame: {
         height: '100vh',
@@ -47,11 +47,12 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        backgroundColor:'transparent',
+        backgroundColor:'#4c84ff',
         boxShadow:'none',
-        color:'grey'
+        color:'white'
     },
     appBarShift: {
+        marginLeft: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.easeOut,
@@ -73,14 +74,35 @@ const styles = theme => ({
     },
     drawerPaper: {
         position: 'relative',
+        whiteSpace: 'nowrap',
         width: drawerWidth,
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    drawerPaperClose: {
+        overflowX: 'hidden',
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        width: theme.spacing.unit * 7,
+        [theme.breakpoints.up('sm')]: {
+            width: theme.spacing.unit * 9,
+        },
     },
     drawerHeader: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        //...theme.mixins.toolbar,
+        justifyContent:'flex-start',
+        padding: '0 8px'
+    },
+    drawerHeaderModify: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent:'center',
+        padding: '0 8px'
     },
     content: {
         flexGrow: 1,
@@ -95,7 +117,7 @@ const styles = theme => ({
         padding:'4vw'
     },
     'content-left': {
-        marginLeft: -drawerWidth,
+        marginLeft: -closeDrawerWidth,
     },
     'content-right': {
         marginRight: -drawerWidth,
@@ -114,7 +136,12 @@ const styles = theme => ({
     },
     flex: {
         flex: 1,
-        textAlign: 'left'
+        // textAlign: 'left'
+        display:'flex',
+        justifyContent:'space-between',
+        alignItems:'center',
+        paddingLeft:'1.7vw'
+
     },
     userMenuButton: {
         marginLeft: -12,
@@ -131,6 +158,27 @@ const styles = theme => ({
     }
 });
 
+const customAppBar = createMuiTheme({
+    overrides: {
+        MuiInput: {
+            root: {
+                color: 'white',
+            },
+            underline:{
+                '&::before':{
+                    borderColor:'white'
+                },
+                '&::after':{
+                    borderColor:'white'
+                },
+                '&:hover::before':{
+                    borderColor:'white!important'
+                }
+            }
+        },
+    }
+});
+
 class PersistentDrawer extends React.Component {
     state = {
         openDrawer: false,
@@ -139,22 +187,23 @@ class PersistentDrawer extends React.Component {
         anchor: 'left',
         auth: true,
         anchorEl: null,
+
+        open: false,
     };
 
     handleDrawerOpen = () => {
-        this.setState({openDrawer: true});
+        this.setState({ open: true });
     };
 
+    handleDrawerClose = () => {
+        this.setState({ open: false });
+    };
     handleMenuOpen = event => {
         this.setState({anchorEl: event.currentTarget});
     };
 
     handleMenuClose = () => {
         this.setState({anchorEl: null});
-    };
-
-    handleDrawerClose = () => {
-        this.setState({openDrawer: false});
     };
 
     handleLogout = () => {
@@ -167,20 +216,19 @@ class PersistentDrawer extends React.Component {
         const {anchor, openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
         const drawer = (
-            <Drawer
-                variant="persistent"
-                anchor={anchor}
-                open={openDrawer}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={this.handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+
+        <Drawer
+            variant="permanent"
+            classes={{
+                paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
+            }}
+            open={this.state.open}
+        >
+                <div className={this.state.open ?classes.drawerHeader:classes.drawerHeaderModify}>
+                    <IconButton onClick={this.state.open ?this.handleDrawerClose:this.handleDrawerOpen}>
+                        <MenuIcon />
                     </IconButton>
                 </div>
-                <Divider />
                 <List component="nav" className={classes.navList}>
                     <NavLink to="/home">
                     <ListItem button>
@@ -216,6 +264,7 @@ class PersistentDrawer extends React.Component {
         return (
             <div className={classes.root}>
                 <div className={classes.appFrame}>
+                    <MuiThemeProvider theme={customAppBar}>
                     <AppBar
                         className={classNames(classes.appBar, {
                             [classes.appBarShift]: openDrawer,
@@ -232,16 +281,19 @@ class PersistentDrawer extends React.Component {
                                 <MenuIcon />
                             </IconButton>
                             <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                {/*Welcome to the Honest*/}
+                                HonestNetwork
                                 <div className={classes.margin}>
                                     <Grid container alignItems="flex-end">
                                         <Grid item>
-                                            <SearchIcon/>
+                                            <SearchIcon style={{paddingRight:'10px',display:'flex'}}/>
                                         </Grid>
                                         <Grid item>
-                                            <TextField style={{color: 'white'}}
-                                                       id="input-with-icon-grid"
-                                                       label="Search"/>
+                                            <TextField
+                                                className='searchHeaderField'
+                                                style={{color: 'white'}}
+                                                id="input-with-icon-grid"
+                                                label="Search"
+                                            />
                                         </Grid>
                                     </Grid>
                                 </div>
@@ -301,6 +353,7 @@ class PersistentDrawer extends React.Component {
 
                         </Toolbar>
                     </AppBar>
+                    </MuiThemeProvider>
                     {before}
                     <main
                         className={classNames(classes.content, classes[`content-${anchor}`], {

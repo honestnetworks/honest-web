@@ -33,7 +33,7 @@ class App extends Component {
                             <PrivateRoute path="/profile" component={Profile} isAuthenticated={isAuth}/>
                             <PrivateRoute path="/home"   exact component={Home} isAuthenticated={isAuth}/>
                             <PrivateRoute path="/contacts"   exact component={Contacts} isAuthenticated={isAuth}/>
-                            <PrivateRoute path="/details/:buildingName" exact component={Details} isAuthenticated={isAuth}/>
+                            <PrivateRoute path="/details/:id" exact component={Details} isAuthenticated={isAuth}/>
                             <Route path="/reset-password" component={ConfirmPassword} isAuthenticated={true}/>
                             <Route path="/forgot-password" component={ForgotPassword} isAuthenticated={true}/>
                             <Route path="/"  exact component={Login}/>
@@ -47,7 +47,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => (()=>{
-        console.log(state)
+        console.log(state);
         return ({
         session: state.session
     })
