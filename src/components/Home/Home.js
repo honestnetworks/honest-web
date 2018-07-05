@@ -6,6 +6,7 @@ import flatImage3 from '../../assets/images/flatImage-3.jpg';
 import CustomSelect from '../Common/Select/Select';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Layout from '../../hoc/layout'
 
 const Buildings = [
     {
@@ -102,6 +103,7 @@ class Home extends Component {
             )
         });
         return (
+            <Layout>
             <div>
                 <Typography variant="subheading" gutterBottom className={classes.homeTitle}>
                     Property Owner Name
@@ -111,6 +113,7 @@ class Home extends Component {
                 </div>
                 {buildBuildings}
             </div>
+            </Layout>
 
         );
     }

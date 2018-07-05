@@ -107,14 +107,15 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
+        //padding: theme.spacing.unit * 3,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
         marginTop:'7vh',
         overflow:'auto',
-        padding:'4vw'
+        padding:'4vw',
+        marginTop:'60px'
     },
     'content-left': {
         marginLeft: -closeDrawerWidth,
@@ -212,11 +213,11 @@ class PersistentDrawer extends React.Component {
     };
 
     render() {
+        console.log('Layout props', this.props);
         const {classes, theme} = this.props;
         const {anchor, openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
         const drawer = (
-
         <Drawer
             variant="permanent"
             classes={{

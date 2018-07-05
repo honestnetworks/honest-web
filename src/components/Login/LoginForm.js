@@ -48,10 +48,10 @@ const LoginForm = props => {
                 </button>
             </div>
             <div>
-                <p>Forgot Password? <Link to="/forgot-password">
-                    <span>Click here.</span>
-                </Link>
-                </p>
+                {/*<p>Forgot Password? <Link to="/forgot-password">*/}
+                    {/*<span>Click here.</span>*/}
+                {/*</Link>*/}
+                {/*</p>*/}
             </div>
         </form>
     )

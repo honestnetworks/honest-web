@@ -28,18 +28,18 @@ class App extends Component {
         return (
             <ConnectedRouter history={history}>
                 <div className="App">
-                    <Layout>
+                    {/*<Layout>*/}
                         <Switch>
-                            <PrivateRoute path="/profile" component={Profile} isAuthenticated={isAuth}/>
-                            <PrivateRoute path="/home"   exact component={Home} isAuthenticated={isAuth}/>
-                            <PrivateRoute path="/contacts"   exact component={Contacts} isAuthenticated={isAuth}/>
-                            <PrivateRoute path="/details/:id" exact component={Details} isAuthenticated={isAuth}/>
+                            <PrivateRoute path="/profile" component={Profile} isAuthenticated={isAuth} />
+                            <PrivateRoute path="/home"   exact component={Home} isAuthenticated={isAuth} />
+                            <PrivateRoute path="/contacts"   exact component={Contacts} isAuthenticated={isAuth} />
+                            <PrivateRoute path="/details/:id" exact component={Details} isAuthenticated={isAuth} />
                             <Route path="/reset-password" component={ConfirmPassword} isAuthenticated={true}/>
                             <Route path="/forgot-password" component={ForgotPassword} isAuthenticated={true}/>
-                            <Route path="/"  exact component={Login}/>
+                            <Route path="/"  exact component={Login} />
                             <Route path="/login"  exact component={Login}/>
                         </Switch>
-                    </Layout>
+                    {/*</Layout>*/}
                 </div>
             </ConnectedRouter>
         );

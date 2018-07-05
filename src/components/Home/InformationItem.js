@@ -26,7 +26,11 @@ const styles = {
         marginBottom: 12,
     },
     informationItem:{
-        margin:'1vh'
+        margin:'1vh',
+        '@media(max-width: 710px)' : {
+            width:'100%',
+            margin:'10px'
+        }
     },
     leftBlock:{
         width:'40%',
@@ -66,7 +70,9 @@ function InformationItem(props) {
                     <div>
                         {caption ?  <Typography variant="caption">{caption}
                         </Typography> : null}
-                        {content ? <Typography variant="body2" gutterBottom>{content}{sufix ? <span> {sufix}</span> : null}
+                        {content ? <Typography
+                            style={{color:props.color?props.color:'black', fontSize:props.fontSize?props.fontSize:null}}
+                            variant="body2" gutterBottom>{content}{sufix ? <span style={{fontSize:'14px'}}> {sufix}</span> : null}
                         </Typography> : null}
                         {isContact ?
                         <div>

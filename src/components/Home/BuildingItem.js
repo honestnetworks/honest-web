@@ -7,13 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import InformationItem from './InformationItem';
 import {Link} from 'react-router-dom';
-import ErrorIcon from '@material-ui/icons/Error';
-import ActiveIcon from '@material-ui/icons/ThumbUp';
-import UptimeIcon from '@material-ui/icons/History';
+import ErrorIcon from '../../assets/icons/inactive.png';
+import ActiveIcon from '../../assets/icons/active.png';
+import UptimeIcon from '../../assets/icons/uptime.png';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import PersonIcon from '@material-ui/icons/PersonOutline';
-import StreetIcon from '@material-ui/icons/Streetview';
-import SpeedometerIcon from '../../assets/icons/speedometer.svg';
+import PersonIcon from '../../assets/icons/person.png';
+import StreetIcon from '../../assets/icons/mapIcon.png';
+import SpeedometerIcon from '../../assets/icons/speed.png';
 
 import IconButton from '@material-ui/core/IconButton';
 
@@ -23,7 +23,13 @@ const styles = {
         minWidth: 275,
         height:'35vh',
         marginBottom:'3vh',
-        position:'relative'
+        position:'relative',
+        '@media(max-width: 887px)' : {
+            marginLeft:'2vh'
+        },
+        '@media(max-width: 710px)' : {
+            height:'auto'
+        }
     },
     bullet: {
         display: 'inline-block',
@@ -41,20 +47,28 @@ const styles = {
         paddingLeft: '20px',
         color:'blue',
         display: 'inline-flex',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         position: 'absolute',
-        top: '12px',
+        top: '16px',
         '&:hover': {
             cursor:'pointer'
         }
     },
     cover:{
         width: '75%',
-        margin:'1vh'
+        margin:'1vh',
+        '@media(max-width: 710px)' : {
+            height:'14vh',
+            width:'100%'
+        }
     },
     mainContent:{
         display:'flex',
         padding: '0 2vh 0 2vh',
+        '@media(max-width: 710px)' : {
+            flexWrap:'wrap'
+        }
+
     },
     informationBlocks:{
         display:'flex',
@@ -69,8 +83,23 @@ const styles = {
     },
     informationIcon:{
         fontSize:'3vw',
+        '@media(max-width: 710px)' : {
+            fontSize:'7vw',
+        }
         // color:'red'
     },
+    iconImage:{
+          width:'4vw',
+        '@media(max-width: 710px)' : {
+            width:'8vw',
+        }
+    },
+    modifyIcon:{
+        height:'3vw',
+        '@media(max-width: 710px)' : {
+            height:'7vw',
+        }
+    }
 };
 
 function BuildingItem(props) {
@@ -78,15 +107,15 @@ function BuildingItem(props) {
     const getInfoItemIcon = (status) =>{
         let icon = null;
         if(status==='Active') {
-            icon = <ActiveIcon className={classes.informationIcon} style={{color:'green'}}/>;
+            icon = <img src={ActiveIcon} alt="speed"  className={classes.iconImage} />;
         } else if(status==='Inactive'){
-            icon = <ErrorIcon className={classes.informationIcon} style={{color:'red'}}/>;
+            icon = <img src={ErrorIcon} alt="speed"  className={classes.iconImage} />;
         } else if(status=='Speed'){
-            icon = <img src={SpeedometerIcon} alt="speed"  style={{width:'3vw'}}/>;
+            icon = <img src={SpeedometerIcon} alt="speed" className={classes.iconImage}  />;
         } else if(status==='Uptime') {
-            icon = <UptimeIcon className={classes.informationIcon} style={{color:'orange'}}/>;
+            icon = <img src={UptimeIcon} alt="speed"  className={classes.iconImage} />;
         } else if(status==='Contact') {
-            icon = <PersonIcon className={classes.informationIcon} style={{color:'gray'}}/>;
+            icon = <img src={PersonIcon} alt="speed"  className={` ${classes.modifyIcon}`}/>;
         }
 
         return icon
@@ -110,7 +139,7 @@ function BuildingItem(props) {
             <Card className={classes.card}>
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary">
-                        {props.building.name} <span className={classes.streetView} onClick={()=>props.handleStreetView(props.building.name)}><StreetIcon style={{paddingRight:'5px'}}/> Street View</span>
+                        {props.building.name} <span className={classes.streetView} onClick={()=>props.handleStreetView(props.building.name)}><img src={StreetIcon} alt="map" style={{paddingRight:'5px'}}/> Street View</span>
                     </Typography>
                     <IconButton className={classes.actionButton} color="primary">
                         {returnDetailsLink()}
@@ -123,10 +152,31 @@ function BuildingItem(props) {
                         title="Live from space album cover"
                     />
                     <div className={classes.informationBlocks}>
-                        <InformationItem content="980" caption="SPEED" sufix="mbps" icon={getInfoItemIcon('Speed')}/>
-                        <InformationItem content="98.99%" caption="UPTIME" icon={getInfoItemIcon('Uptime')} />
-                        <InformationItem content={props.building.networkStatus} caption="NETWORK STATUS" icon={getInfoItemIcon(props.building.networkStatus)}/>
-                        <InformationItem content="Stephen Streg" caption="CONTACT" isContact={true} icon={getInfoItemIcon('Contact')}/>
+                        <InformationItem content="980"
+                                         caption="SPEED"
+                                         sufix="mbps"
+                                         icon={getInfoItemIcon('Speed')}
+                                         color={'#4c84ff'}
+                                         fontSize="1.75em"
+                        />
+                        <InformationItem content="98.99%"
+                                         color={"#fcc22d"}
+                                         fontSize="1.75em"
+                                         caption="UPTIME"
+                                         icon={getInfoItemIcon('Uptime')}
+                        />
+                        <InformationItem
+                            content={props.building.networkStatus}
+                            caption="NETWORK STATUS"
+                            icon={getInfoItemIcon(props.building.networkStatus)}
+                            color={props.building.networkStatus==='Active'?'#3bc195':'#fc7d7d'}
+                        />
+                        <InformationItem
+                            content="Stephen Streg"
+                            caption="CONTACT"
+                            isContact={true}
+                            icon={getInfoItemIcon('Contact')}
+                        />
                     </div>
                 </div>
             </Card>

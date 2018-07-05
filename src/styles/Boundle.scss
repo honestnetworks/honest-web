@@ -177,7 +177,8 @@ pre.line-numbers, pre.line-numbers > code {
 }
 
 form {
-  font-size: 16px
+  font-size: 16px;
+  width:25vh;
 }
 
 form > div {
@@ -260,17 +261,19 @@ form > div > div.async-validating:after {
 }
 
 form > div button {
-  margin: 10px
+  margin: 10px;
+  width:100%;
+
 }
 
 form > div button[type=button] {
   white-space: nowrap;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 10px 15px;
   font-size: 20px;
   color: #fff;
-  background-image: linear-gradient(#fff, #d5d5d5);
+  //background-image: linear-gradient(#fff, #d5d5d5);
   border: 1px solid #d5d5d5;
   color: #000
 }
@@ -280,11 +283,11 @@ form > div button[type=button]:visited {
 }
 
 form > div button[type=button]:hover {
-  background-image: linear-gradient(#fff, #eee)
+  //background-image: linear-gradient(#fff, #eee)
 }
 
 form > div button[type=button]:hover[disabled] {
-  background-image: linear-gradient(#fff, #d5d5d5)
+  //background-image: linear-gradient(#fff, #d5d5d5)
 }
 
 form > div button[type=button]:visited {
@@ -299,12 +302,13 @@ form > div button[type=button][disabled] {
 form > div button[type=submit] {
   white-space: nowrap;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 10px 15px;
   font-size: 20px;
   color: #fff;
-  background-image: linear-gradient(#4f93ce, #285f8f);
-  border: 1px solid #285f8f
+  background-color: #303F9F;
+  //background-image: linear-gradient(#4f93ce, #285f8f);
+  border: 1px solid #303F9F
 }
 
 form > div button[type=submit]:visited {
@@ -312,11 +316,11 @@ form > div button[type=submit]:visited {
 }
 
 form > div button[type=submit]:hover {
-  background-image: linear-gradient(#63a0d4, #337ab7)
+  //background-image: linear-gradient(#63a0d4, #337ab7)
 }
 
 form > div button[type=submit]:hover[disabled] {
-  background-image: linear-gradient(#4f93ce, #285f8f)
+  //background-image: linear-gradient(#4f93ce, #285f8f)
 }
 
 form > div button[type=submit]:visited {
