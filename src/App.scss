@@ -9,12 +9,20 @@ a {
 a.active>div:before {
   content: "";
   padding: 14px 0;
-  border-left: 2px solid blue;
+  border-left: 2px solid #4c85ff;
   left: 0;
   position: absolute;
 }
-a.active>div>svg {
-  color:blue;
+a.active>div>svg{
+  ////color:#4c85ff;
+  //fill:red!important;
+  //color:red!important;
+}
+a.active>div>div {
+  color: black;
+}
+nav>a>div>div>span {
+  color:#adb5c2;
 }
 .searchHeaderField input,
 .searchHeaderField label {

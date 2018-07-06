@@ -20,11 +20,16 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SearchIcon from '@material-ui/icons/Search';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import HomeIcon from '@material-ui/icons/Home';
-import { NavLink } from 'react-router-dom';
+//import DraftsIcon from '@material-ui/icons/Drafts';
+import DraftsIconActive from '../assets/icons/contacts-active.svg';
+import DraftsIconNonActive from '../assets/icons/contacts-non-active.svg';
+//import HomeIcon from '@material-ui/icons/Home';
+import HomeIconActive from '../assets/icons/main-active.svg';
+import HomeIconNonActive from '../assets/icons/main-non-active.svg';
+import { NavLink, withRouter } from 'react-router-dom';
 import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles";
-
+import Hidden from '@material-ui/core/Hidden';
+import ReactSVG from 'react-svg';
 
 const drawerWidth = 240;
 const closeDrawerWidth = 25;
@@ -106,7 +111,8 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
+        //backgroundColor: theme.palette.background.default,
+        backgroundColor: '#f1f3f8',
         //padding: theme.spacing.unit * 3,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -115,7 +121,10 @@ const styles = theme => ({
         marginTop:'7vh',
         overflow:'auto',
         padding:'4vw',
-        marginTop:'60px'
+        marginTop:'60px',
+        [theme.breakpoints.only('xs')]: {
+            padding:'4vw 4vw 4vw 6.5vw',
+        }
     },
     'content-left': {
         marginLeft: -closeDrawerWidth,
@@ -154,8 +163,14 @@ const styles = theme => ({
         padding: '-10px',
         display: 'inline-block'
     },
-    navList:{
-        a:{textDecoration:'none'}
+    navList: {
+        a: {textDecoration: 'none'},
+        paddingTop: 49
+    },
+    listItemRoot: {
+        '&>div':{
+            color: '#adb5c2'
+        }
     }
 });
 
@@ -177,6 +192,7 @@ const customAppBar = createMuiTheme({
                 }
             }
         },
+
     }
 });
 
@@ -188,7 +204,7 @@ class PersistentDrawer extends React.Component {
         anchor: 'left',
         auth: true,
         anchorEl: null,
-
+        isActive: true,
         open: false,
     };
 
@@ -212,11 +228,16 @@ class PersistentDrawer extends React.Component {
         window.location.replace("/");
     };
 
+    checkIfHomePage = (path) => {
+        return Boolean(path && path.includes('/home'));
+    };
+
     render() {
         console.log('Layout props', this.props);
         const {classes, theme} = this.props;
         const {anchor, openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
+        const {location: {pathname}} = this.props;
         const drawer = (
         <Drawer
             variant="permanent"
@@ -232,24 +253,29 @@ class PersistentDrawer extends React.Component {
                 </div>
                 <List component="nav" className={classes.navList}>
                     <NavLink to="/home">
-                    <ListItem button>
-
+                    <ListItem
+                        button
+                        classes={{root: classes.listItemRoot}}
+                    >
                         <ListItemIcon>
-                            <HomeIcon />
+                            <img src={this.checkIfHomePage(pathname) ? HomeIconActive : HomeIconNonActive} alt="" style={{width:'21px'}}/>
                         </ListItemIcon>
-                        <ListItemText primary="Home"/>
+                        <ListItemText disableTypography primary="HOME"/>
                     </ListItem>
                     </NavLink>
                     <NavLink to="/contacts">
-                    <ListItem button>
+                    <ListItem
+                        classes={{root: classes.listItemRoot}}
+                        button
+                    >
+
                         <ListItemIcon>
-                            <DraftsIcon />
+                            <img src={!this.checkIfHomePage(pathname) ? DraftsIconActive : DraftsIconNonActive} alt="" style={{width:'21px'}}/>
                         </ListItemIcon>
-                        <ListItemText primary="Contacts"/>
+                        <ListItemText disableTypography primary="CONTACT"/>
                     </ListItem>
                     </NavLink>
                 </List>
-                <Divider />
             </Drawer>
         );
 
@@ -284,6 +310,7 @@ class PersistentDrawer extends React.Component {
                             <Typography variant="subheading" color="inherit" className={classes.flex}>
                                 HonestNetwork
                                 <div className={classes.margin}>
+                                    <Hidden only={'xs'}>
                                     <Grid container alignItems="flex-end">
                                         <Grid item>
                                             <SearchIcon style={{paddingRight:'10px',display:'flex'}}/>
@@ -297,6 +324,7 @@ class PersistentDrawer extends React.Component {
                                             />
                                         </Grid>
                                     </Grid>
+                                    </Hidden>
                                 </div>
                             </Typography>
                             {auth && (
@@ -371,9 +399,11 @@ class PersistentDrawer extends React.Component {
     }
 }
 
+
+
 PersistentDrawer.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(PersistentDrawer);
+export default withStyles(styles, {withTheme: true})(withRouter(PersistentDrawer));

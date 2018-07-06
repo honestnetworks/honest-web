@@ -178,7 +178,10 @@ pre.line-numbers, pre.line-numbers > code {
 
 form {
   font-size: 16px;
-  width:25vh;
+  width:25%;
+  @media (max-width: 700px) {
+    width:80%;
+  }
 }
 
 form > div {
@@ -261,8 +264,8 @@ form > div > div.async-validating:after {
 }
 
 form > div button {
-  margin: 10px;
-  width:100%;
+  margin: 2rem auto;
+  width:75%;
 
 }
 
@@ -273,21 +276,12 @@ form > div button[type=button] {
   padding: 10px 15px;
   font-size: 20px;
   color: #fff;
-  //background-image: linear-gradient(#fff, #d5d5d5);
   border: 1px solid #d5d5d5;
   color: #000
 }
 
 form > div button[type=button]:visited {
   color: #fff
-}
-
-form > div button[type=button]:hover {
-  //background-image: linear-gradient(#fff, #eee)
-}
-
-form > div button[type=button]:hover[disabled] {
-  //background-image: linear-gradient(#fff, #d5d5d5)
 }
 
 form > div button[type=button]:visited {
@@ -307,7 +301,6 @@ form > div button[type=submit] {
   font-size: 20px;
   color: #fff;
   background-color: #303F9F;
-  //background-image: linear-gradient(#4f93ce, #285f8f);
   border: 1px solid #303F9F
 }
 

@@ -6,11 +6,12 @@ import EmailIcon from '@material-ui/icons/Email';
 import CallIcon from '@material-ui/icons/Call';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Grid from '@material-ui/core/Grid';
+import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles/index";
 
-const styles = {
+const styles = (theme) => ({
     card: {
-        minWidth: '15vw',
-        height:'11vh',
+        minHeight:'11vh',
         display:'flex'
     },
     bullet: {
@@ -26,24 +27,19 @@ const styles = {
         marginBottom: 12,
     },
     informationItem:{
-        margin:'1vh',
-        '@media(max-width: 710px)' : {
-            width:'100%',
-            margin:'10px'
-        }
     },
     leftBlock:{
-        width:'40%',
         display:'flex',
         justifyContent:'center',
         alignItems:'center'
     },
     rightBlock:{
-        width:'60%',
         display:'flex',
-        flexWrap:'wrap',
-        justifyContent:'left',
-        alignItems:'center'
+        justifyContent:'flex-start',
+        alignItems:'center',
+        // [theme.breakpoints.between('xs','md')]: {
+        //     justifyContent:'flex-start'
+        // }
     },
     informationIcon:{
         fontSize:'3.5vw',
@@ -56,17 +52,29 @@ const styles = {
     iconButton:{
         fontSize: '20px'
     }
+});
 
-};
+const customItem = createMuiTheme({
+    overrides: {
+        MuiCard:{
+            root:{
+                boxShadow:'none',
+                shadow:'none'
+            }
+        }
+    }
+});
 
 function InformationItem(props) {
     const { classes, caption, content, sufix, isContact, icon} = props;
 
     return (
-        <div className={classes.informationItem}>
+        <Grid  item xs={12} sm={6} className={classes.informationItem}>
+            <MuiThemeProvider theme={customItem}>
             <Card className={classes.card}>
-                <div className={classes.leftBlock}>{icon}</div>
-                <div className={classes.rightBlock}>
+                <Grid container spacing={16}>
+                <Grid item xs={4} className={classes.leftBlock}>{icon}</Grid>
+                <Grid item xs={8} className={classes.rightBlock}>
                     <div>
                         {caption ?  <Typography variant="caption">{caption}
                         </Typography> : null}
@@ -84,9 +92,11 @@ function InformationItem(props) {
                         </IconButton>
                         </div> : null}
                     </div>
-                </div>
+                </Grid>
+                </Grid>
             </Card>
-        </div>
+            </MuiThemeProvider>
+        </Grid>
     );
 }
 

@@ -14,21 +14,21 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import PersonIcon from '../../assets/icons/person.png';
 import StreetIcon from '../../assets/icons/mapIcon.png';
 import SpeedometerIcon from '../../assets/icons/speed.png';
-
+import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 
 
-const styles = {
+const styles =(theme)=> ({
     card: {
         minWidth: 275,
-        height:'35vh',
+        //height:'35vh',
         marginBottom:'3vh',
         position:'relative',
-        '@media(max-width: 887px)' : {
+        [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
         },
         '@media(max-width: 710px)' : {
-            height:'auto'
+           // height:'auto'
         }
     },
     bullet: {
@@ -38,42 +38,45 @@ const styles = {
     },
     title: {
         marginBottom: 16,
-        fontSize: 14,
+        fontSize: 16,
+        color:'black',
+        fontWeight:'500'
     },
     pos: {
         marginBottom: 12,
     },
     streetView:{
         paddingLeft: '20px',
-        color:'blue',
+        color:'#7ca5ff',
+        fontWeight:'400',
+        fontSize:12,
         display: 'inline-flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         position: 'absolute',
-        top: '16px',
+        top: '17px',
         '&:hover': {
             cursor:'pointer'
         }
     },
-    cover:{
-        width: '75%',
-        margin:'1vh',
-        '@media(max-width: 710px)' : {
-            height:'14vh',
-            width:'100%'
+    mediaContainer:{
+        [theme.breakpoints.up('md')]: {
+            paddingRight:'20px!important'
         }
+    },
+    cover:{
+        height:'100%',
+        minHeight:'12vh'
+    },
+    headerContent:{
+        borderBottom:'1px #e8eaf0 solid',
+        paddingBottom:'0px'
     },
     mainContent:{
-        display:'flex',
-        padding: '0 2vh 0 2vh',
-        '@media(max-width: 710px)' : {
-            flexWrap:'wrap'
-        }
-
+        padding: '2vh 2vh 2vh 2vh',
+        background:'#fafbfe',
+        marginTop: '0'
     },
     informationBlocks:{
-        display:'flex',
-        flexWrap:'wrap',
-        justifyContent:'center'
     },
     actionButton:{
         display:'inline-flex',
@@ -86,21 +89,26 @@ const styles = {
         '@media(max-width: 710px)' : {
             fontSize:'7vw',
         }
-        // color:'red'
     },
     iconImage:{
-          width:'4vw',
-        '@media(max-width: 710px)' : {
-            width:'8vw',
+        width:'4vw',
+        [theme.breakpoints.only('xs')]: {
+            width:'12vw'
+        },
+        [theme.breakpoints.only('sm')]: {
+            width:'8vw'
         }
+
     },
     modifyIcon:{
         height:'3vw',
-        '@media(max-width: 710px)' : {
-            height:'7vw',
+        [theme.breakpoints.down('sm')]: {
+            height:'7vw'
         }
+
+
     }
-};
+});
 
 function BuildingItem(props) {
     const { classes } = props;
@@ -137,7 +145,7 @@ function BuildingItem(props) {
     return (
         <div>
             <Card className={classes.card}>
-                <CardContent>
+                <CardContent className={classes.headerContent}>
                     <Typography className={classes.title} color="textSecondary">
                         {props.building.name} <span className={classes.streetView} onClick={()=>props.handleStreetView(props.building.name)}><img src={StreetIcon} alt="map" style={{paddingRight:'5px'}}/> Street View</span>
                     </Typography>
@@ -145,13 +153,16 @@ function BuildingItem(props) {
                         {returnDetailsLink()}
                     </IconButton>
                 </CardContent>
-                <div className={classes.mainContent}>
+                <Grid  container spacing={8} className={classes.mainContent}>
+                    <Grid item xs={12} md={6} className={classes.mediaContainer}>
                     <CardMedia
                         className={classes.cover}
                         image={props.building.imageUrl}
                         title="Live from space album cover"
                     />
-                    <div className={classes.informationBlocks}>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Grid  container spacing={8} className={classes.informationBlocks}>
                         <InformationItem content="980"
                                          caption="SPEED"
                                          sufix="mbps"
@@ -177,8 +188,9 @@ function BuildingItem(props) {
                             isContact={true}
                             icon={getInfoItemIcon('Contact')}
                         />
-                    </div>
-                </div>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Card>
         </div>
     );

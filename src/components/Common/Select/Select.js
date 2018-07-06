@@ -13,7 +13,7 @@ const CustomSelect = (props) => {
         props.filterBuildings(item)
     };
 
-    return <Select options={options} onChange={(item)=>handleChange(item)} placeholder={"Search Building Name"}/>
+    return <Select className={props.className} options={options} onChange={(item)=>handleChange(item)} placeholder={"Search Building Name"}/>
 };
 
 export default CustomSelect;

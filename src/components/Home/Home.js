@@ -6,7 +6,9 @@ import flatImage3 from '../../assets/images/flatImage-3.jpg';
 import CustomSelect from '../Common/Select/Select';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Layout from '../../hoc/layout'
+import Layout from '../../hoc/layout';
+import Grid from '@material-ui/core/Grid';
+
 
 const Buildings = [
     {
@@ -40,29 +42,25 @@ const Buildings = [
 ];
 const styles = theme => ({
     selectBlock:{
-        width:'20%',
-        marginBottom:'20px',
-        '@media(max-width: 1092px)' : {
-            width: '25%'
-        },
-        '@media(max-width: 887px)' : {
-            width: '30%',
+
+         marginBottom:'20px',
+        [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
-        },
-        '@media(max-width: 743px)' : {
-            width: '35%'
-        },
-        '@media(max-width: 644px)' : {
-            width: '40%'
-        },
-        '@media(max-width: 560px)' : {
-            width: '50%'
         }
     },
+    mainBlock:{
+        backgroundColor: '#f1f3f8'
+    },
     homeTitle:{
-        '@media(max-width: 887px)' : {
+        [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
-        },
+        }
+    },
+    customSearch:{
+        [theme.breakpoints.only('xs')]: {
+            width:'78.5vw'
+        }
+
     }
 
 });
@@ -108,9 +106,12 @@ class Home extends Component {
                 <Typography variant="subheading" gutterBottom className={classes.homeTitle}>
                     Property Owner Name
                 </Typography>
-                <div className={classes.selectBlock}>
-                    <CustomSelect filterBuildings={this.filterBuildings}/>
-                </div>
+                {/*<div className={classes.selectBlock}>*/}
+                    <Grid item xs={12} md={4} className={classes.selectBlock}>
+
+                    <CustomSelect filterBuildings={this.filterBuildings} className={classes.customSearch}/>
+                    </Grid>
+                {/*</div>*/}
                 {buildBuildings}
             </div>
             </Layout>
