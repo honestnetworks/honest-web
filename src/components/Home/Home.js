@@ -89,6 +89,7 @@ class Home extends Component {
     };
 
     render() {
+        console.log('console log');
         const {classes} = this.props;
         let Buildings = this.state.filteredBuildings.length === 0 ? this.state.buildings : this.state.filteredBuildings;
         const buildBuildings = Buildings.map(item=>{
