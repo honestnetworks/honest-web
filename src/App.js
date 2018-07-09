@@ -14,6 +14,15 @@ import Layout from './hoc/layout'
 import Home from './components/Home/Home'
 import Contacts from './components/Contacts/Contacts'
 import Details from "./components/Details/Details";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles/index';
+
+
+
+const mainTheme = createMuiTheme({
+    typography: {
+        "fontFamily": "\"Poppins\", \"Helvetica\", \"Arial\", sans-serif!important"
+    }
+});
 
 class App extends Component {
 
@@ -27,6 +36,7 @@ class App extends Component {
         let isAuth = localStorage.getItem("token") && localStorage.getItem("token").length > 0;
         return (
             <ConnectedRouter history={history}>
+                <MuiThemeProvider theme={mainTheme}>
                 <div className="App">
                     {/*<Layout>*/}
                         <Switch>
@@ -41,6 +51,7 @@ class App extends Component {
                         </Switch>
                     {/*</Layout>*/}
                 </div>
+                </MuiThemeProvider>
             </ConnectedRouter>
         );
     }

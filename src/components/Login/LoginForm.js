@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form'
 import TextField from '@material-ui/core/TextField'
 import blue from '@material-ui/core/colors/blue';
+import Paper from '@material-ui/core/Paper';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import {login} from '../../actions/forms/login';
+import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import RingLoader from '../Common/Spinner/RingLoader';
 
@@ -11,11 +13,41 @@ const theme = createMuiTheme({
     palette: {
         primary: blue,
     },
+    overrides: {
+        MuiInput:{
+            root:{
+                fontFamily:'Poppins, san-serif'
+            }
+        },
+        MuiTypography:{
+          root:{
+              textAlign:'center',
+              fontFamily:'Poppins, san-serif!important',
+              color:'rgba(0, 0, 0, 0.54)!important'
+
+          }
+        },
+        MuiPaper:{
+            root:{
+                width:'396px',
+                padding:'24px'
+            }
+        },
+        MuiFormControl: {
+            root: {
+                width: '100%',
+            }
+        },
+        MuiFormLabel:{
+            root:{
+                fontFamily:'Poppins, san-serif'
+            }
+        }
+    }
 });
 
 const renderTextField = ({input, label, type, meta: {touched, error}, className, ...custom}) => (
     <div>
-        <MuiThemeProvider theme={theme}>
             <TextField
                 className={className}
                 label={label}
@@ -25,7 +57,6 @@ const renderTextField = ({input, label, type, meta: {touched, error}, className,
                 error={touched && error ? true : false}
                 helperText={error}
             />
-        </MuiThemeProvider>
     </div>
 );
 
@@ -34,14 +65,19 @@ const LoginForm = props => {
     const submit = handleSubmit(login);
     return (
         submitting ? <RingLoader loading={submitting}/> :
-        <form onSubmit={submit}>
+            <MuiThemeProvider theme={theme}>
+            <Paper>
+                <Typography variant="title" gutterBottom>
+                    User Login
+                </Typography>
+        <form onSubmit={submit} className={'login-form'}>
             <div>
                 <Field name="email" component={renderTextField} label="Email" type="email"/>
             </div>
             <div>
                 <Field name="password" component={renderTextField} label="Password" type="password"/>
             </div>
-            {error && <strong>{error}</strong>}
+            {error && <strong className={'login-error-message'}>{error}</strong>}
             <div>
                 <button type="submit" disabled={pristine || submitting} color="primary">
                     Log In
@@ -54,6 +90,9 @@ const LoginForm = props => {
                 {/*</p>*/}
             </div>
         </form>
+            </Paper>
+            </MuiThemeProvider>
+
     )
 };
 

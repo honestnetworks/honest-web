@@ -169,7 +169,8 @@ const styles = theme => ({
     },
     listItemRoot: {
         '&>div':{
-            color: '#adb5c2'
+            color: '#adb5c2',
+            fontFamily: "Poppins, san-serif"
         }
     }
 });
@@ -179,6 +180,7 @@ const customAppBar = createMuiTheme({
         MuiInput: {
             root: {
                 color: 'white',
+                fontFamily: "Poppins, san-serif"
             },
             underline:{
                 '&::before':{
@@ -192,6 +194,29 @@ const customAppBar = createMuiTheme({
                 }
             }
         },
+        MuiFormLabel:{
+            root:{
+                fontFamily: "Poppins, san-serif"
+            }
+        },
+        MuiTypography:{
+            root:{
+                fontFamily: "Poppins, san-serif"
+            },
+            subheading:{
+                fontFamily: "Poppins, san-serif"
+            }
+        },
+        MuiListItemText:{
+            root:{
+                fontFamily: "Poppins, san-serif"
+            }
+        },
+        MuiMenuItem:{
+            root:{
+                fontFamily: "Poppins, san-serif"
+            }
+        }
 
     }
 });
@@ -351,6 +376,7 @@ class PersistentDrawer extends React.Component {
                                     >
                                         <AccountCircle />
                                     </IconButton>
+                                    test
                                     <Menu
                                         id="menu-appbar"
                                         anchorEl={anchorEl}

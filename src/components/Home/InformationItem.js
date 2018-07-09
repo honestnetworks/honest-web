@@ -61,6 +61,17 @@ const customItem = createMuiTheme({
                 boxShadow:'none',
                 shadow:'none'
             }
+        },
+        MuiTypography:{
+            caption:{
+                fontFamily: "Poppins, san-serif"
+            },
+            root:{
+                fontFamily: "Poppins, san-serif"
+            },
+            body2:{
+                fontFamily: "Poppins, san-serif"
+            }
         }
     }
 });

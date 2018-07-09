@@ -2,6 +2,9 @@
 @import "styles/Profile.scss";
 @import "styles/ResetPassword.scss";
 @import "styles/Boundle.scss";
+html {
+  font-family: 'Poppins', sans-serif!important;
+}
 
 a {
   text-decoration: none;
@@ -20,6 +23,7 @@ a.active>div>svg{
 }
 a.active>div>div {
   color: black;
+  font-family: 'Poppins', sans-serif!important;
 }
 nav>a>div>div>span {
   color:#adb5c2;
@@ -28,3 +32,4 @@ nav>a>div>div>span {
 .searchHeaderField label {
   color:white!important;
 }
+

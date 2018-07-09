@@ -59,7 +59,8 @@ const styles = theme => ({
     customSearch:{
         [theme.breakpoints.only('xs')]: {
             width:'78.5vw'
-        }
+        },
+        fontFamily: "Poppins, san-serif"
 
     }
 

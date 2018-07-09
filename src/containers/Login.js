@@ -11,7 +11,8 @@ const styles = () => ({
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "100vh"
+        height: "100vh",
+        backgroundColor:'#f1f3f8'
     },
 });
 
