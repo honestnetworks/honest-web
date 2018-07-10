@@ -1,5 +1,6 @@
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LogoutIcon from '@material-ui/icons/Input';
+import MenuDown from '@material-ui/icons/ArrowDropDown';
 import Menu from '@material-ui/core/Menu';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -19,6 +20,8 @@ import Grid from '@material-ui/core/Grid';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import CustomSelect from '../components/Common/Select/Select';
+
 import SearchIcon from '@material-ui/icons/Search';
 //import DraftsIcon from '@material-ui/icons/Drafts';
 import DraftsIconActive from '../assets/icons/contacts-active.svg';
@@ -26,6 +29,7 @@ import DraftsIconNonActive from '../assets/icons/contacts-non-active.svg';
 //import HomeIcon from '@material-ui/icons/Home';
 import HomeIconActive from '../assets/icons/main-active.svg';
 import HomeIconNonActive from '../assets/icons/main-non-active.svg';
+import MenuIconImage from '../assets/icons/menu.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles";
 import Hidden from '@material-ui/core/Hidden';
@@ -54,7 +58,12 @@ const styles = theme => ({
         }),
         backgroundColor:'#4c84ff',
         boxShadow:'none',
-        color:'white'
+        color:'white',
+        width: `calc(100% - ${73}px)`,
+        [theme.breakpoints.only('xs')]: {
+            width: `calc(100% - ${57}px)`,
+            height:'60px'
+        }
     },
     appBarShift: {
         marginLeft: drawerWidth,
@@ -101,13 +110,16 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent:'flex-start',
-        padding: '0 8px'
+        padding: '0 8px',
+        marginTop:'8px'
     },
     drawerHeaderModify: {
         display: 'flex',
         alignItems: 'center',
         justifyContent:'center',
-        padding: '0 8px'
+        padding: '0 8px',
+        marginTop:'8px'
+
     },
     content: {
         flexGrow: 1,
@@ -123,11 +135,11 @@ const styles = theme => ({
         padding:'4vw',
         marginTop:'60px',
         [theme.breakpoints.only('xs')]: {
-            padding:'4vw 4vw 4vw 6.5vw',
+            padding:'4vw 4vw 4vw 0vw',
         }
     },
     'content-left': {
-        marginLeft: -closeDrawerWidth,
+        //marginLeft: -closeDrawerWidth,
     },
     'content-right': {
         marginRight: -drawerWidth,
@@ -146,11 +158,10 @@ const styles = theme => ({
     },
     flex: {
         flex: 1,
-        // textAlign: 'left'
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
-        paddingLeft:'1.7vw'
+        paddingLeft:'4vw'
 
     },
     userMenuButton: {
@@ -171,6 +182,24 @@ const styles = theme => ({
         '&>div':{
             color: '#adb5c2',
             fontFamily: "Poppins, san-serif"
+        },
+        marginBottom: '8px'
+    },
+    label: {
+        fontSize: '0.85rem',
+        color: '#fff'
+    },
+    inputWrapper:{
+        border:'rgba(255,255,255,0.7) 1px solid',
+        borderRadius:'2px',
+        display:'flex',
+        alignItems:'center',
+        marginRight:'1rem',
+        '& svg': {
+          opacity:'0.7'
+        },
+        "&:focus":{
+            border:'rgba(255,255,255,1) 1px solid',
         }
     }
 });
@@ -180,23 +209,36 @@ const customAppBar = createMuiTheme({
         MuiInput: {
             root: {
                 color: 'white',
-                fontFamily: "Poppins, san-serif"
+                fontFamily: "Poppins, san-serif",
+                minWidth: '11rem'
+
+            },
+            formControl:{
+                marginTop:'0px!important'
             },
             underline:{
                 '&::before':{
-                    borderColor:'white'
+                    borderColor:'white',
+                    border:'none'
                 },
                 '&::after':{
-                    borderColor:'white'
+                    borderColor:'white',
+                    border:'none'
                 },
                 '&:hover::before':{
-                    borderColor:'white!important'
+                    borderColor:'white!important',
+                    border:'none!important'
                 }
             }
         },
         MuiFormLabel:{
             root:{
-                fontFamily: "Poppins, san-serif"
+                fontFamily: "Poppins, san-serif",
+                color:'red!important'
+            },
+            focused:{
+                color:'red!important',
+                display:'none'
             }
         },
         MuiTypography:{
@@ -273,7 +315,9 @@ class PersistentDrawer extends React.Component {
         >
                 <div className={this.state.open ?classes.drawerHeader:classes.drawerHeaderModify}>
                     <IconButton onClick={this.state.open ?this.handleDrawerClose:this.handleDrawerOpen}>
-                        <MenuIcon />
+                        {/*<MenuIcon />*/}
+                        <img src={MenuIconImage} alt="" style={{width:'19px'}}/>
+
                     </IconButton>
                 </div>
                 <List component="nav" className={classes.navList}>
@@ -283,9 +327,9 @@ class PersistentDrawer extends React.Component {
                         classes={{root: classes.listItemRoot}}
                     >
                         <ListItemIcon>
-                            <img src={this.checkIfHomePage(pathname) ? HomeIconActive : HomeIconNonActive} alt="" style={{width:'21px'}}/>
+                            <img src={this.checkIfHomePage(pathname) ? HomeIconActive : HomeIconNonActive} alt="" style={{width:'19px'}}/>
                         </ListItemIcon>
-                        <ListItemText disableTypography primary="HOME"/>
+                            <ListItemText style={{fontSize:'0.8rem',paddingTop:'1px'}} disableTypography primary="HOME"/>
                     </ListItem>
                     </NavLink>
                     <NavLink to="/contacts">
@@ -295,9 +339,9 @@ class PersistentDrawer extends React.Component {
                     >
 
                         <ListItemIcon>
-                            <img src={!this.checkIfHomePage(pathname) ? DraftsIconActive : DraftsIconNonActive} alt="" style={{width:'21px'}}/>
+                            <img src={!this.checkIfHomePage(pathname) ? DraftsIconActive : DraftsIconNonActive} alt="" style={{width:'19px'}}/>
                         </ListItemIcon>
-                        <ListItemText disableTypography primary="CONTACT"/>
+                        <ListItemText style={{fontSize:'0.8rem',paddingTop:'1px'}} disableTypography primary="CONTACT"/>
                     </ListItem>
                     </NavLink>
                 </List>
@@ -318,63 +362,48 @@ class PersistentDrawer extends React.Component {
                 <div className={classes.appFrame}>
                     <MuiThemeProvider theme={customAppBar}>
                     <AppBar
-                        className={classNames(classes.appBar, {
-                            [classes.appBarShift]: openDrawer,
-                            [classes[`appBarShift-${anchor}`]]: openDrawer,
-                        })}
+                        className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
                     >
                         <Toolbar disableGutters={!openDrawer}>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={this.handleDrawerOpen}
-                                className={classNames(classes.menuButton, openMenu && classes.hide)}
-                            >
-                                <MenuIcon />
-                            </IconButton>
                             <Typography variant="subheading" color="inherit" className={classes.flex}>
                                 HonestNetwork
                                 <div className={classes.margin}>
                                     <Hidden only={'xs'}>
                                     <Grid container alignItems="flex-end">
-                                        <Grid item>
-                                            <SearchIcon style={{paddingRight:'10px',display:'flex'}}/>
-                                        </Grid>
-                                        <Grid item>
-                                            <TextField
-                                                className='searchHeaderField'
-                                                style={{color: 'white'}}
-                                                id="input-with-icon-grid"
-                                                label="Search"
-                                            />
-                                        </Grid>
                                     </Grid>
                                     </Hidden>
                                 </div>
                             </Typography>
+                            <Hidden only={'xs'}>
+                            <div className={classes.inputWrapper}>
+                                <Grid item>
+                                    <SearchIcon style={{padding:'0 0.6rem',display:'flex'}}/>
+                                </Grid>
+                                <Grid item>
+                                    <TextField
+                                    className='searchHeaderField'
+                                    style={{color: 'white'}}
+                                    id="input-with-icon-grid"
+                                    placeholder={'Search Building Name'}
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.label
+                                        }
+                                    }}
+                                    />
+                                </Grid>
+                            </div>
+                            </Hidden>
+
                             {auth && (
                                 <div   style={{display: 'flex', alignItems: 'center'}}>
-
-                                    {/*<div className={classes.margin}>*/}
-                                        {/*<Grid container alignItems="flex-end">*/}
-                                            {/*<Grid item>*/}
-                                                {/*<SearchIcon/>*/}
-                                            {/*</Grid>*/}
-                                            {/*<Grid item>*/}
-                                                {/*<TextField style={{color: 'white'}}*/}
-                                                           {/*id="input-with-icon-grid"*/}
-                                                           {/*label="Search"/>*/}
-                                            {/*</Grid>*/}
-                                        {/*</Grid>*/}
-                                    {/*</div>*/}
-
                                     <IconButton
                                         aria-owns={openMenu ? 'menu-appbar' : null}
                                         aria-haspopup="true"
-                                        onClick={this.handleMenuOpen}
+                                        //onClick={this.handleMenuOpen}
                                         color="inherit"
                                     >
-                                        <AccountCircle />
+                                        <AccountCircle style={{width:'2rem',height:'2rem'}}/>
                                     </IconButton>
                                     test
                                     <Menu
@@ -393,14 +422,24 @@ class PersistentDrawer extends React.Component {
                                     >
                                         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
                                         <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+                                        <MenuItem onClick={this.handleLogout}>Log Out</MenuItem>
                                     </Menu>
+                                    {/*<IconButton*/}
+                                        {/*aria-owns={openMenu ? 'menu-appbar' : null}*/}
+                                        {/*aria-haspopup="true"*/}
+                                        {/*onClick={this.handleLogout}*/}
+                                        {/*color="inherit"*/}
+                                    {/*>*/}
+                                        {/*<LogoutIcon />*/}
+                                    {/*</IconButton>*/}
                                     <IconButton
                                         aria-owns={openMenu ? 'menu-appbar' : null}
                                         aria-haspopup="true"
-                                        onClick={this.handleLogout}
+                                        onClick={this.handleMenuOpen}
+                                        //onClick={this.handleLogout}
                                         color="inherit"
                                     >
-                                        <LogoutIcon />
+                                        <MenuDown/>
                                     </IconButton>
 
                                 </div>

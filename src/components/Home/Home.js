@@ -42,8 +42,8 @@ const Buildings = [
 ];
 const styles = theme => ({
     selectBlock:{
-
-         marginBottom:'20px',
+         margin:'1.5rem 0',
+        fontSize:'0.8rem',
         [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
         }
@@ -54,14 +54,14 @@ const styles = theme => ({
     homeTitle:{
         [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
-        }
+        },
+        fontWeight:500
     },
     customSearch:{
         [theme.breakpoints.only('xs')]: {
             width:'78.5vw'
         },
-        fontFamily: "Poppins, san-serif"
-
+        fontFamily: "Poppins, san-serif",
     }
 
 });

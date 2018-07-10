@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import RingLoader from '../Common/Spinner/RingLoader';
 
-const theme = createMuiTheme({
+const theme =(theme)=> createMuiTheme({
     palette: {
         primary: blue,
     },
@@ -30,7 +30,10 @@ const theme = createMuiTheme({
         MuiPaper:{
             root:{
                 width:'396px',
-                padding:'24px'
+                padding:'24px',
+                [theme.breakpoints.only('xs')]: {
+                    width: '80%',
+                },
             }
         },
         MuiFormControl: {

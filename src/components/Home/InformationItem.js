@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import EmailIcon from '@material-ui/icons/Email';
+import EmailIcon from '@material-ui/icons/MailOutline';
 import CallIcon from '@material-ui/icons/Call';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -46,11 +46,15 @@ const styles = (theme) => ({
         color:'red'
     },
     button:{
-        height: '30px',
-        width: '30px'
+        height: '22px',
+        width: '22px',
+        margin: '0 0.2rem'
     },
     iconButton:{
-        fontSize: '20px'
+        fontSize: '0.9rem',
+    },
+    root: {
+        backgroundColor: 'rgba(63, 81, 181, 0.08)'
     }
 });
 
@@ -90,15 +94,34 @@ function InformationItem(props) {
                         {caption ?  <Typography variant="caption">{caption}
                         </Typography> : null}
                         {content ? <Typography
-                            style={{color:props.color?props.color:'black', fontSize:props.fontSize?props.fontSize:null}}
-                            variant="body2" gutterBottom>{content}{sufix ? <span style={{fontSize:'14px'}}> {sufix}</span> : null}
+                            style={{color:props.color?props.color:'black',
+                                fontSize:props.fontSize?props.fontSize:null,
+                                lineHeight:'1.7rem'
+                            }}
+                            variant="body2">{content}{sufix ? <span style={{fontSize:'14px'}}> {sufix}</span> : null}
                         </Typography> : null}
                         {isContact ?
                         <div>
-                        <IconButton className={classes.button} color="primary">
-                            <EmailIcon className={classes.iconButton}/>
+                        <IconButton
+                            TouchRippleProps={{
+                            classes: {
+                                root: classes.root
+                            }
+                        }}
+                            className={classes.button}
+                            color="primary">
+                            <EmailIcon className={classes.iconButton}
+                            />
                         </IconButton>
-                        <IconButton className={classes.button} color="primary">
+                        <IconButton
+                            TouchRippleProps={{
+                                classes: {
+                                    root: classes.root
+                                }
+                            }}
+                            className={classes.button}
+                            color="primary"
+                        >
                             <CallIcon className={classes.iconButton}/>
                         </IconButton>
                         </div> : null}

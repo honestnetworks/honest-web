@@ -81,8 +81,8 @@ const styles =(theme)=> ({
     actionButton:{
         display:'inline-flex',
         position:'absolute',
-        top:0,
-        right:'2vw'
+        top:'3px',
+        right:0
     },
     informationIcon:{
         fontSize:'3vw',
@@ -105,8 +105,6 @@ const styles =(theme)=> ({
         [theme.breakpoints.down('sm')]: {
             height:'7vw'
         }
-
-
     }
 });
 
