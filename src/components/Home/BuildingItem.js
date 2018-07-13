@@ -7,16 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import InformationItem from './InformationItem';
 import {Link} from 'react-router-dom';
-import ErrorIcon from '../../assets/icons/inactive.png';
-import ActiveIcon from '../../assets/icons/active.png';
-import UptimeIcon from '../../assets/icons/uptime.png';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import PersonIcon from '../../assets/icons/person.png';
-import StreetIcon from '../../assets/icons/mapIcon.png';
-import SpeedometerIcon from '../../assets/icons/speed.png';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-
+import PlayIcon from '@material-ui/icons/PlayArrow';
 
 const styles =(theme)=> ({
     card: {
@@ -24,6 +17,7 @@ const styles =(theme)=> ({
         //height:'35vh',
         marginBottom:'3vh',
         position:'relative',
+        boxShadow:'none',
         [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
         },
@@ -73,7 +67,7 @@ const styles =(theme)=> ({
     },
     mainContent:{
         padding: '2vh 2vh 2vh 2vh',
-        background:'#fafbfe',
+        //background:'#fafbfe',
         marginTop: '0'
     },
     informationBlocks:{
@@ -105,93 +99,72 @@ const styles =(theme)=> ({
         [theme.breakpoints.down('sm')]: {
             height:'7vw'
         }
-    }
+    },
+    playButton:{
+        alignSelf: 'center',
+        right: '23px',
+        top: '-12px'
+    },
+    root: {
+        backgroundColor: 'rgba(63, 81, 181, 0.08)'
+    },
 });
 
 function BuildingItem(props) {
     const { classes } = props;
-    const getInfoItemIcon = (status) =>{
-        let icon = null;
-        if(status==='Active') {
-            icon = <img src={ActiveIcon} alt="speed"  className={classes.iconImage} />;
-        } else if(status==='Inactive'){
-            icon = <img src={ErrorIcon} alt="speed"  className={classes.iconImage} />;
-        } else if(status=='Speed'){
-            icon = <img src={SpeedometerIcon} alt="speed" className={classes.iconImage}  />;
-        } else if(status==='Uptime') {
-            icon = <img src={UptimeIcon} alt="speed"  className={classes.iconImage} />;
-        } else if(status==='Contact') {
-            icon = <img src={PersonIcon} alt="speed"  className={` ${classes.modifyIcon}`}/>;
-        }
 
-        return icon
-    };
+    // const getNameWithoutSpace = (name) => {
+    //     return name.replace(/\s/g, "")
+    // };
 
-    const getNameWithoutSpace = (name) => {
-        return name.replace(/\s/g, "")
-    };
-
-    const returnDetailsLink = () => {
-        return props.linkToDetails ?
-        (
-            <Link to={{pathname: `details/${getNameWithoutSpace(props.building.name)}`, state:{building:props.building}}} >
-                <MoreHorizIcon className={classes.iconButton}/>
-            </Link>
-        ) : <MoreHorizIcon className={classes.iconButton}/>
-    };
+    // const returnDetailsLink = () => {
+    //     return props.linkToDetails ?
+    //     (
+    //         <Link to={{pathname: `details/${getNameWithoutSpace(props.building.name)}`, state:{building:props.building}}} >
+    //             <MoreHorizIcon className={classes.iconButton}/>
+    //         </Link>
+    //     ) : <MoreHorizIcon className={classes.iconButton}/>
+    // };
 
     return (
-        <div>
+            <Grid container justify="center">
+                <Grid item xs={7}>
             <Card className={classes.card}>
-                <CardContent className={classes.headerContent}>
-                    <Typography className={classes.title} color="textSecondary">
-                        {props.building.name} <span className={classes.streetView} onClick={()=>props.handleStreetView(props.building.name)}><img src={StreetIcon} alt="map" style={{paddingRight:'5px'}}/> Street View</span>
-                    </Typography>
-                    <IconButton className={classes.actionButton} color="primary">
-                        {returnDetailsLink()}
-                    </IconButton>
-                </CardContent>
                 <Grid  container spacing={8} className={classes.mainContent}>
-                    <Grid item xs={12} md={6} className={classes.mediaContainer}>
+                    <Grid item xs={12} md={3} className={classes.mediaContainer}>
                     <CardMedia
                         className={classes.cover}
                         image={props.building.imageUrl}
                         title="Live from space album cover"
                     />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={9}>
                         <Grid  container spacing={8} className={classes.informationBlocks}>
-                        <InformationItem content="980"
-                                         caption="SPEED"
-                                         sufix="mbps"
-                                         icon={getInfoItemIcon('Speed')}
-                                         color={'#4c84ff'}
-                                         fontSize="1.75em"
-                        />
-                        <InformationItem content="98.99%"
-                                         color={"#fcc22d"}
-                                         fontSize="1.75em"
-                                         caption="UPTIME"
-                                         icon={getInfoItemIcon('Uptime')}
-                        />
                         <InformationItem
-                            content={props.building.networkStatus}
-                            caption="NETWORK STATUS"
-                            icon={getInfoItemIcon(props.building.networkStatus)}
-                            color={props.building.networkStatus==='Active'?'#3bc195':'#fc7d7d'}
-                        />
-                        <InformationItem
-                            content="Stephen Streg"
-                            caption="CONTACT"
-                            isContact={true}
-                            icon={getInfoItemIcon('Contact')}
+                             buldingName={props.building.name}
+                             upTime = {'88.99'}
+                             speed={'980'}
                         />
                         </Grid>
                     </Grid>
                 </Grid>
             </Card>
-        </div>
-    );
+                </Grid>
+                <IconButton
+                    TouchRippleProps={{
+                        classes: {
+                            root: classes.root
+                        }
+                    }}
+                    className={classes.playButton}
+                    color="primary"
+                >
+
+                    <PlayIcon className={classes.iconButton}
+                    />
+                </IconButton>
+                </Grid>
+            );
 }
 
 BuildingItem.propTypes = {

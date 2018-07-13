@@ -7,6 +7,7 @@ import CallIcon from '@material-ui/icons/Call';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import Chip from '@material-ui/core/Chip';
 import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles/index";
 
 const styles = (theme) => ({
@@ -23,23 +24,41 @@ const styles = (theme) => ({
         marginBottom: 16,
         fontSize: 14,
     },
+    infoCaption:{
+        textTransform:'uppercase',
+        textAlign:'center'
+    },
+    infoMessage:{
+        marginBottom: 16,
+        fontSize: 16,
+        color:'black',
+        fontWeight:'500',
+        textAlign:'center'
+    },
+    buildAddress:{
+        marginBottom: 16,
+        fontSize: 16,
+        color:'black',
+        fontWeight:'500'
+    },
+    buildCity:{
+        textTransform:'uppercase'
+    },
     pos: {
         marginBottom: 12,
     },
     informationItem:{
+        //position:'relative'
     },
-    leftBlock:{
+    contactBlock:{
         display:'flex',
         justifyContent:'center',
-        alignItems:'center'
+        flexWrap:'wrap'
     },
-    rightBlock:{
+    informationBlocks:{
         display:'flex',
-        justifyContent:'flex-start',
-        alignItems:'center',
-        // [theme.breakpoints.between('xs','md')]: {
-        //     justifyContent:'flex-start'
-        // }
+        justifyContent:'center',
+        flexWrap:'wrap'
     },
     informationIcon:{
         fontSize:'3.5vw',
@@ -52,9 +71,18 @@ const styles = (theme) => ({
     },
     iconButton:{
         fontSize: '0.9rem',
+        color:'gray'
     },
     root: {
         backgroundColor: 'rgba(63, 81, 181, 0.08)'
+    },
+    chip: {
+        margin: theme.spacing.unit,
+        color:'green',
+        fontSize:'10px',
+        paddingTop:'5px',
+        paddingBottom:'5px',
+        height:'auto'
     }
 });
 
@@ -81,52 +109,72 @@ const customItem = createMuiTheme({
 });
 
 function InformationItem(props) {
-    const { classes, caption, content, sufix, isContact, icon} = props;
+    console.log('Item props', props);
+    const { classes } = props;
 
     return (
-        <Grid  item xs={12} sm={6} className={classes.informationItem}>
+        <Grid  item xs={12} sm={12} className={classes.informationItem}>
             <MuiThemeProvider theme={customItem}>
             <Card className={classes.card}>
                 <Grid container spacing={16}>
-                <Grid item xs={4} className={classes.leftBlock}>{icon}</Grid>
-                <Grid item xs={8} className={classes.rightBlock}>
-                    <div>
-                        {caption ?  <Typography variant="caption">{caption}
-                        </Typography> : null}
-                        {content ? <Typography
-                            style={{color:props.color?props.color:'black',
-                                fontSize:props.fontSize?props.fontSize:null,
-                                lineHeight:'1.7rem'
-                            }}
-                            variant="body2">{content}{sufix ? <span style={{fontSize:'14px'}}> {sufix}</span> : null}
-                        </Typography> : null}
-                        {isContact ?
-                        <div>
-                        <IconButton
-                            TouchRippleProps={{
-                            classes: {
-                                root: classes.root
-                            }
-                        }}
-                            className={classes.button}
-                            color="primary">
-                            <EmailIcon className={classes.iconButton}
-                            />
-                        </IconButton>
-                        <IconButton
-                            TouchRippleProps={{
-                                classes: {
-                                    root: classes.root
-                                }
-                            }}
-                            className={classes.button}
-                            color="primary"
-                        >
-                            <CallIcon className={classes.iconButton}/>
-                        </IconButton>
-                        </div> : null}
-                    </div>
-                </Grid>
+                    <Grid item xs={5} className={classes.contactBlock}>
+                        <Grid  item xs={12}>
+                            <Typography variant="caption" className={classes.buildCity}>
+                                New York
+                            </Typography>
+                            <div className={classes.buildAddress} >
+                                {props.buldingName} <Chip label="Active" className={classes.chip} />
+                            </div>
+                        </Grid>
+
+
+                        <Grid  item xs={12}>
+                            <div>
+                                <Typography variant="caption">
+                                    London Tucker
+
+                                    <IconButton
+                                        style={{marginLeft:'10px'}}
+                                        className={classes.button}
+                                        color="primary">
+                                        <CallIcon className={classes.iconButton} />
+                                    </IconButton>
+                                    <IconButton
+                                        className={classes.button}
+                                        color="primary"
+                                    >
+
+                                        <EmailIcon className={classes.iconButton}
+                                        />
+                                    </IconButton>
+                                </Typography>
+
+                            </div>
+                        </Grid>
+
+                    </Grid>
+                    <Grid item xs={3} className={classes.informationBlocks}>
+                        <Grid item xs={12}>
+                            <Typography variant="caption" className={classes.infoCaption}>
+                            Up time
+                            </Typography>
+                            <Typography  variant="caption" className={classes.infoMessage}>
+                                {props.upTime} %
+                            </Typography>
+                        </Grid>
+
+
+                    </Grid>
+                    <Grid item xs={4} className={classes.informationBlocks}>
+                        <Grid  item xs={12}>
+                            <Typography variant="caption" className={classes.infoCaption}>
+                                Speed
+                            </Typography>
+                            <Typography variant="caption" className={classes.infoMessage}>
+                                {props.speed} Mbps
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Card>
             </MuiThemeProvider>

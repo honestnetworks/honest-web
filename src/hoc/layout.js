@@ -1,35 +1,19 @@
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import LogoutIcon from '@material-ui/icons/Input';
 import MenuDown from '@material-ui/icons/ArrowDropDown';
 import Menu from '@material-ui/core/Menu';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {withStyles} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import CustomSelect from '../components/Common/Select/Select';
 
 import SearchIcon from '@material-ui/icons/Search';
-//import DraftsIcon from '@material-ui/icons/Drafts';
-import DraftsIconActive from '../assets/icons/contacts-active.svg';
-import DraftsIconNonActive from '../assets/icons/contacts-non-active.svg';
-//import HomeIcon from '@material-ui/icons/Home';
-import HomeIconActive from '../assets/icons/main-active.svg';
-import HomeIconNonActive from '../assets/icons/main-non-active.svg';
-import MenuIconImage from '../assets/icons/menu.png';
 import { NavLink, withRouter } from 'react-router-dom';
 import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles";
 import Hidden from '@material-ui/core/Hidden';
@@ -40,7 +24,8 @@ const closeDrawerWidth = 25;
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        //color:'red'
     },
     appFrame: {
         height: '100vh',
@@ -56,12 +41,13 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        backgroundColor:'#4c84ff',
+        //backgroundColor:'#4c84ff',
+        backgroundColor:'white',
         boxShadow:'none',
         color:'white',
-        width: `calc(100% - ${73}px)`,
+        //width: `calc(100% - ${73}px)`,
         [theme.breakpoints.only('xs')]: {
-            width: `calc(100% - ${57}px)`,
+            //width: `calc(100% - ${57}px)`,
             height:'60px'
         }
     },
@@ -132,7 +118,7 @@ const styles = theme => ({
         }),
         marginTop:'7vh',
         overflow:'auto',
-        padding:'4vw',
+        padding:'0 4vw',
         marginTop:'60px',
         [theme.breakpoints.only('xs')]: {
             padding:'4vw 4vw 4vw 0vw',
@@ -161,7 +147,8 @@ const styles = theme => ({
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
-        paddingLeft:'4vw'
+        paddingLeft:'4vw',
+        color:'#4c84ff'
 
     },
     userMenuButton: {
@@ -305,57 +292,9 @@ class PersistentDrawer extends React.Component {
         const {anchor, openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
         const {location: {pathname}} = this.props;
-        const drawer = (
-        <Drawer
-            variant="permanent"
-            classes={{
-                paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
-            }}
-            open={this.state.open}
-        >
-                <div className={this.state.open ?classes.drawerHeader:classes.drawerHeaderModify}>
-                    <IconButton onClick={this.state.open ?this.handleDrawerClose:this.handleDrawerOpen}>
-                        {/*<MenuIcon />*/}
-                        <img src={MenuIconImage} alt="" style={{width:'19px'}}/>
-
-                    </IconButton>
-                </div>
-                <List component="nav" className={classes.navList}>
-                    <NavLink to="/home">
-                    <ListItem
-                        button
-                        classes={{root: classes.listItemRoot}}
-                    >
-                        <ListItemIcon>
-                            <img src={this.checkIfHomePage(pathname) ? HomeIconActive : HomeIconNonActive} alt="" style={{width:'19px'}}/>
-                        </ListItemIcon>
-                            <ListItemText style={{fontSize:'0.8rem',paddingTop:'1px'}} disableTypography primary="HOME"/>
-                    </ListItem>
-                    </NavLink>
-                    <NavLink to="/contacts">
-                    <ListItem
-                        classes={{root: classes.listItemRoot}}
-                        button
-                    >
-
-                        <ListItemIcon>
-                            <img src={!this.checkIfHomePage(pathname) ? DraftsIconActive : DraftsIconNonActive} alt="" style={{width:'19px'}}/>
-                        </ListItemIcon>
-                        <ListItemText style={{fontSize:'0.8rem',paddingTop:'1px'}} disableTypography primary="CONTACT"/>
-                    </ListItem>
-                    </NavLink>
-                </List>
-            </Drawer>
-        );
 
         let before = null;
         let after = null;
-
-        if (anchor === 'left') {
-            before = drawer;
-        } else {
-            after = drawer;
-        }
 
         return (
             <div className={classes.root}>
@@ -366,7 +305,7 @@ class PersistentDrawer extends React.Component {
                     >
                         <Toolbar disableGutters={!openDrawer}>
                             <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                HonestNetwork
+                                Honest
                                 <div className={classes.margin}>
                                     <Hidden only={'xs'}>
                                     <Grid container alignItems="flex-end">
@@ -463,8 +402,6 @@ class PersistentDrawer extends React.Component {
         );
     }
 }
-
-
 
 PersistentDrawer.propTypes = {
     classes: PropTypes.object.isRequired,

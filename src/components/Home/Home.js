@@ -8,7 +8,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Layout from '../../hoc/layout';
 import Grid from '@material-ui/core/Grid';
-
+import Chip from '@material-ui/core/Chip';
 
 const Buildings = [
     {
@@ -55,6 +55,8 @@ const styles = theme => ({
         [theme.breakpoints.down('sm')]: {
             marginLeft:'2vh'
         },
+        marginBottom:'40px',
+        marginTop:'40px',
         fontWeight:500
     },
     customSearch:{
@@ -62,6 +64,11 @@ const styles = theme => ({
             width:'78.5vw'
         },
         fontFamily: "Poppins, san-serif",
+    },
+    chip: {
+        margin: theme.spacing.unit,
+        color:'#4c84ff',
+        width:'50px'
     }
 
 });
@@ -104,18 +111,15 @@ class Home extends Component {
         });
         return (
             <Layout>
-            <div>
-                <Typography variant="subheading" gutterBottom className={classes.homeTitle}>
-                    Property Owner Name
-                </Typography>
-                {/*<div className={classes.selectBlock}>*/}
-                    <Grid item xs={12} md={4} className={classes.selectBlock}>
-
-                    <CustomSelect filterBuildings={this.filterBuildings} className={classes.customSearch}/>
-                    </Grid>
-                {/*</div>*/}
+            <Grid container justify="center">
+                <Grid item xs={7}>
+                <div className={classes.homeTitle}>
+                    Your Properties <Chip label="4" className={classes.chip} />
+                </div>
+                </Grid>
+            </Grid>
                 {buildBuildings}
-            </div>
+
             </Layout>
 
         );
