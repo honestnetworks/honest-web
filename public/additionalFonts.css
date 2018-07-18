@@ -1,0 +1,13 @@
+@font-face {
+    font-family:"Gilroy-SemiBold";
+    src:url("fonts/Gilroy-SemiBold.ttf") format("ttf");
+    font-weight:500;
+    font-style:normal;
+}
+
+@font-face {
+    font-family:"Gilroy-Medium";
+    src:url("fonts/Gilroy-Medium.ttf") format("ttf");
+    font-weight:500;
+    font-style:normal;
+}

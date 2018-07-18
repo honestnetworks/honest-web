@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 
@@ -12,10 +12,6 @@ const options = {
 };
 
 class ChartDetails extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>

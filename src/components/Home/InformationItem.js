@@ -8,12 +8,15 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
-import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles/index";
+import SpeedIcon from 'assets/icons/speed-icon.png';
+import SpeedIcon2x from 'assets/icons/speed-icon@2x.png';
+import TemperatureIcon2x from 'assets/icons/temperature-icon@2x.png';
 
 const styles = (theme) => ({
     card: {
         minHeight:'11vh',
-        display:'flex'
+        display:'flex',
+        boxShadow: 'none'
     },
     bullet: {
         display: 'inline-block',
@@ -26,12 +29,14 @@ const styles = (theme) => ({
     },
     infoCaption:{
         textTransform:'uppercase',
-        textAlign:'center'
+        textAlign:'center',
+        fontSize:'0.625rem',
+        color:'#bebfcc'
     },
     infoMessage:{
         marginBottom: 16,
-        fontSize: 16,
-        color:'black',
+        fontSize: '1.125rem',
+        color:'#171d33',
         fontWeight:'500',
         textAlign:'center'
     },
@@ -58,7 +63,11 @@ const styles = (theme) => ({
     informationBlocks:{
         display:'flex',
         justifyContent:'center',
-        flexWrap:'wrap'
+        flexWrap:'wrap',
+        '& img':{
+            display:'block',
+            margin:'0 auto'
+        }
     },
     informationIcon:{
         fontSize:'3.5vw',
@@ -78,33 +87,20 @@ const styles = (theme) => ({
     },
     chip: {
         margin: theme.spacing.unit,
-        color:'green',
+        color:'#22bc8a',
         fontSize:'10px',
         paddingTop:'5px',
         paddingBottom:'5px',
-        height:'auto'
-    }
-});
-
-const customItem = createMuiTheme({
-    overrides: {
-        MuiCard:{
-            root:{
-                boxShadow:'none',
-                shadow:'none'
-            }
-        },
-        MuiTypography:{
-            caption:{
-                fontFamily: "Poppins, san-serif"
-            },
-            root:{
-                fontFamily: "Poppins, san-serif"
-            },
-            body2:{
-                fontFamily: "Poppins, san-serif"
-            }
-        }
+        height:'auto',
+        backgroundColor:'#d4f1e8'
+    },
+    speedIcon:{
+        width:'3.5rem',
+        height:'3.5rem'
+    },
+    temperatureIcon:{
+        width:'1.125rem',
+        height:'2.5625rem'
     }
 });
 
@@ -114,7 +110,6 @@ function InformationItem(props) {
 
     return (
         <Grid  item xs={12} sm={12} className={classes.informationItem}>
-            <MuiThemeProvider theme={customItem}>
             <Card className={classes.card}>
                 <Grid container spacing={16}>
                     <Grid item xs={5} className={classes.contactBlock}>
@@ -161,6 +156,7 @@ function InformationItem(props) {
                             <Typography  variant="caption" className={classes.infoMessage}>
                                 {props.upTime} %
                             </Typography>
+                            <img src={TemperatureIcon2x} alt="" className={classes.temperatureIcon}/>
                         </Grid>
 
 
@@ -173,11 +169,11 @@ function InformationItem(props) {
                             <Typography variant="caption" className={classes.infoMessage}>
                                 {props.speed} Mbps
                             </Typography>
+                            <img src={SpeedIcon2x} alt="" className={classes.speedIcon}/>
                         </Grid>
                     </Grid>
                 </Grid>
             </Card>
-            </MuiThemeProvider>
         </Grid>
     );
 }

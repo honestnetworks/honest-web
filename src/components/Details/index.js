@@ -18,10 +18,6 @@ const styles = theme => ({
 });
 
 class Details extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     handleStreetView = (address) =>{
         console.log('New street view', address);
         window.open(`http://maps.google.com/maps?daddr=${address}&z=17`);

@@ -3,10 +3,8 @@ import BuildingItem from './BuildingItem';
 import flatImage1 from '../../assets/images/flatImage-1.jpg';
 import flatImage2 from '../../assets/images/flatImage-2.jpg';
 import flatImage3 from '../../assets/images/flatImage-3.jpg';
-import CustomSelect from '../Common/Select/Select';
 import {withStyles} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Layout from '../../hoc/layout';
+import Layout from 'hoc/layout';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 
@@ -49,7 +47,7 @@ const styles = theme => ({
         }
     },
     mainBlock:{
-        backgroundColor: '#f1f3f8'
+        backgroundColor: '#f5f6fa'
     },
     homeTitle:{
         [theme.breakpoints.down('sm')]: {
@@ -97,7 +95,6 @@ class Home extends Component {
     };
 
     render() {
-        console.log('console log');
         const {classes} = this.props;
         let Buildings = this.state.filteredBuildings.length === 0 ? this.state.buildings : this.state.filteredBuildings;
         const buildBuildings = Buildings.map(item=>{

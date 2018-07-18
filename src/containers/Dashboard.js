@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import NavBar from '../components/Dashboard/NavBar'
+import NavBar from 'components/Dashboard/NavBar'
 import {withStyles} from '@material-ui/core/styles';
 
-const styles = () => ({
+const styles = (theme) => ({
     dashboard:{}
 });
 
@@ -19,11 +19,6 @@ class Login extends Component {
             <div className={classes.dashboard}>
                 <NavBar/>
                 <div>Test message</div>
-
-
-
-
-
             </div>
 
         );

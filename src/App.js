@@ -1,28 +1,19 @@
 import React, {Component} from 'react';
 import './App.css';
-import Login from './containers/Login.js';//
-import ForgotPassword from './containers/ForgotPassword';
-import Profile from './components/Profile/Profile.js';
+import Login from 'containers/Login.js';//
+import ForgotPassword from 'containers/ForgotPassword';
+import Profile from 'components/Profile';
 import {Route, Switch} from 'react-router-dom';
 import {ConnectedRouter} from 'react-router-redux'
-import PrivateRoute from "./components/Common/PrivateRoute";
-import {history} from "./store/configure-store"
+import PrivateRoute from "components/Common/PrivateRoute";
+import {history} from "store/configure-store"
 import { connect } from 'react-redux'
-import stickAPI from './api/config'
-import ConfirmPassword from './components/ResetPassword/ConfirmPassword.js'
-import Layout from './hoc/layout'
-import Home from './components/Home/Home'
-import Contacts from './components/Contacts/Contacts'
-import Details from "./components/Details/Details";
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles/index';
-
-
-
-const mainTheme = createMuiTheme({
-    typography: {
-        "fontFamily": "\"Poppins\", \"Helvetica\", \"Arial\", sans-serif!important"
-    }
-});
+import stickAPI from 'api/config'
+import ConfirmPassword from 'components/ResetPassword/ConfirmPassword.js'
+// import Layout from 'hoc/layout'
+import Home from 'components/Home'
+import Contacts from 'components/Contacts'
+import Details from "components/Details";
 
 class App extends Component {
 
@@ -36,7 +27,6 @@ class App extends Component {
         let isAuth = localStorage.getItem("token") && localStorage.getItem("token").length > 0;
         return (
             <ConnectedRouter history={history}>
-                <MuiThemeProvider theme={mainTheme}>
                 <div className="App">
                     {/*<Layout>*/}
                         <Switch>
@@ -51,14 +41,13 @@ class App extends Component {
                         </Switch>
                     {/*</Layout>*/}
                 </div>
-                </MuiThemeProvider>
             </ConnectedRouter>
         );
     }
 }
 
 const mapStateToProps = state => (()=>{
-        console.log(state);
+        console.log('App state', state);
         return ({
         session: state.session
     })

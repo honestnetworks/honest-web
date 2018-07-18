@@ -24,7 +24,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SearchIcon from '@material-ui/icons/Search';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import HomeIcon from '@material-ui/icons/Home';
-import Home from '../Home/Home';
+import Home from 'components/Home';
 
 
 const drawerWidth = 240;

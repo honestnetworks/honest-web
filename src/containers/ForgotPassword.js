@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import ForgotPasswordForm from '../components/ResetPassword/ForgotPasswordForm'
+import ForgotPasswordForm from 'components/ResetPassword/ForgotPasswordForm'
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = () => ({
@@ -16,10 +16,6 @@ const styles = () => ({
 });
 
 class ForgotPassword extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {classes} = this.props;
         // if (localStorage.getItem("token")) {

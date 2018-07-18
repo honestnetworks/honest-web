@@ -129,7 +129,10 @@ class ConfirmPassword extends Component {
     };
 
     urlParam = (name) => {
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        // TODO: do we need this escape character '\?' ?
+        // var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+
+        var results = new RegExp('[?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results == null) {
             return null;
         }

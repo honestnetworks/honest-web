@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import InformationItem from './InformationItem';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import PlayIcon from '@material-ui/icons/PlayArrow';
@@ -102,12 +100,24 @@ const styles =(theme)=> ({
     },
     playButton:{
         alignSelf: 'center',
-        right: '23px',
-        top: '-12px'
+        right: '13px',
+        top: '-12px',
+        height:'2rem',
+        width:'2rem',
+        backgroundColor: '#ffffff',
+        border:'4px solid #f5f6fa',
+        color:'#c2c6d1',
+        '&:hover':{
+            color:'#4c84ff'
+        }
     },
     root: {
-        backgroundColor: 'rgba(63, 81, 181, 0.08)'
+        backgroundColor: 'rgba(255, 255, 255, 1)'
     },
+    iconButton:{
+        fontSize:'14px',
+        zIndex:'1000'
+    }
 });
 
 function BuildingItem(props) {

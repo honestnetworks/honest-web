@@ -14,13 +14,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 
 import SearchIcon from '@material-ui/icons/Search';
-import { NavLink, withRouter } from 'react-router-dom';
-import {createMuiTheme,MuiThemeProvider} from "@material-ui/core/styles";
+import { withRouter } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
-import ReactSVG from 'react-svg';
+import logoTitle from 'assets/images/login-title-image.png';
+
 
 const drawerWidth = 240;
-const closeDrawerWidth = 25;
 
 const styles = theme => ({
     root: {
@@ -110,7 +109,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         //backgroundColor: theme.palette.background.default,
-        backgroundColor: '#f1f3f8',
+        backgroundColor: '#f5f6fa',
         //padding: theme.spacing.unit * 3,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -119,7 +118,6 @@ const styles = theme => ({
         marginTop:'7vh',
         overflow:'auto',
         padding:'0 4vw',
-        marginTop:'60px',
         [theme.breakpoints.only('xs')]: {
             padding:'4vw 4vw 4vw 0vw',
         }
@@ -147,8 +145,11 @@ const styles = theme => ({
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
-        paddingLeft:'4vw',
-        color:'#4c84ff'
+        paddingLeft:'150px',
+        color:'#4c84ff',
+        '& img':{
+            width:'63px'
+        }
 
     },
     userMenuButton: {
@@ -191,70 +192,10 @@ const styles = theme => ({
     }
 });
 
-const customAppBar = createMuiTheme({
-    overrides: {
-        MuiInput: {
-            root: {
-                color: 'white',
-                fontFamily: "Poppins, san-serif",
-                minWidth: '11rem'
-
-            },
-            formControl:{
-                marginTop:'0px!important'
-            },
-            underline:{
-                '&::before':{
-                    borderColor:'white',
-                    border:'none'
-                },
-                '&::after':{
-                    borderColor:'white',
-                    border:'none'
-                },
-                '&:hover::before':{
-                    borderColor:'white!important',
-                    border:'none!important'
-                }
-            }
-        },
-        MuiFormLabel:{
-            root:{
-                fontFamily: "Poppins, san-serif",
-                color:'red!important'
-            },
-            focused:{
-                color:'red!important',
-                display:'none'
-            }
-        },
-        MuiTypography:{
-            root:{
-                fontFamily: "Poppins, san-serif"
-            },
-            subheading:{
-                fontFamily: "Poppins, san-serif"
-            }
-        },
-        MuiListItemText:{
-            root:{
-                fontFamily: "Poppins, san-serif"
-            }
-        },
-        MuiMenuItem:{
-            root:{
-                fontFamily: "Poppins, san-serif"
-            }
-        }
-
-    }
-});
-
 class PersistentDrawer extends React.Component {
     state = {
         openDrawer: false,
         openMenu: false,
-
         anchor: 'left',
         auth: true,
         anchorEl: null,
@@ -282,30 +223,23 @@ class PersistentDrawer extends React.Component {
         window.location.replace("/");
     };
 
-    checkIfHomePage = (path) => {
-        return Boolean(path && path.includes('/home'));
-    };
-
     render() {
-        console.log('Layout props', this.props);
-        const {classes, theme} = this.props;
+        const {classes} = this.props;
         const {anchor, openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
-        const {location: {pathname}} = this.props;
 
-        let before = null;
-        let after = null;
+        let before = null,
+            after = null;
 
         return (
             <div className={classes.root}>
                 <div className={classes.appFrame}>
-                    <MuiThemeProvider theme={customAppBar}>
                     <AppBar
                         className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
                     >
                         <Toolbar disableGutters={!openDrawer}>
                             <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                Honest
+                                <img src={logoTitle} alt="logo"/>
                                 <div className={classes.margin}>
                                     <Hidden only={'xs'}>
                                     <Grid container alignItems="flex-end">
@@ -313,34 +247,33 @@ class PersistentDrawer extends React.Component {
                                     </Hidden>
                                 </div>
                             </Typography>
-                            <Hidden only={'xs'}>
-                            <div className={classes.inputWrapper}>
-                                <Grid item>
-                                    <SearchIcon style={{padding:'0 0.6rem',display:'flex'}}/>
-                                </Grid>
-                                <Grid item>
-                                    <TextField
-                                    className='searchHeaderField'
-                                    style={{color: 'white'}}
-                                    id="input-with-icon-grid"
-                                    placeholder={'Search Building Name'}
-                                    InputProps={{
-                                        classes: {
-                                            input: classes.label
-                                        }
-                                    }}
-                                    />
-                                </Grid>
-                            </div>
-                            </Hidden>
+                            {/*<Hidden only={'xs'}>*/}
+                            {/*<div className={classes.inputWrapper}>*/}
+                                {/*<Grid item>*/}
+                                    {/*<SearchIcon style={{padding:'0 0.6rem',display:'flex'}}/>*/}
+                                {/*</Grid>*/}
+                                {/*<Grid item>*/}
+                                    {/*<TextField*/}
+                                    {/*className='searchHeaderField'*/}
+                                    {/*style={{color: 'white'}}*/}
+                                    {/*id="input-with-icon-grid"*/}
+                                    {/*placeholder={'Search Building Name'}*/}
+                                    {/*InputProps={{*/}
+                                        {/*classes: {*/}
+                                            {/*input: classes.label*/}
+                                        {/*}*/}
+                                    {/*}}*/}
+                                    {/*/>*/}
+                                {/*</Grid>*/}
+                            {/*</div>*/}
+                            {/*</Hidden>*/}
 
                             {auth && (
-                                <div   style={{display: 'flex', alignItems: 'center'}}>
+                                <div   style={{display: 'flex', alignItems: 'center', color:'#a0a6b5'}}>
                                     <IconButton
                                         aria-owns={openMenu ? 'menu-appbar' : null}
                                         aria-haspopup="true"
-                                        //onClick={this.handleMenuOpen}
-                                        color="inherit"
+                                        color="red"
                                     >
                                         <AccountCircle style={{width:'2rem',height:'2rem'}}/>
                                     </IconButton>
@@ -386,7 +319,6 @@ class PersistentDrawer extends React.Component {
 
                         </Toolbar>
                     </AppBar>
-                    </MuiThemeProvider>
                     {before}
                     <main
                         className={classNames(classes.content, classes[`content-${anchor}`], {

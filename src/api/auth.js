@@ -39,8 +39,11 @@ const forgotPassword = async email => {
     try {
         // const res = await stickAPI.get(`${appEndpoint}/forgot-password?email=${email}`);
         // return res.data.content;
+    } catch(e) { 
+        errorHandler(e) 
+    } finally {
         return "Wow you can reset password"
-    } catch(e) { errorHandler(e) }
+    }
 };
 
 const resetPassword = async data => {

@@ -1,39 +1,39 @@
 body {
   margin:0;
 }
-.login-error-message {
-  margin-top: 20px;
-  color:#f46767;
-  font-weight: normal;
-}
-form > div button {
-  display: block;
-  margin: 20px auto 0;
-  width:50%;
-  height: 40px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  background-color: #4c84ff;
-  color: white;
-  border: 1px solid white;
-  border-radius:3px;
-}
-form > div button[type=submit][disabled] {
-  opacity: .6;
-  cursor: not-allowed
-}
-form > div button[type=submit]:hover[disabled] {
-  background-color: darken(#4c84ff,30%);
-}
-form > div button[type=submit]:hover {
-  background-color: darken(#4c84ff,15%);
-}
-form > div button[type=submit]:visited {
-  color: #fff
-}
-form button {
-  cursor: pointer
-}
-form>div {
-  margin-top: 0.5rem;
-}
+//.login-error-message {
+//  margin-top: 20px;
+//  color:#f46767;
+//  font-weight: normal;
+//}
+//form > div button {
+//  display: block;
+//  margin: 20px auto 0;
+//  width:50%;
+//  height: 40px;
+//  font-family: 'Poppins', sans-serif;
+//  font-size: 14px;
+//  background-color: #4c84ff;
+//  color: white;
+//  border: 1px solid white;
+//  border-radius:3px;
+//}
+//form > div button[type=submit][disabled] {
+//  opacity: .6;
+//  cursor: not-allowed
+//}
+//form > div button[type=submit]:hover[disabled] {
+//  background-color: darken(#4c84ff,30%);
+//}
+//form > div button[type=submit]:hover {
+//  background-color: darken(#4c84ff,15%);
+//}
+//form > div button[type=submit]:visited {
+//  color: #fff
+//}
+//form button {
+//  cursor: pointer
+//}
+//form>div {
+//  margin-top: 0.5rem;
+//}
