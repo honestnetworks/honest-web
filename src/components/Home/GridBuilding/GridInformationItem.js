@@ -2,12 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import EmailIcon from '@material-ui/icons/MailOutline';
-import CallIcon from '@material-ui/icons/Call';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
-import Chip from '@material-ui/core/Chip';
 import SpeedIcon2x from 'assets/icons/speed-icon@2x.png';
 import TemperatureIcon2x from 'assets/icons/temperature-icon@2x.png';
 
@@ -38,17 +34,6 @@ const styles = (theme) => ({
         color:'#171d33',
         fontWeight:'500',
         textAlign:'center'
-    },
-    buildAddress:{
-        marginBottom: 16,
-        fontSize: '18px',
-        color:'#171d33',
-        fontWeight:'500'
-    },
-    buildCity:{
-        textTransform:'uppercase',
-        fontSize:'0.625rem',
-        color:'#bebfcc'
     },
     pos: {
         marginBottom: 12,
@@ -86,26 +71,6 @@ const styles = (theme) => ({
     root: {
         backgroundColor: 'rgba(63, 81, 181, 0.08)'
     },
-    chip: {
-        margin: theme.spacing.unit,
-        color:'#22bc8a',
-        fontSize:'12px',
-        paddingTop:'5px',
-        paddingBottom:'5px',
-        height:'auto',
-        backgroundColor:'#d4f1e8',
-        position:'absolute',
-        top:'-6px',
-        right:'0',
-        '& span:before':{
-            content:`''`,
-            borderRadius:'90px',
-            height:'0.40rem',
-            width:'0.40rem',
-            backgroundColor:'#22bc8a',
-            marginRight:'5px'
-        }
-    },
     speedIcon:{
         width:'3.5rem',
         height:'3.5rem'
@@ -116,69 +81,28 @@ const styles = (theme) => ({
     },
     contactName:{
         color:'#bebfcc'
-    },
-    relativeBlock:{
-        position:'relative'
     }
 });
 
-function InformationItem(props) {
+function GridInformationItem(props) {
     const { classes } = props;
 
     return (
         <Grid  item xs={12} sm={12} className={classes.informationItem}>
             <Card className={classes.card}>
                 <Grid container spacing={16}>
-                    <Grid item xs={5} className={classes.contactBlock}>
-                        <Grid  item xs={12} className={classes.relativeBlock}>
-                            <Typography variant="caption" className={classes.buildCity}>
-                                New York
-                            </Typography>
-                            <div className={classes.buildAddress} >
-                                {props.buldingName} <Chip label="Active" className={classes.chip} />
-                            </div>
-                        </Grid>
-
-
-                        <Grid  item xs={12}>
-                            <div>
-                                <Typography variant="caption" className={classes.contactName}>
-                                    London Tucker
-
-                                    <IconButton
-                                        style={{marginLeft:'10px'}}
-                                        className={classes.button}
-                                        color="primary">
-                                        <CallIcon className={classes.iconButton} />
-                                    </IconButton>
-                                    <IconButton
-                                        className={classes.button}
-                                        color="primary"
-                                    >
-
-                                        <EmailIcon className={classes.iconButton}
-                                        />
-                                    </IconButton>
-                                </Typography>
-
-                            </div>
-                        </Grid>
-
-                    </Grid>
-                    <Grid item xs={3} className={classes.informationBlocks}>
-                        <Grid item xs={12} >
+                    <Grid item xs={6} className={classes.informationBlocks}>
+                        <Grid item xs={12}>
                             <Typography variant="caption" className={classes.infoCaption}>
-                            Up time
+                                Up time
                             </Typography>
                             <Typography  variant="caption" className={classes.infoMessage}>
                                 {props.upTime} %
                             </Typography>
                             <img src={TemperatureIcon2x} alt="" className={classes.temperatureIcon}/>
                         </Grid>
-
-
                     </Grid>
-                    <Grid item xs={4} className={classes.informationBlocks}>
+                    <Grid item xs={6} className={classes.informationBlocks}>
                         <Grid  item xs={12} style={{borderLeft:'1px solid #ebedf5'}}>
                             <Typography variant="caption" className={classes.infoCaption}>
                                 Speed
@@ -195,8 +119,8 @@ function InformationItem(props) {
     );
 }
 
-InformationItem.propTypes = {
+GridInformationItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(InformationItem);
+export default withStyles(styles)(GridInformationItem);

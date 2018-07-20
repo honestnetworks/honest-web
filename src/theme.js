@@ -9,7 +9,7 @@ const honest = {
     desktop: {},
     mobile: {},
     globalContainer: {
-        maxWidth: 1440
+        maxWidth: 1140
     }
 };
 

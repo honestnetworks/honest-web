@@ -9,12 +9,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
-
+import {NavLink, withRouter} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
-import { withRouter } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
 import logoTitle from 'assets/images/login-title-image.png';
 
@@ -24,7 +22,6 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        //color:'red'
     },
     appFrame: {
         height: '100vh',
@@ -36,33 +33,40 @@ const styles = theme => ({
     },
     appBar: {
         position: 'absolute',
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        //backgroundColor:'#4c84ff',
         backgroundColor:'white',
         boxShadow:'none',
         color:'white',
-        //width: `calc(100% - ${73}px)`,
+        padding:'0 150px',
+        [theme.breakpoints.only('sm')]: {
+            padding:'0 50px'
+        },
         [theme.breakpoints.only('xs')]: {
-            //width: `calc(100% - ${57}px)`,
-            height:'60px'
+            padding:'0'
         }
     },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    'appBarShift-left': {
-        marginLeft: drawerWidth,
-    },
-    'appBarShift-right': {
-        marginRight: drawerWidth,
+    navBlock:{
+        fontSize:'14px',
+        '& a':{
+            color:'#a0a6b5',
+            padding:'0 1rem'
+        },
+        '& a.active':{
+            color:'#4c84ff'
+        },
+        '& a:after':{
+            background:'#4c84ff',
+            content:`''`,
+            width:'0',
+            display:'block',
+            height:'2px',
+            transition:'width .3s',
+            position:'relative',
+            top:'22px'
+        },
+        '& a.active:after':{
+            width:'100%',
+        },
+
     },
     menuButton: {
         marginLeft: 12,
@@ -80,32 +84,6 @@ const styles = theme => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
     },
-    drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing.unit * 7,
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 9,
-        },
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent:'flex-start',
-        padding: '0 8px',
-        marginTop:'8px'
-    },
-    drawerHeaderModify: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent:'center',
-        padding: '0 8px',
-        marginTop:'8px'
-
-    },
     content: {
         flexGrow: 1,
         //backgroundColor: theme.palette.background.default,
@@ -115,37 +93,18 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        marginTop:'7vh',
+        marginTop:'6vh',
         overflow:'auto',
         padding:'0 4vw',
         [theme.breakpoints.only('xs')]: {
             padding:'4vw 4vw 4vw 0vw',
         }
     },
-    'content-left': {
-        //marginLeft: -closeDrawerWidth,
-    },
-    'content-right': {
-        marginRight: -drawerWidth,
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    'contentShift-left': {
-        marginLeft: 0,
-    },
-    'contentShift-right': {
-        marginRight: 0,
-    },
     flex: {
         flex: 1,
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
-        paddingLeft:'150px',
         color:'#4c84ff',
         '& img':{
             width:'63px'
@@ -225,11 +184,8 @@ class PersistentDrawer extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {anchor, openDrawer, auth, anchorEl} = this.state;
+        const {openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
-
-        let before = null,
-            after = null;
 
         return (
             <div className={classes.root}>
@@ -238,97 +194,76 @@ class PersistentDrawer extends React.Component {
                         className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
                     >
                         <Toolbar disableGutters={!openDrawer}>
+                            <Grid item xs={4}>
+                                <Hidden only={'xs'}>
                             <Typography variant="subheading" color="inherit" className={classes.flex}>
                                 <img src={logoTitle} alt="logo"/>
-                                <div className={classes.margin}>
-                                    <Hidden only={'xs'}>
-                                    <Grid container alignItems="flex-end">
-                                    </Grid>
-                                    </Hidden>
-                                </div>
+                                {/*<div className={classes.margin}>*/}
+                                    {/*<Hidden only={'xs'}>*/}
+                                    {/*<Grid container alignItems="flex-end">*/}
+                                    {/*</Grid>*/}
+                                    {/*</Hidden>*/}
+                                {/*</div>*/}
+
                             </Typography>
-                            {/*<Hidden only={'xs'}>*/}
-                            {/*<div className={classes.inputWrapper}>*/}
-                                {/*<Grid item>*/}
-                                    {/*<SearchIcon style={{padding:'0 0.6rem',display:'flex'}}/>*/}
-                                {/*</Grid>*/}
-                                {/*<Grid item>*/}
-                                    {/*<TextField*/}
-                                    {/*className='searchHeaderField'*/}
-                                    {/*style={{color: 'white'}}*/}
-                                    {/*id="input-with-icon-grid"*/}
-                                    {/*placeholder={'Search Building Name'}*/}
-                                    {/*InputProps={{*/}
-                                        {/*classes: {*/}
-                                            {/*input: classes.label*/}
-                                        {/*}*/}
-                                    {/*}}*/}
-                                    {/*/>*/}
-                                {/*</Grid>*/}
-                            {/*</div>*/}
-                            {/*</Hidden>*/}
+                                </Hidden>
+                            </Grid>
+                            <Grid item xs={4} style={{justifyContent:'center', display:'flex'}} className={classes.navBlock}>
+                                <NavLink to={'/home'}>Dashboard</NavLink>
+                                <NavLink to={'/contacts'}>Contact</NavLink>
+                            </Grid>
+                            <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
+                            <div style={{display:'flex'}}>
+                                <IconButton style={{}}>
+                                    <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/>
+                                </IconButton>
+                                {auth && (
+                                    <div   style={{display: 'flex', alignItems: 'center', color:'#a0a6b5'}}>
+                                        <IconButton
+                                            aria-owns={openMenu ? 'menu-appbar' : null}
+                                            aria-haspopup="true"
+                                        >
+                                            <AccountCircle style={{width:'2rem',height:'2rem'}}/>
+                                        </IconButton>
+                                        test
+                                        <Menu
+                                            id="menu-appbar"
+                                            anchorEl={anchorEl}
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            open={openMenu}
+                                            onClose={this.handleMenuClose}
+                                        >
+                                            <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+                                            <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+                                            <MenuItem onClick={this.handleLogout}>Log Out</MenuItem>
+                                        </Menu>
+                                        <IconButton
+                                            aria-owns={openMenu ? 'menu-appbar' : null}
+                                            aria-haspopup="true"
+                                            onClick={this.handleMenuOpen}
+                                            color="inherit"
+                                        >
+                                            <MenuDown/>
+                                        </IconButton>
 
-                            {auth && (
-                                <div   style={{display: 'flex', alignItems: 'center', color:'#a0a6b5'}}>
-                                    <IconButton
-                                        aria-owns={openMenu ? 'menu-appbar' : null}
-                                        aria-haspopup="true"
-                                        color="red"
-                                    >
-                                        <AccountCircle style={{width:'2rem',height:'2rem'}}/>
-                                    </IconButton>
-                                    test
-                                    <Menu
-                                        id="menu-appbar"
-                                        anchorEl={anchorEl}
-                                        anchorOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        open={openMenu}
-                                        onClose={this.handleMenuClose}
-                                    >
-                                        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-                                        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-                                        <MenuItem onClick={this.handleLogout}>Log Out</MenuItem>
-                                    </Menu>
-                                    {/*<IconButton*/}
-                                        {/*aria-owns={openMenu ? 'menu-appbar' : null}*/}
-                                        {/*aria-haspopup="true"*/}
-                                        {/*onClick={this.handleLogout}*/}
-                                        {/*color="inherit"*/}
-                                    {/*>*/}
-                                        {/*<LogoutIcon />*/}
-                                    {/*</IconButton>*/}
-                                    <IconButton
-                                        aria-owns={openMenu ? 'menu-appbar' : null}
-                                        aria-haspopup="true"
-                                        onClick={this.handleMenuOpen}
-                                        //onClick={this.handleLogout}
-                                        color="inherit"
-                                    >
-                                        <MenuDown/>
-                                    </IconButton>
-
-                                </div>
-                            )}
-
+                                    </div>
+                                )}
+                            </div>
+                            </Grid>
                         </Toolbar>
                     </AppBar>
-                    {before}
                     <main
-                        className={classNames(classes.content, classes[`content-${anchor}`], {
-                            [classes.contentShift]: openDrawer,
-                            [classes[`contentShift-${anchor}`]]: openDrawer,
-                        })}
+                        className={classNames(classes.content)}
                     >
                         {this.props.children}
                     </main>
-                    {after}
                 </div>
             </div>
         );

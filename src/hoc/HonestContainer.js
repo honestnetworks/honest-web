@@ -45,17 +45,17 @@ const HonestContainer = (props) => {
   );
 };
 
-HonestContainer.propTypes = {
-    classes: PropTypes.object.isRequired,
-    children: PropTypes.object.isRequired,
-    xs: PropTypes.number,
-    sm: PropTypes.number,
-    md: PropTypes.number,
-    lg: PropTypes.number,
-    xl: PropTypes.number,
-    spacing: PropTypes.string,
-    justify: PropTypes.string,
-};
+// HonestContainer.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//     children: PropTypes.object.isRequired,
+//     xs: PropTypes.number,
+//     sm: PropTypes.number,
+//     md: PropTypes.number,
+//     lg: PropTypes.number,
+//     xl: PropTypes.number,
+//     spacing: PropTypes.string,
+//     justify: PropTypes.string,
+// };
 
 HonestContainer.defaultProps = {
   xs: 12,

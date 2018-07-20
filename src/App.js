@@ -28,7 +28,6 @@ class App extends Component {
         return (
             <ConnectedRouter history={history}>
                 <div className="App">
-                    {/*<Layout>*/}
                         <Switch>
                             <PrivateRoute path="/profile" component={Profile} isAuthenticated={isAuth} />
                             <PrivateRoute path="/home"   exact component={Home} isAuthenticated={isAuth} />
@@ -39,7 +38,6 @@ class App extends Component {
                             <Route path="/"  exact component={Login} />
                             <Route path="/login"  exact component={Login}/>
                         </Switch>
-                    {/*</Layout>*/}
                 </div>
             </ConnectedRouter>
         );

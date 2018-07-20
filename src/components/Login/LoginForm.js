@@ -126,12 +126,7 @@ const styles = theme => ({
     },
     inputField: {
         height: '100%',
-        width: '80%',
-        // '&::placeholder':{
-        //     height:'35px!important',
-        //     lineHeight: 'normal!important',
-        //     //lineHeight:'35px'
-        // }
+        width: '80%'
     },
     checked: {
         color: '#4c84ff!important'
@@ -214,7 +209,7 @@ class LoginForm extends Component {
         const submit = handleSubmit(login);
 
         return (
-            submitting ? <RingLoader loading={submitting}/> :
+            // submitting ? <RingLoader loading={submitting}/> :
                 <Paper classes={{
                     root: classes.paper
                 }}>

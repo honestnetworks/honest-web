@@ -5,7 +5,7 @@ class Contacts extends Component {
     render() {
         return (
             <Layout>
-            <div>
+            <div style={{marginTop:'20px'}}>
                 Contacts Component
             </div>
             </Layout>

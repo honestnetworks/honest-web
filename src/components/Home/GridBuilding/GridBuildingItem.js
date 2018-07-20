@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import InformationItem from './InformationItem';
-// import {Link} from 'react-router-dom';
+import InformationItem from './GridInformationItem';
+import GridBuildingHeader from './GridBuildingHeader';
+import GridContact from './GridContact';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import PlayIcon from '@material-ui/icons/PlayArrow';
+
 
 const styles =(theme)=> ({
     card: {
         minWidth: 275,
-        //height:'35vh',
-        marginBottom:'3vh',
         position:'relative',
         boxShadow:'0 1px 3px 0 rgba(201, 203, 209, 0.24)',
         borderRadius:'6px',
@@ -21,7 +19,7 @@ const styles =(theme)=> ({
             marginLeft:'2vh'
         },
         '@media(max-width: 710px)' : {
-           // height:'auto'
+            // height:'auto'
         }
     },
     bullet: {
@@ -49,11 +47,6 @@ const styles =(theme)=> ({
         top: '17px',
         '&:hover': {
             cursor:'pointer'
-        }
-    },
-    mediaContainer:{
-        [theme.breakpoints.up('md')]: {
-            paddingRight:'20px!important'
         }
     },
     cover:{
@@ -118,54 +111,44 @@ const styles =(theme)=> ({
     iconButton:{
         fontSize:'14px',
         zIndex:'1000'
-    }
+    },
 });
 
-function BuildingItem(props) {
+function GridBuildingItem(props) {
+    console.log(props);
     const { classes } = props;
-
     return (
-            <Grid container justify="center">
-                <Grid item xs={9} style={{marginLeft:'2rem'}}>
-            <Card className={classes.card}>
-                <Grid  container spacing={8} className={classes.mainContent}>
-                    <Grid item xs={12} md={3} className={classes.mediaContainer}>
-                    <CardMedia
-                        className={classes.cover}
-                        image={props.building.imageUrl}
-                        title="Live from space album cover"
-                    />
-                    </Grid>
-                    <Grid item xs={12} md={9}>
-                        <Grid  container spacing={8} className={classes.informationBlocks}>
-                        <InformationItem
-                             buldingName={props.building.name}
-                             upTime = {'88.99'}
-                             speed={'980'}
-                        />
+            <Grid item sm={12} md={6} style={{margin:'0 auto'}}>
+                <Card className={classes.card}>
+                    <Grid  container spacing={8} className={classes.mainContent}>
+                        <GridBuildingHeader building={props.building}/>
+                        <Grid item xs={12} md={12} className={classes.mediaContainer}>
+                            <CardMedia
+                                className={classes.cover}
+                                image={props.building.imageUrl}
+                                title="Live from space album cover"
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12}>
+                            <Grid  container spacing={8} className={classes.informationBlocks}>
+                                <InformationItem
+                                    buldingName={props.building.name}
+                                    upTime = {'88.99'}
+                                    speed={'980'}
+                                />
+                            </Grid>
                         </Grid>
                     </Grid>
+                </Card>
+                <Grid  item xs={12}>
+                    <GridContact/>
                 </Grid>
-            </Card>
-                </Grid>
-                <IconButton
-                    TouchRippleProps={{
-                        classes: {
-                            root: classes.root
-                        }
-                    }}
-                    className={classes.playButton}
-                    color="primary"
-                >
-                    <PlayIcon className={classes.iconButton}
-                    />
-                </IconButton>
-                </Grid>
-            );
+            </Grid>
+    );
 }
 
-BuildingItem.propTypes = {
+GridBuildingItem.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BuildingItem);
+export default withStyles(styles)(GridBuildingItem);
