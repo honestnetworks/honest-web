@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import DropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -9,6 +9,7 @@ import Layout from 'hoc/layout';
 import ApartmentListView from 'components/ApartmentCard/ApartmentListView';
 import ApartmentGridView from 'components/ApartmentCard/ApartmentGridView';
 import HonestContainer from 'hoc/HonestContainer';
+import ApartmentContactBlock from 'components/ApartmentCard/ApartmentContactBlock';
 import classNames from 'classnames';
 
 import flatImage1 from 'assets/images/flatImage-1.jpg';
@@ -129,8 +130,17 @@ const styles = theme => ({
             color: '#171d33',
             paddingLeft:'5px'
         }
+    },
+    detailLink:{ 
+        fontSize:'0.875rem', 
+        display:'flex', 
+        justifyContent:'flex-end', 
+        alignItems:'center', 
+        color:theme.honest.general.main 
+    },
+    gridContactBlock:{ 
+        marginTop:'1rem' 
     }
-
 });
 
 class Home extends Component {
@@ -170,6 +180,7 @@ class Home extends Component {
 
     renderApartmentCards = () => {
         const {isList, buildings} = this.state;
+        const {classes} = this.props;
 
         return (
             <Grid item xs={12} sm={isList? 12 : 9} style={{margin:'0 auto'}}>
@@ -184,11 +195,27 @@ class Home extends Component {
                         )
                     )) : (
                         buildings.map(item => (
-                            <ApartmentGridView 
-                                key={item.id}
-                                building={item}
-                                linkToDetails={false}
-                            />
+                            <Grid item xs={6}>
+                                <Grid container>
+                                    <Grid item xs={12}>
+                                        <ApartmentGridView 
+                                            key={item.id}
+                                            building={item}
+                                            linkToDetails={false}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} className={classes.gridContactBlock}>
+                                        <Grid container>
+                                            <Grid item xs={6}>
+                                                <ApartmentContactBlock />
+                                            </Grid>
+                                            <Grid item xs={6} className={classes.detailLink}> 
+                                                View more 
+                                            </Grid> 
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
                         )
                     ))}
                 </Grid>
@@ -197,7 +224,7 @@ class Home extends Component {
     };
 
     render() {
-        const {classes} = this.props;
+        const { classes } = this.props;
         //let Buildings = this.state.filteredBuildings.length === 0 ? this.state.buildings : this.state.filteredBuildings;
         const apartmentCards = this.renderApartmentCards();
         return (

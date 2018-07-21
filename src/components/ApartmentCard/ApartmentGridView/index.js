@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import ApartmentContent from '../ApartmentContent';
 import ApartmentHeader from '../ApartmentHeader';
-import ApartmentContactBlock from '../ApartmentContactBlock';
 import Grid from '@material-ui/core/Grid';
 
 
@@ -111,16 +110,6 @@ const styles =(theme)=> ({
     iconButton:{
         fontSize:'14px',
         zIndex:'1000'
-    },
-    detailLink:{ 
-        fontSize:'0.875rem', 
-        display:'flex', 
-        justifyContent:'flex-end', 
-        alignItems:'center', 
-        color:theme.honest.general.main 
-    },
-    gridContactBlock:{ 
-        marginTop:'1rem' 
     }
 });
 
@@ -128,7 +117,7 @@ const ApartmentGridView = (props) => {
     console.log(props);
     const { classes, building } = props;
     return (
-            <Grid item sm={12} md={6} style={{margin:'0 auto'}}>
+            <Grid item sm={12} style={{margin:'0 auto'}}>
                 <Card className={classes.card}>
                     <Grid  container spacing={8} className={classes.mainContent}>
                         <ApartmentHeader building={building}/>
@@ -150,16 +139,6 @@ const ApartmentGridView = (props) => {
                         </Grid>
                     </Grid>
                 </Card>
-                <Grid item xs={12} className={classes.gridContactBlock}>
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <ApartmentContactBlock />
-                        </Grid>
-                        <Grid item xs={6} className={classes.detailLink}> 
-                            View more 
-                        </Grid> 
-                    </Grid>
-                </Grid>
             </Grid>
     );
 }
