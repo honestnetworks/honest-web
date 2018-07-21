@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import InformationItem from './InformationItem';
-// import {Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import PlayIcon from '@material-ui/icons/PlayArrow';
+import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
+import ApartmentContent from '../ApartmentContent';
+import ApartmentContactBlock from '../ApartmentContactBlock';
+// import {Link} from 'react-router-dom';
 
 const styles =(theme)=> ({
     card: {
@@ -118,10 +121,66 @@ const styles =(theme)=> ({
     iconButton:{
         fontSize:'14px',
         zIndex:'1000'
+    },
+    contactBlock:{
+        display:'flex',
+        justifyContent:'center',
+        flexWrap:'wrap'
+    },
+    informationBlocks:{
+        display:'flex',
+        flexWrap:'wrap',
+        '& img':{
+            display:'block',
+            margin:'0 auto'
+        }
+    },
+    informationIcon:{
+        fontSize:'3.5vw',
+        color:'red'
+    },
+    chip: {
+        margin: theme.spacing.unit,
+        color:'#22bc8a',
+        fontSize:'12px',
+        paddingTop:'5px',
+        paddingBottom:'5px',
+        height:'auto',
+        backgroundColor:'#d4f1e8',
+        position:'absolute',
+        top:'-6px',
+        right:'0',
+        '& span:before':{
+            content:`''`,
+            borderRadius:'90px',
+            height:'0.40rem',
+            width:'0.40rem',
+            backgroundColor:'#22bc8a',
+            marginRight:'5px'
+        }
+    },
+    speedIcon:{
+        width:'3.5rem',
+        height:'3.5rem'
+    },
+    temperatureIcon:{
+        width:'1.125rem',
+        height:'2.5625rem'
+    },
+    contactName:{
+        color:'#bebfcc'
+    },
+    relativeBlock:{
+        position:'relative'
+    },
+    buildCity: {
+        textTransform:'uppercase',
+        color: '#bebfcc',
+        fontSize: '0.625rem'
     }
 });
 
-function BuildingItem(props) {
+const ApartmentListView = (props) => {
     const { classes } = props;
 
     return (
@@ -130,19 +189,36 @@ function BuildingItem(props) {
             <Card className={classes.card}>
                 <Grid  container spacing={8} className={classes.mainContent}>
                     <Grid item xs={12} md={3} className={classes.mediaContainer}>
-                    <CardMedia
-                        className={classes.cover}
-                        image={props.building.imageUrl}
-                        title="Live from space album cover"
-                    />
+                        <CardMedia
+                            className={classes.cover}
+                            image={props.building.imageUrl}
+                            title="Live from space album cover"
+                        />
                     </Grid>
                     <Grid item xs={12} md={9}>
-                        <Grid  container spacing={8} className={classes.informationBlocks}>
-                        <InformationItem
-                             buldingName={props.building.name}
-                             upTime = {'88.99'}
-                             speed={'980'}
-                        />
+                        <Grid container spacing={8} className={classes.informationBlocks}>
+                            <Grid item xs={5} className={classes.contactBlock}>
+
+                                <Grid item xs={12} className={classes.relativeBlock}>
+                                    <Typography variant="caption" className={classes.buildCity}>
+                                        {props.building.city}
+                                    </Typography>
+                                    <div className={classes.buildAddress} >
+                                        {props.building.name} <Chip label="Active" className={classes.chip} />
+                                    </div>
+                                </Grid>
+                                <Grid item xs={12}>
+                                <ApartmentContactBlock />
+                                </Grid>
+
+                            </Grid>
+                            <Grid item xs={12} md={7}>
+                            <ApartmentContent
+                                buldingName={props.building.name}
+                                upTime = {'88.99'}
+                                speed={'980'}
+                            />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -164,8 +240,8 @@ function BuildingItem(props) {
             );
 }
 
-BuildingItem.propTypes = {
+ApartmentListView.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BuildingItem);
+export default withStyles(styles)(ApartmentListView);

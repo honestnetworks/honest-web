@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import {withStyles} from '@material-ui/core/styles';
-import {resetPasswordRequest, resetPasswordRequestSuccess} from '../../actions/password-recovery';
-import {connect} from 'react-redux';
-import Spinner from '../Common/Spinner/Spinner';
+import {resetPasswordRequest, resetPasswordRequestSuccess} from 'actions/password-recovery';
+import Spinner from 'components/Spinner';
 
 const styles = theme => ({
     createDeckButton: {
@@ -22,6 +22,7 @@ const styles = theme => ({
         }
     }
 });
+
 class ConfirmPassword extends Component {
 
     newPassword;
@@ -38,9 +39,8 @@ class ConfirmPassword extends Component {
             errorClass: '',
             errorMessage: ''
         };
+
         this.props.resetPasswordRequestSuccess('');
-        this.handleNewPassword = this.handleNewPassword.bind(this);
-        this.handleRepeatNewPassword = this.handleRepeatNewPassword.bind(this);
     }
 
     render() {
@@ -179,5 +179,6 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-ConfirmPassword = connect(mapStateToProps, mapDispatchToProps)(ConfirmPassword);
-export default  withStyles(styles)(ConfirmPassword);
+export default  withStyles(styles)(
+    connect(mapStateToProps, mapDispatchToProps)(ConfirmPassword)
+);

@@ -3,7 +3,6 @@ import {Field, reduxForm} from 'redux-form'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper';
 import {login} from '../../actions/forms/login';
-import RingLoader from '../Common/Spinner/RingLoader';
 import {withStyles} from '@material-ui/core/styles';
 import CheckIcon from '@material-ui/icons/Check';
 import LoginIcon from 'assets/icons/login-icon.png';
@@ -209,7 +208,6 @@ class LoginForm extends Component {
         const submit = handleSubmit(login);
 
         return (
-            // submitting ? <RingLoader loading={submitting}/> :
                 <Paper classes={{
                     root: classes.paper
                 }}>

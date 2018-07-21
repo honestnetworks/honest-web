@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import InformationItem from './GridInformationItem';
-import GridBuildingHeader from './GridBuildingHeader';
-import GridContact from './GridContact';
+import ApartmentContent from '../ApartmentContent';
+import ApartmentHeader from '../ApartmentHeader';
+import ApartmentContactBlock from '../ApartmentContactBlock';
 import Grid from '@material-ui/core/Grid';
 
 
@@ -112,16 +112,26 @@ const styles =(theme)=> ({
         fontSize:'14px',
         zIndex:'1000'
     },
+    detailLink:{ 
+        fontSize:'0.875rem', 
+        display:'flex', 
+        justifyContent:'flex-end', 
+        alignItems:'center', 
+        color:theme.honest.general.main 
+    },
+    gridContactBlock:{ 
+        marginTop:'1rem' 
+    }
 });
 
-function GridBuildingItem(props) {
+const ApartmentGridView = (props) => {
     console.log(props);
-    const { classes } = props;
+    const { classes, building } = props;
     return (
             <Grid item sm={12} md={6} style={{margin:'0 auto'}}>
                 <Card className={classes.card}>
                     <Grid  container spacing={8} className={classes.mainContent}>
-                        <GridBuildingHeader building={props.building}/>
+                        <ApartmentHeader building={building}/>
                         <Grid item xs={12} md={12} className={classes.mediaContainer}>
                             <CardMedia
                                 className={classes.cover}
@@ -131,8 +141,8 @@ function GridBuildingItem(props) {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <Grid  container spacing={8} className={classes.informationBlocks}>
-                                <InformationItem
-                                    buldingName={props.building.name}
+                                <ApartmentContent
+                                    buldingName={building.name}
                                     upTime = {'88.99'}
                                     speed={'980'}
                                 />
@@ -140,15 +150,22 @@ function GridBuildingItem(props) {
                         </Grid>
                     </Grid>
                 </Card>
-                <Grid  item xs={12}>
-                    <GridContact/>
+                <Grid item xs={12} className={classes.gridContactBlock}>
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <ApartmentContactBlock />
+                        </Grid>
+                        <Grid item xs={6} className={classes.detailLink}> 
+                            View more 
+                        </Grid> 
+                    </Grid>
                 </Grid>
             </Grid>
     );
 }
 
-GridBuildingItem.propTypes = {
+ApartmentGridView.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(GridBuildingItem);
+export default withStyles(styles)(ApartmentGridView);

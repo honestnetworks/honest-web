@@ -42,7 +42,7 @@ const styles = (theme) => ({
 
 class Login extends Component {
     redirectToPreviusLocation = () => {
-        const {from} = this.props.location.state || {from: {pathname: '/home'}};
+        const {from} = this.props.location.state || {from: {pathname: '/dashboard'}};
         return (
             <Redirect to={from}/>
         )

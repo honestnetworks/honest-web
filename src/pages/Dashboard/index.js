@@ -1,22 +1,25 @@
 import React, {Component} from 'react';
-import BuildingItem from './BuildingItem';
-import GridBuildingItem from './GridBuilding/GridBuildingItem';
-import flatImage1 from 'assets/images/flatImage-1.jpg';
-import flatImage2 from 'assets/images/flatImage-2.jpg';
-import flatImage3 from 'assets/images/flatImage-3.jpg';
-import {withStyles} from '@material-ui/core/styles';
-import Layout from 'hoc/layout';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import DropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ListIcon from '@material-ui/icons/FormatListBulleted';
 import GridIcon from '@material-ui/icons/GridOn';
-import HonestContainer from 'hoc/HonestContainer'
+import { withStyles } from '@material-ui/core/styles';
+import Layout from 'hoc/layout';
+import ApartmentListView from 'components/ApartmentCard/ApartmentListView';
+import ApartmentGridView from 'components/ApartmentCard/ApartmentGridView';
+import HonestContainer from 'hoc/HonestContainer';
+import classNames from 'classnames';
+
+import flatImage1 from 'assets/images/flatImage-1.jpg';
+import flatImage2 from 'assets/images/flatImage-2.jpg';
+import flatImage3 from 'assets/images/flatImage-3.jpg';
 
 const Buildings = [
     {
         "id": 1,
         "imageUrl": flatImage1,
+        "city": 'New York',
         "networkStatus": 'Active',
         "address": '222 Jersey City Blvd, Jersey City, NJ 07305, USA',
         "name": 'Jersey City'
@@ -25,6 +28,7 @@ const Buildings = [
         "id": 2,
         "imageUrl": flatImage2,
         "networkStatus": 'Inactive',
+        "city": 'New York',
         "address": '63 Flushing Ave, Brooklyn, NY 11205, USA',
         "name": 'Flushing Ave'
     },
@@ -32,6 +36,7 @@ const Buildings = [
         "id": 3,
         "imageUrl": flatImage3,
         "networkStatus": 'Active',
+        "city": 'New York',
         "address": '182 NJ-10, East Hanover, NJ 07936, USA',
         "name": 'East Hanover'
     },
@@ -39,10 +44,12 @@ const Buildings = [
         "id": 4,
         "imageUrl": flatImage3,
         "networkStatus": 'Active',
+        "city": 'New York',
         "address": '182 NJ-10, East Hanover, NJ 07936, USA',
         "name": 'East Hanover'
     }
 ];
+
 const styles = theme => ({
     selectBlock: {
         margin: '1.5rem 0',
@@ -107,11 +114,16 @@ const styles = theme => ({
         }
     },
     navBlock: {
-        '& div.active>svg': {
-            color: '#4c84ff'
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        color: '#c2c6d1',
+        fontSize: '0.85rem',
+        '& .active>svg': {
+            color: theme.honest.general.main
         },
-        '& div.active':{
-            background:'white'
+        '& .active':{
+            background: theme.honest.general.white
         },
         '& span': {
             color: '#171d33',
@@ -125,7 +137,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            buildings: Buildings,
+            buildings: [...Buildings],
             filteredBuildings: [],
             isList: false
         }
@@ -133,19 +145,16 @@ class Home extends Component {
 
 
     handleStreetView = (address) => {
-        console.log('New street view', address);
         window.open(`http://maps.google.com/maps?daddr=${address}&z=17`);
     };
 
     handleList = () => {
-        console.log('List');
         this.setState({
             isList: true
         })
     };
 
     handleGrid = () => {
-        console.log('Grid');
         this.setState({
             isList: false
         })
@@ -159,32 +168,38 @@ class Home extends Component {
         this.setState({filteredBuildings: filtered});
     };
 
-    renderListBuildings = (buildings) => {
-        return buildings.map(item => {
-            return (
-                <BuildingItem key={item.id}
-                              building={item}
-                              linkToDetails={false}
-                />
-            )
-        });
-    };
+    renderApartmentCards = () => {
+        const {isList, buildings} = this.state;
 
-    renderGridBuildings = (buildings) => {
-        return buildings.map(item => {
-            return (
-                <GridBuildingItem key={item.id}
-                                  building={item}
-                                  linkToDetails={false}
-                />
-            )
-        });
+        return (
+            <Grid item xs={12} sm={isList? 12 : 9} style={{margin:'0 auto'}}>
+                <Grid container spacing={16}>
+                    {isList ? (
+                        buildings.map(item => (
+                            <ApartmentListView 
+                                key={item.id}
+                                building={item}
+                                linkToDetails={false}
+                            />
+                        )
+                    )) : (
+                        buildings.map(item => (
+                            <ApartmentGridView 
+                                key={item.id}
+                                building={item}
+                                linkToDetails={false}
+                            />
+                        )
+                    ))}
+                </Grid>
+            </Grid>
+        )
     };
 
     render() {
         const {classes} = this.props;
         //let Buildings = this.state.filteredBuildings.length === 0 ? this.state.buildings : this.state.filteredBuildings;
-
+        const apartmentCards = this.renderApartmentCards();
         return (
             <Layout>
                 <HonestContainer>
@@ -192,38 +207,35 @@ class Home extends Component {
                         <Grid item xs={9}>
                             <div className={classes.homeTitle}>
                                 <Grid container>
-                                <Grid item xs={12} sm={6}>
-                                    Your Properties <Chip label="4" className={classes.chip}/>
-                                </Grid>
-                                <Grid item xs={12} sm={6} className={classes.navBlock} style={{
-                                    display: 'flex',
-                                    justifyContent: 'flex-end',
-                                    alignItems: 'center',
-                                    color: '#c2c6d1',
-                                    fontSize: '0.85rem'
-                                }}>
-                                    Sort by:<span>Speed</span>
-                                    <DropDownIcon/>
-                                    <div className={`${classes.listButton} ${this.state.isList ? 'active' : null}`}
-                                         onClick={this.handleList}>
-                                        <ListIcon/>
-                                    </div>
-                                    <div className={`${classes.gridButton} ${this.state.isList ? null : 'active'}`}
-                                         onClick={this.handleGrid}>
-                                        <GridIcon/>
-                                    </div>
-                                </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        Your Properties <Chip label="4" className={classes.chip}/>
+                                    </Grid>
+                                    <Grid item xs={12} sm={6} className={classes.navBlock}>
+                                        Sort by:<span>Speed</span>
+                                        <DropDownIcon/>
+                                        <div 
+                                            className={classNames(classes.listButton, {
+                                                'active': this.state.isList
+                                            })}
+                                            onClick={this.handleList}
+                                        >
+                                            <ListIcon/>
+                                        </div>
+                                        <div 
+                                            className={classNames(classes.gridButton, {
+                                                'active': !this.state.isList
+                                            })}
+                                            onClick={this.handleGrid}
+                                        >
+                                            <GridIcon/>
+                                        </div>
+                                    </Grid>
                                 </Grid>
                             </div>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={this.state.isList?12:9} style={{margin:'0 auto'}}>
-                        <Grid container spacing={16} >
-                            {this.state.isList ? this.renderListBuildings(Buildings) : this.renderGridBuildings(Buildings)}
-                        </Grid>
-                    </Grid>
+                    {apartmentCards}
                 </HonestContainer>
-
             </Layout>
         );
     }

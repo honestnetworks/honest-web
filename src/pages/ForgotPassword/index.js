@@ -36,14 +36,8 @@ ForgotPassword.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => {
-    return {
-        state: state,
-    }
-};
+const mapStateToProps = (state) => ({
+    state: state,
+});
 
-ForgotPassword = connect(mapStateToProps, null)(
-    withStyles(styles)(ForgotPassword)
-);
-
-export default withStyles(styles)(ForgotPassword);
+export default withStyles(styles)(connect(mapStateToProps)(ForgotPassword));

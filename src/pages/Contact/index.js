@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Layout from 'hoc/layout'
 
-class Contacts extends Component {
+class Contact extends Component {
     render() {
         return (
             <Layout>
@@ -14,5 +14,5 @@ class Contacts extends Component {
     }
 }
 
-export default Contacts;
+export default Contact;
 

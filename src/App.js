@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
-import './App.css';
-import Login from 'containers/Login.js';//
-import ForgotPassword from 'containers/ForgotPassword';
+import {ConnectedRouter} from 'react-router-redux';
+import PrivateRoute from "components/PrivateRoute";
+import {history} from "store/configure-store"
+import { connect } from 'react-redux';
+import stickAPI from 'api/config';
+import ConfirmPassword from 'components/ResetPassword/ConfirmPassword.js';
+import Login from 'pages/Login';
+import ForgotPassword from 'pages/ForgotPassword';
 import Profile from 'components/Profile';
 import {Route, Switch} from 'react-router-dom';
-import {ConnectedRouter} from 'react-router-redux'
-import PrivateRoute from "components/Common/PrivateRoute";
-import {history} from "store/configure-store"
-import { connect } from 'react-redux'
-import stickAPI from 'api/config'
-import ConfirmPassword from 'components/ResetPassword/ConfirmPassword.js'
-// import Layout from 'hoc/layout'
-import Home from 'components/Home'
-import Contacts from 'components/Contacts'
-import Details from "components/Details";
+import Dashboard from 'pages/Dashboard';
+import DashboardDetails from 'pages/Dashboard/DashboardDetails';
+import Contacts from 'pages/Contact';
+// import Layout from 'hoc/layout';
+
+import './App.css';
 
 class App extends Component {
 
@@ -30,9 +31,9 @@ class App extends Component {
                 <div className="App">
                         <Switch>
                             <PrivateRoute path="/profile" component={Profile} isAuthenticated={isAuth} />
-                            <PrivateRoute path="/home"   exact component={Home} isAuthenticated={isAuth} />
+                            <PrivateRoute path="/dashboard"   exact component={Dashboard} isAuthenticated={isAuth} />
                             <PrivateRoute path="/contacts"   exact component={Contacts} isAuthenticated={isAuth} />
-                            <PrivateRoute path="/details/:id" exact component={Details} isAuthenticated={isAuth} />
+                            <PrivateRoute path="/details/:id" exact component={DashboardDetails} isAuthenticated={isAuth} />
                             <Route path="/reset-password" component={ConfirmPassword} isAuthenticated={true}/>
                             <Route path="/forgot-password" component={ForgotPassword} isAuthenticated={true}/>
                             <Route path="/"  exact component={Login} />

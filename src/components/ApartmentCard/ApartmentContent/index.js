@@ -122,50 +122,15 @@ const styles = (theme) => ({
     }
 });
 
-function InformationItem(props) {
+const ApartmentContent = (props) => {
     const { classes } = props;
 
     return (
-        <Grid  item xs={12} sm={12} className={classes.informationItem}>
+        <Grid item xs={12} className={classes.informationItem}>
             <Card className={classes.card}>
                 <Grid container spacing={16}>
-                    <Grid item xs={5} className={classes.contactBlock}>
-                        <Grid  item xs={12} className={classes.relativeBlock}>
-                            <Typography variant="caption" className={classes.buildCity}>
-                                New York
-                            </Typography>
-                            <div className={classes.buildAddress} >
-                                {props.buldingName} <Chip label="Active" className={classes.chip} />
-                            </div>
-                        </Grid>
 
-
-                        <Grid  item xs={12}>
-                            <div>
-                                <Typography variant="caption" className={classes.contactName}>
-                                    London Tucker
-
-                                    <IconButton
-                                        style={{marginLeft:'10px'}}
-                                        className={classes.button}
-                                        color="primary">
-                                        <CallIcon className={classes.iconButton} />
-                                    </IconButton>
-                                    <IconButton
-                                        className={classes.button}
-                                        color="primary"
-                                    >
-
-                                        <EmailIcon className={classes.iconButton}
-                                        />
-                                    </IconButton>
-                                </Typography>
-
-                            </div>
-                        </Grid>
-
-                    </Grid>
-                    <Grid item xs={3} className={classes.informationBlocks}>
+                    <Grid item xs={6} className={classes.informationBlocks}>
                         <Grid item xs={12} >
                             <Typography variant="caption" className={classes.infoCaption}>
                             Up time
@@ -178,7 +143,7 @@ function InformationItem(props) {
 
 
                     </Grid>
-                    <Grid item xs={4} className={classes.informationBlocks}>
+                    <Grid item xs={6} className={classes.informationBlocks}>
                         <Grid  item xs={12} style={{borderLeft:'1px solid #ebedf5'}}>
                             <Typography variant="caption" className={classes.infoCaption}>
                                 Speed
@@ -195,8 +160,8 @@ function InformationItem(props) {
     );
 }
 
-InformationItem.propTypes = {
+ApartmentContent.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(InformationItem);
+export default withStyles(styles)(ApartmentContent);
