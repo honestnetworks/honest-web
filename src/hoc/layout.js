@@ -1,4 +1,3 @@
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuDown from '@material-ui/icons/ArrowDropDown';
 import Menu from '@material-ui/core/Menu';
 import React from 'react';
@@ -15,6 +14,8 @@ import {NavLink, withRouter} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import Hidden from '@material-ui/core/Hidden';
 import logoTitle from 'assets/images/login-title-image.png';
+import AppFooter from 'components/AppFooter';
+import Avatar from '@material-ui/core/Avatar';
 
 
 const drawerWidth = 240;
@@ -24,7 +25,7 @@ const styles = theme => ({
         flexGrow: 1,
     },
     appFrame: {
-        height: '100vh',
+        // height: '100vh',
         zIndex: 1,
         overflow: 'hidden',
         position: 'relative',
@@ -95,7 +96,6 @@ const styles = theme => ({
         }),
         marginTop:'6vh',
         overflow:'auto',
-        padding:'0 4vw',
         [theme.breakpoints.only('xs')]: {
             padding:'4vw 4vw 4vw 0vw',
         }
@@ -148,6 +148,13 @@ const styles = theme => ({
         "&:focus":{
             border:'rgba(255,255,255,1) 1px solid',
         }
+    },
+    avatar: {
+        color: theme.honest.general.main,
+        background: '#dbe7ff',
+        width: '2rem',
+        height: '2rem',
+        fontSize: '0.85rem'
     }
 });
 
@@ -209,7 +216,7 @@ class PersistentDrawer extends React.Component {
                                 </Hidden>
                             </Grid>
                             <Grid item xs={4} style={{justifyContent:'center', display:'flex'}} className={classes.navBlock}>
-                                <NavLink to={'/home'}>Dashboard</NavLink>
+                                <NavLink to={'/dashboard'}>Dashboard</NavLink>
                                 <NavLink to={'/contacts'}>Contact</NavLink>
                             </Grid>
                             <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
@@ -218,14 +225,16 @@ class PersistentDrawer extends React.Component {
                                     <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/>
                                 </IconButton>
                                 {auth && (
-                                    <div   style={{display: 'flex', alignItems: 'center', color:'#a0a6b5'}}>
+                                    <div  style={{display: 'flex', alignItems: 'center', color:'#a0a6b5', fontSize: '0.85rem'}}>
                                         <IconButton
                                             aria-owns={openMenu ? 'menu-appbar' : null}
                                             aria-haspopup="true"
                                         >
-                                            <AccountCircle style={{width:'2rem',height:'2rem'}}/>
+                                            <Avatar className={classes.avatar}>
+                                                JN
+                                            </Avatar>
                                         </IconButton>
-                                        test
+                                        John Nelson
                                         <Menu
                                             id="menu-appbar"
                                             anchorEl={anchorEl}
@@ -263,6 +272,7 @@ class PersistentDrawer extends React.Component {
                         className={classNames(classes.content)}
                     >
                         {this.props.children}
+                        <AppFooter />
                     </main>
                 </div>
             </div>

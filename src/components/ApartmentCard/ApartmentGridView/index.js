@@ -10,16 +10,8 @@ import Grid from '@material-ui/core/Grid';
 
 const styles =(theme)=> ({
     card: {
-        minWidth: 275,
-        position:'relative',
         boxShadow:'0 1px 3px 0 rgba(201, 203, 209, 0.24)',
-        borderRadius:'6px',
-        [theme.breakpoints.down('sm')]: {
-            marginLeft:'2vh'
-        },
-        '@media(max-width: 710px)' : {
-            // height:'auto'
-        }
+        borderRadius:'5px',
     },
     bullet: {
         display: 'inline-block',
@@ -58,7 +50,7 @@ const styles =(theme)=> ({
         paddingBottom:'0px'
     },
     mainContent:{
-        padding: '2vh 2vh 2vh 2vh',
+        padding: '1.2rem',
         marginTop: '0'
     },
     informationBlocks:{
@@ -114,21 +106,20 @@ const styles =(theme)=> ({
 });
 
 const ApartmentGridView = (props) => {
-    console.log(props);
     const { classes, building } = props;
     return (
             <Grid item sm={12} style={{margin:'0 auto'}}>
                 <Card className={classes.card}>
                     <Grid  container spacing={8} className={classes.mainContent}>
                         <ApartmentHeader building={building}/>
-                        <Grid item xs={12} md={12} className={classes.mediaContainer}>
+                        <Grid item xs={12} className={classes.mediaContainer}>
                             <CardMedia
                                 className={classes.cover}
                                 image={props.building.imageUrl}
                                 title="Live from space album cover"
                             />
                         </Grid>
-                        <Grid item xs={12} md={12}>
+                        <Grid item xs={12}>
                             <Grid  container spacing={8} className={classes.informationBlocks}>
                                 <ApartmentContent
                                     buldingName={building.name}

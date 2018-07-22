@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import {ConnectedRouter} from 'react-router-redux';
+import React, { Component, Fragment } from 'react';
+import { ConnectedRouter } from 'react-router-redux';
 import PrivateRoute from "components/PrivateRoute";
-import {history} from "store/configure-store"
+import { history } from "store/configure-store"
 import { connect } from 'react-redux';
 import stickAPI from 'api/config';
 import ConfirmPassword from 'components/ResetPassword/ConfirmPassword.js';
 import Login from 'pages/Login';
 import ForgotPassword from 'pages/ForgotPassword';
 import Profile from 'components/Profile';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Dashboard from 'pages/Dashboard';
 import DashboardDetails from 'pages/Dashboard/DashboardDetails';
 import Contacts from 'pages/Contact';

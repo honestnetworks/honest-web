@@ -186,43 +186,43 @@ const ApartmentListView = (props) => {
     return (
             <Grid container justify="center">
                 <Grid item xs={9} style={{marginLeft:'2rem'}}>
-            <Card className={classes.card}>
-                <Grid  container spacing={8} className={classes.mainContent}>
-                    <Grid item xs={12} md={3} className={classes.mediaContainer}>
-                        <CardMedia
-                            className={classes.cover}
-                            image={props.building.imageUrl}
-                            title="Live from space album cover"
-                        />
-                    </Grid>
-                    <Grid item xs={12} md={9}>
-                        <Grid container spacing={8} className={classes.informationBlocks}>
-                            <Grid item xs={5} className={classes.contactBlock}>
-
-                                <Grid item xs={12} className={classes.relativeBlock}>
-                                    <Typography variant="caption" className={classes.buildCity}>
-                                        {props.building.city}
-                                    </Typography>
-                                    <div className={classes.buildAddress} >
-                                        {props.building.name} <Chip label="Active" className={classes.chip} />
-                                    </div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                <ApartmentContactBlock />
-                                </Grid>
-
+                    <Card className={classes.card}>
+                        <Grid  container spacing={8} className={classes.mainContent}>
+                            <Grid item xs={12} md={3} className={classes.mediaContainer}>
+                                <CardMedia
+                                    className={classes.cover}
+                                    image={props.building.imageUrl}
+                                    title="Live from space album cover"
+                                />
                             </Grid>
-                            <Grid item xs={12} md={7}>
-                            <ApartmentContent
-                                buldingName={props.building.name}
-                                upTime = {'88.99'}
-                                speed={'980'}
-                            />
+                            <Grid item xs={12} md={9}>
+                                <Grid container spacing={8} className={classes.informationBlocks}>
+                                    <Grid item xs={5} className={classes.contactBlock}>
+
+                                        <Grid item xs={12} className={classes.relativeBlock}>
+                                            <Typography variant="caption" className={classes.buildCity}>
+                                                {props.building.city}
+                                            </Typography>
+                                            <div className={classes.buildAddress} >
+                                                {props.building.name} <Chip label="Active" className={classes.chip} />
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                        <ApartmentContactBlock />
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid item xs={12} md={7}>
+                                    <ApartmentContent
+                                        buldingName={props.building.name}
+                                        upTime = {'88.99'}
+                                        speed={'980'}
+                                    />
+                                    </Grid>
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Grid>
-            </Card>
+                    </Card>
                 </Grid>
                 <IconButton
                     TouchRippleProps={{

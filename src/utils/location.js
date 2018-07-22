@@ -1,3 +1,3 @@
 export const checkIfHomePage = (path) => {
-    return Boolean(path && path.includes('/home'));
+    return Boolean(path && path.includes('/dashboard'));
 };

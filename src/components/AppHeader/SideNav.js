@@ -184,7 +184,7 @@ class SideNav extends React.Component  {
 
 
                 <List component="nav" className={classes.navList}>
-                    <NavLink to="/home">
+                    <NavLink to="/dashboard">
                         <ListItem button>
 
                             <ListItemIcon>

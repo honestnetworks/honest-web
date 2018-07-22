@@ -2,9 +2,20 @@
 @import "styles/Profile.scss";
 @import "styles/ResetPassword.scss";
 @import "styles/Boundle.scss";
-html {
-  //font-family: 'Poppins', sans-serif!important;
+
+html, body {
   font-family: Gilroy-Medium,sans-serif;
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.App {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
 }
 
 a {
