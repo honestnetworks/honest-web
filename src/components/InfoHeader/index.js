@@ -6,17 +6,18 @@ import classNames from 'classnames';
 
 const styles = theme => ({
   title: {
+    marginTop: 16,
     textTransform:'uppercase',
     textAlign:'center',
     fontSize:'0.625rem',
     color:'#bebfcc'
   },
   subtitle: {
-    marginBottom: 16,
     fontSize: '18px',
     color:'#171d33',
     fontWeight:'500',
-    textAlign:'center'
+    textAlign:'center',
+    marginBottom: 8
   },
   caption: {
     color: '#a0a6b5',

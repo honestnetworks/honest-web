@@ -39,7 +39,6 @@ const styles = theme => ({
         backgroundColor:'white',
         boxShadow:'none',
         color:'white',
-        padding:'0 150px',
         [theme.breakpoints.only('sm')]: {
             padding:'0 50px'
         },

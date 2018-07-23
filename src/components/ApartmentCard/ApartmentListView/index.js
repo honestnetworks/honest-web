@@ -62,7 +62,7 @@ const styles =(theme)=> ({
     },
     cover:{
         height:'100%',
-        minHeight:'12vh',
+        minHeight:'117px',
         borderRadius:'4px'
     },
     headerContent:{

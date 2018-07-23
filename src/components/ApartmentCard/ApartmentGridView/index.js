@@ -42,7 +42,7 @@ const styles =(theme)=> ({
     },
     cover:{
         height:'100%',
-        minHeight:'12vh',
+        minHeight:'117px',
         borderRadius:'4px'
     },
     headerContent:{
@@ -110,7 +110,7 @@ const ApartmentGridView = (props) => {
     return (
             <Grid item sm={12} style={{margin:'0 auto'}}>
                 <Card className={classes.card}>
-                    <Grid  container spacing={8} className={classes.mainContent}>
+                    <Grid container spacing={8} className={classes.mainContent}>
                         <ApartmentHeader building={building}/>
                         <Grid item xs={12} className={classes.mediaContainer}>
                             <CardMedia

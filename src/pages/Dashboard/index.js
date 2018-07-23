@@ -67,7 +67,7 @@ const styles = theme => ({
         [theme.breakpoints.down('sm')]: {
             marginLeft: '2vh'
         },
-        marginBottom: '40px',
+        marginBottom: '20px',
         marginTop: '40px',
         fontWeight: 500,
         display: 'flex'
@@ -97,7 +97,9 @@ const styles = theme => ({
             cursor: 'pointer'
         },
         '& svg': {
-            color: '#c2c6d1'
+            color: '#c2c6d1',
+            height: '16px',
+            width: '16px'
         }
     },
     gridButton: {
@@ -112,10 +114,13 @@ const styles = theme => ({
             cursor: 'pointer'
         },
         '& svg': {
-            color: '#c2c6d1'
+            color: '#c2c6d1',
+            height: '16px',
+            width: '16px'
         }
     },
     navBlock: {
+        paddingRight: '2rem',
         display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'center',
@@ -140,7 +145,8 @@ const styles = theme => ({
         color:theme.honest.general.main 
     },
     gridContactBlock:{ 
-        marginTop:'1rem' 
+        marginTop:'1rem',
+        marginBottom: '2rem' 
     }
 });
 
@@ -192,8 +198,8 @@ class Home extends Component {
         const {classes} = this.props;
 
         return (
-            <Grid item xs={12} sm={isList? 12 : 9} style={{margin:'0 auto'}}>
-                <Grid container spacing={16}>
+            <Grid item xs={12} lg={isList? 12 : 8} style={{margin:'0 auto'}}>
+                <Grid container>
                     {isList ? (
                         buildings.map(item => (
                             <ApartmentListView 
@@ -203,17 +209,17 @@ class Home extends Component {
                             />
                         )
                     )) : (
-                        buildings.map(item => (
-                            <Grid item xs={6}>
+                        buildings.map((item, index) => (
+                            <Grid item xs={6} key={index}>
                                 <Grid container>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} lg={11}>
                                         <ApartmentGridView 
                                             key={item.id}
                                             building={item}
                                             linkToDetails={false}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} className={classes.gridContactBlock}>
+                                    <Grid item xs={12} lg={11} className={classes.gridContactBlock}>
                                         <Grid container>
                                             <Grid item xs={6}>
                                                 <ApartmentContactBlock />
@@ -246,15 +252,15 @@ class Home extends Component {
             <Layout>
                 <HonestContainer>
                     <Grid container justify="center">
-                        <Grid item xs={9}>
+                        <Grid item xs={9} lg={8}>
                             <div className={classes.homeTitle}>
                                 <Grid container>
-                                    <Grid item xs={12} sm={6}>
+                                    <Grid item xs={12} lg={6}>
                                         Your Properties <Chip label="4" className={classes.chip}/>
                                     </Grid>
-                                    <Grid item xs={12} sm={6} className={classes.navBlock}>
+                                    <Grid item xs={12} lg={6} className={classes.navBlock}>
                                         Sort by:<span>Speed</span>
-                                        <DropDownIcon/>
+                                        <DropDownIcon style={{padding: '0 0.5rem'}} />
                                         <div 
                                             className={classNames(classes.listButton, {
                                                 'active': this.state.isList
