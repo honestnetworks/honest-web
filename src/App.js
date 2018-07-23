@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { ConnectedRouter } from 'react-router-redux';
 import PrivateRoute from "components/PrivateRoute";
 import { history } from "store/configure-store"

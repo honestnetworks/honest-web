@@ -23,7 +23,7 @@ const SpeedtestIndicator = ({
             <img 
               className={classes.image}
               src={imageUrl} 
-              alt="speedtest-image" 
+              alt="speedtest" 
             />
           </Grid>
         </Grid>

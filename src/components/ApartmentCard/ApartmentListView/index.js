@@ -72,19 +72,11 @@ const styles =(theme)=> ({
         padding: '2vh 2vh 2vh 2vh',
         marginTop: '0'
     },
-    informationBlocks:{
-    },
     actionButton:{
         display:'inline-flex',
         position:'absolute',
         top:'3px',
         right:0
-    },
-    informationIcon:{
-        fontSize:'3vw',
-        '@media(max-width: 710px)' : {
-            fontSize:'7vw',
-        }
     },
     iconImage:{
         width:'4vw',

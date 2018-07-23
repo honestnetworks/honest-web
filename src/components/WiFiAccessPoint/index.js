@@ -23,7 +23,6 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
     height: '2rem',
     width: '2rem',
     backgroundColor: '#dbe7ff',

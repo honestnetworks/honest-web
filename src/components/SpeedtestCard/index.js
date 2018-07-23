@@ -49,11 +49,11 @@ const SpeedtestCard = ({
               <Grid item xs={12} className={classes.iconWrapper}>
                 <img 
                   src={fireImage1}
-                  alt="fire-image"
+                  alt="fire"
                   className={classes.icon}
                 />
               </Grid>
-              <Grid item xs={12} className>
+              <Grid item xs={12}>
                 <InfoHeader 
                   title={'Speed'}
                   subtitle={'980 Mbps'}

@@ -8,7 +8,7 @@ import Layout from 'hoc/layout';
 import ApartmentGridView from 'components/ApartmentCard/ApartmentGridView';
 import BackLink from 'components/BackLink';
 import RequestTextField from 'components/RequestTextField';
-import StatisticsBlock from 'components/StatisticsBlock';
+import DetailsStatisticsGrid from 'components/DetailsStatisticsGrid';
 import NetworkChart from 'components/NetworkChart';
 import SpeedtestIndicator from 'components/SpeedtestIndicator';
 import SpeedtestCard from 'components/SpeedtestCard';
@@ -49,6 +49,19 @@ const wifiPoints = [
         users: 5
     }
 ]
+
+const statistics = [
+    {
+        label: 'Tenant Satisfaction',
+        value: 100,
+        unit: '%'
+    },
+    {
+        label: 'Ticket Response',
+        value: 2.23,
+        unit: 'min'
+    }
+];
 
 const styles = (theme) => ({
     root: {
@@ -118,9 +131,8 @@ class DashboardDetails extends Component {
                                         />
                                     </Grid>
                                     <Grid item xs={12} className={classes.statictics}>
-                                        <StatisticsBlock
-                                            tenantSatisfactionPercent={100}
-                                            ticketResponseTime={2.23}
+                                        <DetailsStatisticsGrid
+                                            statistics={[...statistics]}
                                         />
                                     </Grid>
                                 </Grid>

@@ -116,7 +116,6 @@ class RequestTextField extends Component {
 
   render() {
     const { classes } = this.props;
-    const { text } = this.state;
     const textField = this.renderTextField();
 
     return (

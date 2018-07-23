@@ -1,8 +1,13 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 const styles = theme => ({
+  root: {},
+  extendedValue: {},
+  extendedUnit: {},
+  extendedLabel: {},
   value: {
     fontSize: '2rem',
   },
@@ -31,39 +36,25 @@ const styles = theme => ({
 
 const StatisticsBlock = ({
   classes,
-  tenantSatisfactionPercent,
-  ticketResponseTime
+  value,
+  unit,
+  label
 }) => (
     <div className="StatisticsBlock">
-      <Grid container>
-        <Grid item xs={6}>
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
           <div className={classes.blockItem}>
-            <div className={classes.value}>
-              <div>{tenantSatisfactionPercent}</div>
+            <div className={classNames(classes.value, classes.extendedValue)}>
+              <div>{value}</div>
               <div className={classes.unitWrapper}>
-                <div className={classes.unit}>
-                  %
+                <div className={classNames(classes.unit, classes.extendedUnit)}>
+                  {unit}
                 </div>
               </div>
             </div>
           </div>
-          <div className={classes.label}>
-            {'Tenant Satisfaction'}
-          </div>
-        </Grid>
-        <Grid item xs={6}>
-          <div className={classes.blockItem}>
-            <div className={classes.value}>
-              <div>{ticketResponseTime}</div>
-              <div className={classes.unitWrapper}>
-                <div className={classes.unit}>
-                  min
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={classes.label}>
-            {'Ticket Response'}
+          <div className={classNames(classes.label, classes.extendedLabel)}>
+            {label}
           </div>
         </Grid>
       </Grid>
