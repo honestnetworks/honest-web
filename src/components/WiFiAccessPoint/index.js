@@ -52,7 +52,7 @@ const WiFiAccessPoint = ({
 }) => (
     <div className="WiFiAccessPoint">
       <Grid container className={classes.root}>
-        <Grid item xs={5} className={classes.iconWrapper}>
+        <Grid item xs={5} lg={6}className={classes.iconWrapper}>
           <div className={classes.icon}>
             <img 
               src={WifiIcon}
@@ -61,7 +61,7 @@ const WiFiAccessPoint = ({
           </div>
           {name}
         </Grid>
-        <Grid item xs={4} className={classes.uptime}>
+        <Grid item xs={4} lg={3} className={classes.uptime}>
           {`${uptime} %`}
         </Grid>
         <Grid item xs={3} className={classes.users}>

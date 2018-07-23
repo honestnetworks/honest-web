@@ -16,6 +16,8 @@ import Hidden from '@material-ui/core/Hidden';
 import logoTitle from 'assets/images/login-title-image.png';
 import AppFooter from 'components/AppFooter';
 import Avatar from '@material-ui/core/Avatar';
+import HonestContainer from 'hoc/HonestContainer';
+import { checkIfDashboardPage } from 'utils/location';
 
 
 const drawerWidth = 240;
@@ -51,7 +53,7 @@ const styles = theme => ({
             color:'#a0a6b5',
             padding:'0 1rem'
         },
-        '& a.active':{
+        '& a.active, & a.selected':{
             color:'#4c84ff'
         },
         '& a:after':{
@@ -64,7 +66,7 @@ const styles = theme => ({
             position:'relative',
             top:'22px'
         },
-        '& a.active:after':{
+        '& a.active:after, a.selected:after':{
             width:'100%',
         },
 
@@ -190,7 +192,8 @@ class PersistentDrawer extends React.Component {
     };
 
     render() {
-        const {classes} = this.props;
+        console.log("props", this.props)
+        const {classes, location: {pathname}} = this.props;
         const {openDrawer, auth, anchorEl} = this.state;
         const openMenu = Boolean(anchorEl);
 
@@ -200,73 +203,81 @@ class PersistentDrawer extends React.Component {
                     <AppBar
                         className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
                     >
-                        <Toolbar disableGutters={!openDrawer}>
-                            <Grid item xs={4}>
-                                <Hidden only={'xs'}>
-                            <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                <img src={logoTitle} alt="logo"/>
-                                {/*<div className={classes.margin}>*/}
-                                    {/*<Hidden only={'xs'}>*/}
-                                    {/*<Grid container alignItems="flex-end">*/}
-                                    {/*</Grid>*/}
-                                    {/*</Hidden>*/}
-                                {/*</div>*/}
+                        <HonestContainer>
 
-                            </Typography>
-                                </Hidden>
-                            </Grid>
-                            <Grid item xs={4} style={{justifyContent:'center', display:'flex'}} className={classes.navBlock}>
-                                <NavLink to={'/dashboard'}>Dashboard</NavLink>
-                                <NavLink to={'/contacts'}>Contact</NavLink>
-                            </Grid>
-                            <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
-                            <div style={{display:'flex'}}>
-                                <IconButton style={{}}>
-                                    <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/>
-                                </IconButton>
-                                {auth && (
-                                    <div  style={{display: 'flex', alignItems: 'center', color:'#a0a6b5', fontSize: '0.85rem'}}>
-                                        <IconButton
-                                            aria-owns={openMenu ? 'menu-appbar' : null}
-                                            aria-haspopup="true"
-                                        >
-                                            <Avatar className={classes.avatar}>
-                                                JN
-                                            </Avatar>
-                                        </IconButton>
-                                        John Nelson
-                                        <Menu
-                                            id="menu-appbar"
-                                            anchorEl={anchorEl}
-                                            anchorOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'right',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'top',
-                                                horizontal: 'right',
-                                            }}
-                                            open={openMenu}
-                                            onClose={this.handleMenuClose}
-                                        >
-                                            <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-                                            <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-                                            <MenuItem onClick={this.handleLogout}>Log Out</MenuItem>
-                                        </Menu>
-                                        <IconButton
-                                            aria-owns={openMenu ? 'menu-appbar' : null}
-                                            aria-haspopup="true"
-                                            onClick={this.handleMenuOpen}
-                                            color="inherit"
-                                        >
-                                            <MenuDown/>
-                                        </IconButton>
+                            <Toolbar disableGutters={!openDrawer}>
+                                <Grid item xs={4}>
+                                    <Hidden only={'xs'}>
+                                <Typography variant="subheading" color="inherit" className={classes.flex}>
+                                    <img src={logoTitle} alt="logo"/>
+                                    {/*<div className={classes.margin}>*/}
+                                        {/*<Hidden only={'xs'}>*/}
+                                        {/*<Grid container alignItems="flex-end">*/}
+                                        {/*</Grid>*/}
+                                        {/*</Hidden>*/}
+                                    {/*</div>*/}
 
-                                    </div>
-                                )}
-                            </div>
-                            </Grid>
-                        </Toolbar>
+                                </Typography>
+                                    </Hidden>
+                                </Grid>
+                                <Grid item xs={4} style={{justifyContent:'center', display:'flex'}} className={classes.navBlock}>
+                                    <NavLink 
+                                        to={'/dashboard'} 
+                                        className={classNames({ selected : checkIfDashboardPage(pathname)})}
+                                    >
+                                        Dashboard
+                                    </NavLink>
+                                    <NavLink to={'/contacts'}>Contact</NavLink>
+                                </Grid>
+                                <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
+                                <div style={{display:'flex'}}>
+                                    <IconButton style={{}}>
+                                        <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/>
+                                    </IconButton>
+                                    {auth && (
+                                        <div  style={{display: 'flex', alignItems: 'center', color:'#a0a6b5', fontSize: '0.85rem'}}>
+                                            <IconButton
+                                                aria-owns={openMenu ? 'menu-appbar' : null}
+                                                aria-haspopup="true"
+                                            >
+                                                <Avatar className={classes.avatar}>
+                                                    JN
+                                                </Avatar>
+                                            </IconButton>
+                                            John Nelson
+                                            <Menu
+                                                id="menu-appbar"
+                                                anchorEl={anchorEl}
+                                                anchorOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={openMenu}
+                                                onClose={this.handleMenuClose}
+                                            >
+                                                <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+                                                <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+                                                <MenuItem onClick={this.handleLogout}>Log Out</MenuItem>
+                                            </Menu>
+                                            <IconButton
+                                                aria-owns={openMenu ? 'menu-appbar' : null}
+                                                aria-haspopup="true"
+                                                onClick={this.handleMenuOpen}
+                                                color="inherit"
+                                            >
+                                                <MenuDown/>
+                                            </IconButton>
+
+                                        </div>
+                                    )}
+                                </div>
+                                </Grid>
+                            </Toolbar>
+                        </HonestContainer>
                     </AppBar>
                     <main
                         className={classNames(classes.content)}

@@ -71,8 +71,8 @@ const styles = (theme) => ({
         margin: '1rem 0'
     },
     rightBlock: {
-        paddingLeft: '3rem',
-        paddingTop: '1rem'
+        paddingTop: '1rem',
+        paddingLeft: '1rem'
     },
     blockTitle: {
         paddingTop: '6rem',
@@ -112,7 +112,7 @@ class DashboardDetails extends Component {
                             container 
                             className={classes.root}
                         >
-                            <Grid item xs={3}>
+                            <Grid item xs={3} lg={4}>
                                 <Grid item xs={12}>
                                     <BackLink 
                                         link={'/dashboard'}
@@ -120,24 +120,24 @@ class DashboardDetails extends Component {
                                     />
                                 </Grid>
                                 <Grid container spacing={16}>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} lg={11}>
                                         <ApartmentGridView 
                                             building={{...building}}
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} lg={11}>
                                         <RequestTextField 
                                             placeholder="Enter your request message ..." 
                                         />
                                     </Grid>
-                                    <Grid item xs={12} className={classes.statictics}>
+                                    <Grid item xs={12} lg={11} className={classes.statictics}>
                                         <DetailsStatisticsGrid
                                             statistics={[...statistics]}
                                         />
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={9} className={classes.rightBlock}>
+                            <Grid item xs={9} lg={8} className={classes.rightBlock}>
                                 <Grid container>
                                     <Grid item xs={12}>
                                         <Grid container>
@@ -173,12 +173,12 @@ class DashboardDetails extends Component {
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
-                                            <Grid item xs={12}>
+                                            <Grid item xs={11}>
                                                 <Grid container style={{paddingTop: '4rem'}}>
-                                                    <Grid item xs={6} className={classes.speedCard}>
+                                                    <Grid item xs={6} lg={7} className={classes.speedCard}>
                                                         <SpeedtestCard />
                                                     </Grid>
-                                                    <Grid item xs={6}>
+                                                    <Grid item xs={6} lg={5}>
                                                         <SpeedtestIndicator
                                                             imageUrl={SpeedIcon}
                                                         />

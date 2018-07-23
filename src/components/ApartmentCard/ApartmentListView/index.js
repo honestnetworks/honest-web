@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
@@ -175,6 +176,14 @@ const styles =(theme)=> ({
 const ApartmentListView = (props) => {
     const { classes } = props;
 
+    const handleButtonClick = (id) => {
+        const {history} = props;
+        if(id === ''){
+            return;
+        }
+        history.push(`/details/${id}`)
+    }
+
     return (
             <Grid container justify="center">
                 <Grid item xs={9} style={{marginLeft:'2rem'}}>
@@ -216,18 +225,20 @@ const ApartmentListView = (props) => {
                         </Grid>
                     </Card>
                 </Grid>
-                <IconButton
-                    TouchRippleProps={{
-                        classes: {
-                            root: classes.root
-                        }
-                    }}
-                    className={classes.playButton}
-                    color="primary"
-                >
-                    <PlayIcon className={classes.iconButton}
-                    />
-                </IconButton>
+                    <IconButton
+                        TouchRippleProps={{
+                            classes: {
+                                root: classes.root
+                            }
+                        }}
+                        className={classes.playButton}
+                        color="primary"
+                        onClick={() => handleButtonClick(props.building.id)}
+                    >
+                        <PlayIcon 
+                            className={classes.iconButton}
+                        />
+                    </IconButton>
                 </Grid>
             );
 }
@@ -236,4 +247,4 @@ ApartmentListView.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ApartmentListView);
+export default withStyles(styles)(withRouter(ApartmentListView));

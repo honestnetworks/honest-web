@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import DropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -149,8 +150,16 @@ class Home extends Component {
         this.state = {
             buildings: [...Buildings],
             filteredBuildings: [],
-            isList: false
+            isList: true
         }
+    }
+
+    handleViewMoreClick = (id) => {
+        const {history} = this.props;
+        if(id === ''){
+            return;
+        }
+        history.push(`/details/${id}`);
     }
 
 
@@ -209,7 +218,13 @@ class Home extends Component {
                                             <Grid item xs={6}>
                                                 <ApartmentContactBlock />
                                             </Grid>
-                                            <Grid item xs={6} className={classes.detailLink}> 
+                                            <Grid 
+                                                item 
+                                                xs={6} 
+                                                className={classes.detailLink} 
+                                                onClick={() => this.handleViewMoreClick(item.id)}
+                                                style={{cursor: 'pointer'}}
+                                            > 
                                                 View more 
                                             </Grid> 
                                         </Grid>
@@ -268,5 +283,5 @@ class Home extends Component {
     }
 }
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(withRouter(Home));
 
