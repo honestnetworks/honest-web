@@ -198,15 +198,17 @@ class Home extends Component {
         const {classes} = this.props;
 
         return (
-            <Grid item xs={12} lg={isList? 12 : 8} style={{margin:'0 auto'}}>
+            <Grid item xs={12} lg={isList? 8 : 8} style={{margin:'0 auto'}}>
                 <Grid container>
                     {isList ? (
-                        buildings.map(item => (
-                            <ApartmentListView 
-                                key={item.id}
-                                building={item}
-                                linkToDetails={false}
-                            />
+                        buildings.map((item, index) => (
+                            <Grid item xs={12} key={index}>
+                                <ApartmentListView 
+                                    key={item.id}
+                                    building={item}
+                                    linkToDetails={false}
+                                />
+                            </Grid>
                         )
                     )) : (
                         buildings.map((item, index) => (

@@ -22,7 +22,7 @@ const styles = theme => ({
   caption: {
     color: '#a0a6b5',
     textAlign:'center',
-    fontSize:'0.625rem',
+    fontSize:'0.75rem',
   },
   extendedCaption: {}
 });

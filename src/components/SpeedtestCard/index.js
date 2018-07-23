@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import InfoHeader from 'components/InfoHeader';
 import Card from '@material-ui/core/Card';
+import { Link } from 'react-router-dom';
 
 import fireImage1 from 'assets/icons/fire@3x.png';
 
@@ -19,22 +20,31 @@ const styles = theme => ({
     marginTop: '1rem'
   },
   icon: {
-    width: '18px',
-    height: '20px'
+    width: '22px',
+    height: '26px'
   },
   iconWrapper: {
     background: theme.honest.general.white,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '48px',
-    height: '48px',
+    width: '56px',
+    height: '56px',
     position: 'absolute',
     left: '50%',
     top: '-23%',
     transform: 'translateX(-50%)',
     borderRadius: '50px',
     border: '6px solid #f5f6fa'
+  },
+  linkWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1rem',
+    fontSize: '0.875rem',
+    '& a': {
+      color: theme.honest.general.main
+    }
   }
 });
 
@@ -65,6 +75,11 @@ const SpeedtestCard = ({
               </Grid>
             </Grid>
           </Card>
+        </Grid>
+        <Grid item xs={12} className={classes.linkWrapper}>
+          <Link to={'#'}>
+            {'How we compare'}
+          </Link>
         </Grid>
       </Grid>
   </div>

@@ -15,6 +15,8 @@ import ApartmentContactBlock from '../ApartmentContactBlock';
 
 const styles =(theme)=> ({
     card: {
+        overflow: 'visible',
+        marginRight: '2rem',
         minWidth: 275,
         //height:'35vh',
         marginBottom:'3vh',
@@ -60,26 +62,26 @@ const styles =(theme)=> ({
             paddingRight:'20px!important'
         }
     },
-    cover:{
+    cover: {
         height:'100%',
         minHeight:'117px',
         borderRadius:'4px'
     },
-    headerContent:{
+    headerContent: {
         borderBottom:'1px #e8eaf0 solid',
         paddingBottom:'0px'
     },
-    mainContent:{
+    mainContent: {
         padding: '2vh 2vh 2vh 2vh',
         marginTop: '0'
     },
-    actionButton:{
+    actionButton: {
         display:'inline-flex',
         position:'absolute',
         top:'3px',
         right:0
     },
-    iconImage:{
+    iconImage: {
         width:'4vw',
         [theme.breakpoints.only('xs')]: {
             width:'12vw'
@@ -89,18 +91,20 @@ const styles =(theme)=> ({
         }
 
     },
-    modifyIcon:{
+    modifyIcon: {
         height:'3vw',
         [theme.breakpoints.down('sm')]: {
             height:'7vw'
         }
     },
-    playButton:{
+    playButton: {
+        position: 'absolute',
         alignSelf: 'center',
-        right: '13px',
-        top: '-12px',
-        height:'2rem',
-        width:'2rem',
+        right: '-1.25rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        height:'2.5rem',
+        width:'2.5rem',
         backgroundColor: '#ffffff',
         border:'4px solid #f5f6fa',
         color:'#c2c6d1',
@@ -115,12 +119,12 @@ const styles =(theme)=> ({
         fontSize:'14px',
         zIndex:'1000'
     },
-    contactBlock:{
+    contactBlock: {
         display:'flex',
         justifyContent:'center',
         flexWrap:'wrap'
     },
-    informationBlocks:{
+    informationBlocks: {
         display:'flex',
         flexWrap:'wrap',
         '& img':{
@@ -128,7 +132,7 @@ const styles =(theme)=> ({
             margin:'0 auto'
         }
     },
-    informationIcon:{
+    informationIcon: {
         fontSize:'3.5vw',
         color:'red'
     },
@@ -152,18 +156,18 @@ const styles =(theme)=> ({
             marginRight:'5px'
         }
     },
-    speedIcon:{
+    speedIcon: {
         width:'3.5rem',
         height:'3.5rem'
     },
-    temperatureIcon:{
+    temperatureIcon: {
         width:'1.125rem',
         height:'2.5625rem'
     },
-    contactName:{
+    contactName: {
         color:'#bebfcc'
     },
-    relativeBlock:{
+    relativeBlock: {
         position:'relative'
     },
     buildCity: {
@@ -185,10 +189,10 @@ const ApartmentListView = (props) => {
     }
 
     return (
-            <Grid container justify="center">
-                <Grid item xs={9} style={{marginLeft:'2rem'}}>
+            <Grid container>
+                <Grid item xs={12}>
                     <Card className={classes.card}>
-                        <Grid  container spacing={8} className={classes.mainContent}>
+                        <Grid container spacing={8} className={classes.mainContent}>
                             <Grid item xs={12} md={3} className={classes.mediaContainer}>
                                 <CardMedia
                                     className={classes.cover}
@@ -223,24 +227,24 @@ const ApartmentListView = (props) => {
                                 </Grid>
                             </Grid>
                         </Grid>
+                        <IconButton
+                            TouchRippleProps={{
+                                classes: {
+                                    root: classes.root
+                                }
+                            }}
+                            className={classes.playButton}
+                            color="primary"
+                            onClick={() => handleButtonClick(props.building.id)}
+                        >
+                            <PlayIcon 
+                                className={classes.iconButton}
+                            />
+                        </IconButton>
                     </Card>
                 </Grid>
-                    <IconButton
-                        TouchRippleProps={{
-                            classes: {
-                                root: classes.root
-                            }
-                        }}
-                        className={classes.playButton}
-                        color="primary"
-                        onClick={() => handleButtonClick(props.building.id)}
-                    >
-                        <PlayIcon 
-                            className={classes.iconButton}
-                        />
-                    </IconButton>
-                </Grid>
-            );
+        </Grid>
+    );
 }
 
 ApartmentListView.propTypes = {
