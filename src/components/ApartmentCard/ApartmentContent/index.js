@@ -2,14 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import EmailIcon from '@material-ui/icons/MailOutline';
-import CallIcon from '@material-ui/icons/Call';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
-import Chip from '@material-ui/core/Chip';
 import SpeedIcon2x from 'assets/icons/speed-icon@2x.png';
 import TemperatureIcon2x from 'assets/icons/temperature-icon@2x.png';
+import InfoHeader from 'components/InfoHeader';
 
 const styles = (theme) => ({
     card: {
@@ -25,19 +21,6 @@ const styles = (theme) => ({
     title: {
         marginBottom: 16,
         fontSize: 14,
-    },
-    infoCaption:{
-        textTransform:'uppercase',
-        textAlign:'center',
-        fontSize:'0.625rem',
-        color:'#bebfcc'
-    },
-    infoMessage:{
-        marginBottom: 16,
-        fontSize: '18px',
-        color:'#171d33',
-        fontWeight:'500',
-        textAlign:'center'
     },
     buildAddress:{
         marginBottom: 16,
@@ -131,26 +114,20 @@ const ApartmentContent = (props) => {
                 <Grid container spacing={16}>
 
                     <Grid item xs={6} className={classes.informationBlocks}>
-                        <Grid item xs={12} >
-                            <Typography variant="caption" className={classes.infoCaption}>
-                            Up time
-                            </Typography>
-                            <Typography  variant="caption" className={classes.infoMessage}>
-                                {props.upTime} %
-                            </Typography>
+                        <InfoHeader 
+                            title={'Up time'}
+                            subtitle={`${props.upTime} %`}
+                        />
+                        <Grid item xs={12}>
                             <img src={TemperatureIcon2x} alt="" className={classes.temperatureIcon}/>
                         </Grid>
-
-
                     </Grid>
-                    <Grid item xs={6} className={classes.informationBlocks}>
-                        <Grid  item xs={12} style={{borderLeft:'1px solid #ebedf5'}}>
-                            <Typography variant="caption" className={classes.infoCaption}>
-                                Speed
-                            </Typography>
-                            <Typography variant="caption" className={classes.infoMessage}>
-                                {props.speed} Mbps
-                            </Typography>
+                    <Grid item xs={6} style={{borderLeft:'1px solid #ebedf5'}} className={classes.informationBlocks}>
+                        <InfoHeader 
+                            title={'Speed'}
+                            subtitle={`${props.speed} Mbps`}
+                        />
+                        <Grid item xs={12}>
                             <img src={SpeedIcon2x} alt="" className={classes.speedIcon}/>
                         </Grid>
                     </Grid>

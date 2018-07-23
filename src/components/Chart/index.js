@@ -1,11 +1,9 @@
 import React from 'react';
 import HighchartsReact from 'highcharts-react-official'
-import { createStyles } from '@material-ui/core/styles/createStyles';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const styles = theme => 
-  createStyles({
+const styles = theme => ({
     root: {},
     tchartTtle: {},
     chartBody: {}
