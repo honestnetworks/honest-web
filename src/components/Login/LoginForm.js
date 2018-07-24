@@ -91,10 +91,7 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginTop: '1rem',
-        [theme.breakpoints.only('xs')]: {
-            width: '16.75rem'
-        }
+        marginTop: '1rem'
     },
     forgotPasswordMessage: {
         fontSize: '1rem',
