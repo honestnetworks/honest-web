@@ -88,11 +88,11 @@ const styles = (theme) => ({
         background: theme.honest.general.main,
         color: theme.honest.general.white,
         boxShadow: '0px 4px 12px 0px rgba(76, 132, 255, 0.16)',
-        '&:hover': {
-        background: theme.honest.general.main,
-        color: theme.honest.general.white,
-        boxShadow: '0px 4px 12px 0px rgba(76, 132, 255, 0.16)'
-      }
+            '&:hover': {
+            background: theme.honest.general.main,
+            color: theme.honest.general.white,
+            boxShadow: '0px 4px 12px 0px rgba(76, 132, 255, 0.16)'
+        }
     }
 });
 
