@@ -1,5 +1,10 @@
-if (!String.prototype.startsWith) {
-    String.prototype.startsWith = function(search, pos) {
-        return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
-    };
-}
+import 'core-js/features/string/includes';
+import 'core-js/features/array/includes';
+import 'core-js/features/array/find-index';
+import 'core-js/features/number/parse-int';
+import 'core-js/features/number/is-nan';
+import 'core-js/features/array/find';
+import 'core-js/features/array/from';
+import 'core-js/features/array/index-of';
+import 'core-js/features/symbol/index';
+import 'core-js/features/symbol/iterator';

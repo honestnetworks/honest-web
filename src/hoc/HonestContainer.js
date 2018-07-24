@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import createStyles from '@material-ui/core/styles/createStyles';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -19,10 +18,6 @@ const HonestContainer = (props) => {
         classes,
         children,
         xs, 
-        sm, 
-        md, 
-        lg,
-        xl,
         spacing, 
         justify 
     } = props;
@@ -44,18 +39,6 @@ const HonestContainer = (props) => {
     </div>
   );
 };
-
-// HonestContainer.propTypes = {
-//     classes: PropTypes.object.isRequired,
-//     children: PropTypes.object.isRequired,
-//     xs: PropTypes.number,
-//     sm: PropTypes.number,
-//     md: PropTypes.number,
-//     lg: PropTypes.number,
-//     xl: PropTypes.number,
-//     spacing: PropTypes.string,
-//     justify: PropTypes.string,
-// };
 
 HonestContainer.defaultProps = {
   xs: 12,
