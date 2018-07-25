@@ -6,7 +6,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography'; 
 import EmailIcon from '@material-ui/icons/MailOutline'; 
 import CallIcon from '@material-ui/icons/Call'; 
- 
+import mailIcon from 'assets/images/phone.svg' ;
+import phoneIcon from 'assets/images/mail.svg' ;
+
+
 const styles = (theme) => ({ 
     contactName:{ 
         color:'#bebfcc' 
@@ -28,20 +31,18 @@ const ApartmentContactBlock = (props) => {
         <Grid item xs={12}> 
             <Typography variant="caption" className={classes.contactName}> 
                 London Tucker 
-
                 <IconButton 
                     style={{marginLeft:'10px'}} 
                     className={classes.button} 
                     color="primary"> 
-                    <CallIcon className={classes.iconButton} /> 
+                    <img src={mailIcon} />
+                    {/* <EmailIcon className={classes.iconButton} />  */}
                 </IconButton> 
                 <IconButton 
                     className={classes.button} 
-                    color="primary" 
-                > 
-
-                    <EmailIcon className={classes.iconButton} 
-                    /> 
+                    color="primary"> 
+                    {/* <CallIcon className={classes.iconButton} />  */}
+                    <img src={phoneIcon} />
                 </IconButton> 
             </Typography> 
         </Grid> 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import ArrowBack from '@material-ui/icons/ArrowBack';
-
+// import ArrowBack from '@material-ui/icons/ArrowBack';
+import backIcon from 'assets/images/left-arrow.svg';
 
 
 const styles = theme => ({
@@ -38,7 +38,8 @@ const BackLink = (props) => {
     <div className="BackLink">
       <div className={classes.linkWrapper}>
         <div className={classes.icon}>
-          <ArrowBack />
+          {/* <ArrowBack /> */}
+          <img src={backIcon} />
         </div>
         <div 
           className={classes.link}

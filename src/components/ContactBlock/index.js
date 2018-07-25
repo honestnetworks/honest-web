@@ -2,7 +2,9 @@ import React from 'react';
 import { withStyles } from "@material-ui/core/styles/index";
 import Grid from '@material-ui/core/Grid';
 import MailOutline from '@material-ui/icons/MailOutline';
-import Call from '@material-ui/icons/Call';
+// import Call from '@material-ui/icons/Call';
+import phoneIcon from 'assets/images/phone.svg';
+import mailIcon from 'assets/images/mail-blue.svg';
 import classNames from 'classnames';
 
 const styles  = theme => ({
@@ -62,11 +64,12 @@ const ContactBlock = ({
         >
             <Grid item xs={12} className={classNames(classes.contactInfo, 'phone')}>
                 <div className={classes.phoneWrapper}>
-                    <Call 
+                    {/* <Call 
                         classes={{
                             root: classes.phoneIcon
                         }}
-                    />
+                    /> */}
+                    <img src={phoneIcon} />
                 </div>
                 <span>
                     {'+456 789 9800'}
@@ -74,14 +77,15 @@ const ContactBlock = ({
             </Grid>
             <Grid item xs={12} className={classNames(classes.contactInfo, 'mail')}>
                 <div className={classes.mailWrapper}>
-                    <MailOutline
+                    {/* <MailOutline
                         classes={{
                             root: classes.mailIcon
                         }}
-                    />
+                    /> */}
+                    <img src={mailIcon} />
                 </div>
                 <span>
-                    {'london.tucker@honestnetwork.org'}
+                    {'landon.tucker@honestnetwork.org'}
                 </span>
             </Grid>
         </Grid>

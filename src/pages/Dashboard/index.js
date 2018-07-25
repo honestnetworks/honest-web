@@ -3,8 +3,10 @@ import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import DropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ListIcon from '@material-ui/icons/FormatListBulleted';
-import GridIcon from '@material-ui/icons/GridOn';
+// import ListIcon from '@material-ui/icons/FormatListBulleted';
+import gridIcon from 'assets/images/grid.svg';
+import listIcon from 'assets/images/list.svg';
+// import GridIcon from '@material-ui/icons/GridOn';
 import { withStyles } from '@material-ui/core/styles';
 import Layout from 'hoc/layout';
 import ApartmentListView from 'components/ApartmentCard/ApartmentListView';
@@ -269,7 +271,8 @@ class Home extends Component {
                                             })}
                                             onClick={this.handleList}
                                         >
-                                            <ListIcon/>
+                                            {/* <ListIcon/> */}
+                                            <img src={listIcon} />
                                         </div>
                                         <div 
                                             className={classNames(classes.gridButton, {
@@ -277,7 +280,8 @@ class Home extends Component {
                                             })}
                                             onClick={this.handleGrid}
                                         >
-                                            <GridIcon/>
+                                            {/* <GridIcon/> */}
+                                            <img src={gridIcon} />
                                         </div>
                                     </Grid>
                                 </Grid>

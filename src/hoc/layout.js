@@ -11,9 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import {NavLink, withRouter} from 'react-router-dom';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import Hidden from '@material-ui/core/Hidden';
 import logoTitle from 'assets/images/login-title-image.png';
+import searchIcon from 'assets/images/search.svg';
 import AppFooter from 'components/AppFooter';
 import Avatar from '@material-ui/core/Avatar';
 import HonestContainer from 'hoc/HonestContainer';
@@ -231,7 +232,8 @@ class PersistentDrawer extends React.Component {
                                 <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
                                 <div style={{display:'flex'}}>
                                     <IconButton style={{}}>
-                                        <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/>
+                                        {/* <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/> */}
+                                        <img src={searchIcon} />
                                     </IconButton>
                                     {auth && (
                                         <div  style={{display: 'flex', alignItems: 'center', color:'#a0a6b5', fontSize: '0.85rem'}}>

@@ -135,7 +135,7 @@ class RequestTextField extends Component {
                           CONTACT
                         </div>
                         <div className={classes.name}>
-                          London Tucker
+                          Landon Tucker
                         </div>
                       </Grid>
                     </Grid>
