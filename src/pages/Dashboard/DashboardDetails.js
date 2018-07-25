@@ -24,7 +24,7 @@ const building = {
         "city": 'New York',
         "networkStatus": 'Active',
         "address": '222 Jersey City Blvd, Jersey City, NJ 07305, USA',
-        "name": 'Jersey City'
+        "name": '800 Sixth Ave'
 };
 
 const wifiPoints = [

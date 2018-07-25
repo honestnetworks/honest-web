@@ -137,16 +137,16 @@ const styles =(theme)=> ({
         color:'red'
     },
     chip: {
-        margin: theme.spacing.unit,
+        // margin: theme.spacing.unit,
         color:'#22bc8a',
         fontSize:'12px',
         paddingTop:'5px',
         paddingBottom:'5px',
         height:'auto',
         backgroundColor:'#d4f1e8',
-        position:'absolute',
-        top:'-6px',
-        right:'0',
+        // position:'absolute',
+        // top:'-6px',
+        // right:'0',
         '& span:before':{
             content:`''`,
             borderRadius:'90px',
@@ -168,12 +168,16 @@ const styles =(theme)=> ({
         color:'#bebfcc'
     },
     relativeBlock: {
-        position:'relative'
+        position:'relative',
+        '& div':{
+            display: 'flex',
+            justifyContent: 'space-between',
+        }
     },
     buildCity: {
         textTransform:'uppercase',
         color: '#bebfcc',
-        fontSize: '0.625rem'
+        fontSize: '0.625rem',
     }
 });
 

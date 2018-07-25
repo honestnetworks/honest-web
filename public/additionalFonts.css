@@ -1,13 +1,33 @@
 @font-face {
-    font-family:"Gilroy-SemiBold";
-    src:url("fonts/Gilroy-SemiBold.ttf") format("ttf");
-    font-weight:500;
-    font-style:normal;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/Regular/Gilroy-Regular.eot'); /* IE9 Compat Modes */
+    src: local('Gilroy'), local('Gilroy'),
+         url('./fonts/Regular/Gilroy-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/Regular/Gilroy-Regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/Regular/Gilroy-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/Regular/Gilroy-Regular.svg') format('svg'); /* Legacy iOS */
 }
-
 @font-face {
-    font-family:"Gilroy-Medium";
-    src:url("fonts/Gilroy-Medium.ttf") format("ttf");
-    font-weight:500;
-    font-style:normal;
+    font-family: 'Gilroy-Medium';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./fonts/Medium/Gilroy-Medium.eot'); /* IE9 Compat Modes */
+    src: local('Gilroy-Medium'), local('Gilroy-Medium'),
+         url('./fonts/Medium/Gilroy-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/Medium/Gilroy-Medium.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/Medium/Gilroy-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/Medium/Gilroy-Medium.svg') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family: 'Gilroy-Semibold';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./fonts/Semibold/Gilroy-SemiBold.eot'); /* IE9 Compat Modes */
+    src: local('Gilroy-Semibold'), local('Gilroy-Semibold'),
+         url('./fonts/Semibold/Gilroy-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/Semibold/Gilroy-SemiBold.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/Semibold/Gilroy-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/Semibold/Gilroy-SemiBold.svg') format('svg'); /* Legacy iOS */
 }
