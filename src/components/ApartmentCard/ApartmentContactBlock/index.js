@@ -30,7 +30,7 @@ const ApartmentContactBlock = (props) => {
     return ( 
         <Grid item xs={12}> 
             <Typography variant="caption" className={classes.contactName}> 
-                London Tucker 
+                Landon Tucker 
                 <IconButton 
                     style={{marginLeft:'10px'}} 
                     className={classes.button} 

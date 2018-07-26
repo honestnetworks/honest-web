@@ -33,10 +33,11 @@ const styles = (theme) => ({
       fontSize: '0.75rem'
   },
   name: {
+    fontSize: '0.85rem'
   },
   caption: {
     color: '#bebfcc',
-    fontSize: '0.55rem'
+    fontSize: '0.65rem'
   },
   avatarInfo: {
     fontSize: '0.75rem',

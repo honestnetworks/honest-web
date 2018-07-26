@@ -7,6 +7,9 @@ html, body {
   font-family: 'Gilroy-Semibold', sans-serif;
   height: 100%;
 }
+.highcharts-container{
+  font-family: 'Gilroy-Semibold'!important;
+}
 body {
   display: flex;
   flex-direction: column;
