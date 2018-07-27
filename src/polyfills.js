@@ -1,4 +1,4 @@
-import 'core-js/features/string/includes';
+import 'core-js/features/string';
 import 'core-js/features/array/includes';
 import 'core-js/features/array/find-index';
 import 'core-js/features/number/parse-int';
