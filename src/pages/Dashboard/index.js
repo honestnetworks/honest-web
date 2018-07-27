@@ -13,9 +13,10 @@ import HonestContainer from 'hoc/HonestContainer';
 import ApartmentContactBlock from 'components/ApartmentCard/ApartmentContactBlock';
 import classNames from 'classnames';
 
-import flatImage1 from 'assets/images/flatImage-1.jpg';
-import flatImage2 from 'assets/images/flatImage-2.jpg';
-import flatImage3 from 'assets/images/flatImage-3.jpg';
+import flatImage1 from 'assets/images/flatImage-1.png';
+import flatImage2 from 'assets/images/flatImage-2.png';
+import flatImage3 from 'assets/images/flatImage-3.png';
+import flatImage4 from 'assets/images/flatImage-4.png';
 
 const Buildings = [
     {
@@ -44,7 +45,7 @@ const Buildings = [
     },
     {
         "id": 4,
-        "imageUrl": flatImage3,
+        "imageUrl": flatImage4,
         "networkStatus": 'Active',
         "city": 'New York',
         "address": '182 NJ-10, East Hanover, NJ 07936, USA',
