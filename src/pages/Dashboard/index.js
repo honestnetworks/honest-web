@@ -88,7 +88,7 @@ const styles = theme => ({
     },
     listButton: {
         border: '1px solid #c2c6d1',
-        borderRight:'none',
+        borderRight: 'none',
         display: 'flex',
         height: '40px',
         width: '40px',
@@ -131,24 +131,24 @@ const styles = theme => ({
         '& .active>svg': {
             color: theme.honest.general.main
         },
-        '& .active':{
+        '& .active': {
             background: theme.honest.general.white
         },
         '& span': {
             color: '#171d33',
-            paddingLeft:'5px'
+            paddingLeft: '5px'
         }
     },
-    detailLink:{ 
-        fontSize:'0.875rem', 
-        display:'flex', 
-        justifyContent:'flex-end', 
-        alignItems:'center', 
-        color:theme.honest.general.main 
+    detailLink: {
+        fontSize: '0.875rem',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        color: theme.honest.general.main
     },
-    gridContactBlock:{ 
-        marginTop:'1rem',
-        marginBottom: '2rem' 
+    gridContactBlock: {
+        marginTop: '1rem',
+        marginBottom: '2rem'
     }
 });
 
@@ -163,8 +163,8 @@ class Home extends Component {
     }
 
     handleViewMoreClick = (id) => {
-        const {history} = this.props;
-        if(id === ''){
+        const { history } = this.props;
+        if (id === '') {
             return;
         }
         history.push(`/details/${id}`);
@@ -192,57 +192,57 @@ class Home extends Component {
         let filtered = this.state.buildings.filter((item) => {
             return item.name.indexOf(keyword) > -1
         });
-        this.setState({filteredBuildings: filtered});
+        this.setState({ filteredBuildings: filtered });
     };
 
     renderApartmentCards = () => {
-        const {isList, buildings} = this.state;
-        const {classes} = this.props;
+        const { isList, buildings } = this.state;
+        const { classes } = this.props;
 
         return (
-            <Grid item xs={12} lg={isList? 8 : 8} style={{margin:'0 auto'}}>
+            <Grid item xs={12} lg={isList ? 8 : 8} style={{ margin: '0 auto' }}>
                 <Grid container>
                     {isList ? (
                         buildings.map((item, index) => (
                             <Grid item xs={12} key={index}>
-                                <ApartmentListView 
+                                <ApartmentListView
                                     key={item.id}
                                     building={item}
                                     linkToDetails={false}
                                 />
                             </Grid>
                         )
-                    )) : (
-                        buildings.map((item, index) => (
-                            <Grid item xs={6} key={index}>
-                                <Grid container>
-                                    <Grid item xs={12} lg={11}>
-                                        <ApartmentGridView 
-                                            key={item.id}
-                                            building={item}
-                                            linkToDetails={false}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} lg={11} className={classes.gridContactBlock}>
-                                        <Grid container>
-                                            <Grid item xs={6}>
-                                                <ApartmentContactBlock />
+                        )) : (
+                            buildings.map((item, index) => (
+                                <Grid item xs={6} key={index}>
+                                    <Grid container>
+                                        <Grid item xs={12} lg={11}>
+                                            <ApartmentGridView
+                                                key={item.id}
+                                                building={item}
+                                                linkToDetails={false}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} lg={11} className={classes.gridContactBlock}>
+                                            <Grid container>
+                                                <Grid item xs={6}>
+                                                    <ApartmentContactBlock />
+                                                </Grid>
+                                                <Grid
+                                                    item
+                                                    xs={6}
+                                                    className={classes.detailLink}
+                                                    onClick={() => this.handleViewMoreClick(item.id)}
+                                                    style={{ cursor: 'pointer' }}
+                                                >
+                                                    View more
                                             </Grid>
-                                            <Grid 
-                                                item 
-                                                xs={6} 
-                                                className={classes.detailLink} 
-                                                onClick={() => this.handleViewMoreClick(item.id)}
-                                                style={{cursor: 'pointer'}}
-                                            > 
-                                                View more 
-                                            </Grid> 
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Grid>
-                            </Grid>
-                        )
-                    ))}
+                            )
+                            ))}
                 </Grid>
             </Grid>
         )
@@ -260,28 +260,26 @@ class Home extends Component {
                             <div className={classes.homeTitle}>
                                 <Grid container>
                                     <Grid item xs={12} lg={6}>
-                                        Your Properties <Chip label="4" className={classes.chip}/>
+                                        Your Properties <Chip label="4" className={classes.chip} />
                                     </Grid>
                                     <Grid item xs={12} lg={6} className={classes.navBlock}>
                                         Sort by:<span>Speed</span>
-                                        <DropDownIcon style={{padding: '0 0.5rem'}} />
-                                        <div 
+                                        <DropDownIcon style={{ padding: '0 0.5rem' }} />
+                                        <div
                                             className={classNames(classes.listButton, {
                                                 'active': this.state.isList
                                             })}
                                             onClick={this.handleList}
                                         >
-                                            {/* <ListIcon/> */}
-                                            <img src={listIcon} />
+                                            <img src={listIcon} alt="list" />
                                         </div>
-                                        <div 
+                                        <div
                                             className={classNames(classes.gridButton, {
                                                 'active': !this.state.isList
                                             })}
                                             onClick={this.handleGrid}
                                         >
-                                            {/* <GridIcon/> */}
-                                            <img src={gridIcon} />
+                                            <img src={gridIcon} alt="grid" />
                                         </div>
                                     </Grid>
                                 </Grid>
