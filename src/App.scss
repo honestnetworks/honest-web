@@ -16,6 +16,9 @@ body {
 }
 .App {
   flex: 1 0 auto;
+  header{
+    padding-right: 0!important;
+  }
 }
 .footer {
   flex-shrink: 0;

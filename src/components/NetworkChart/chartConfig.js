@@ -10,10 +10,12 @@ const config = {
         backgroundColor: 'transparent',
         spacingLeft: 0,
         cropThreshold: 0,
+        height: 450,
     },
     legend: {
         verticalAlign: 'top',
         layout: 'horizontal',
+        itemMarginBottom: 40, 
         symbolHeight: 2,
         symbolWidth: 25,
         symbolRadius: 1,
@@ -96,7 +98,7 @@ const config = {
         },
         name: 'Label',
         visible: false,
-        data: [450, 550, 375, 600, 450],
+        data: [600, 750, 800, 700, 500],
 
     }, {
         marker: {
@@ -111,7 +113,7 @@ const config = {
         },
         name: 'Lorem',
         visible: false,
-        data: [450, 550, 375, 600, 450],
+        data: [300, 200, 225, 250, 275],
 
     }]
 };

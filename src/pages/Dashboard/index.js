@@ -3,10 +3,8 @@ import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import DropDownIcon from '@material-ui/icons/ArrowDropDown';
-// import ListIcon from '@material-ui/icons/FormatListBulleted';
-import gridIcon from 'assets/images/grid.svg';
-import listIcon from 'assets/images/list.svg';
-// import GridIcon from '@material-ui/icons/GridOn';
+import gridIcon from 'assets/icons/grid.svg';
+import listIcon from 'assets/icons/list.svg';
 import { withStyles } from '@material-ui/core/styles';
 import Layout from 'hoc/layout';
 import ApartmentListView from 'components/ApartmentCard/ApartmentListView';
@@ -212,30 +210,20 @@ class Home extends Component {
                                 />
                             </Grid>
                         )
-                        )) : (
-                            buildings.map((item, index) => (
-                                <Grid item xs={6} key={index}>
-                                    <Grid container>
-                                        <Grid item xs={12} lg={11}>
-                                            <ApartmentGridView
-                                                key={item.id}
-                                                building={item}
-                                                linkToDetails={false}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} lg={11} className={classes.gridContactBlock}>
-                                            <Grid container>
-                                                <Grid item xs={6}>
-                                                    <ApartmentContactBlock />
-                                                </Grid>
-                                                <Grid
-                                                    item
-                                                    xs={6}
-                                                    className={classes.detailLink}
-                                                    onClick={() => this.handleViewMoreClick(item.id)}
-                                                    style={{ cursor: 'pointer' }}
-                                                >
-                                                    View more
+                    )) : (
+                        buildings.map((item, index) => (
+                            <Grid item xs={6} key={index}>
+                                <Grid container>
+                                    <Grid item xs={12} lg={11}>
+                                        <ApartmentGridView 
+                                            key={item.id}
+                                            building={item}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} lg={11} className={classes.gridContactBlock}>
+                                        <Grid container>
+                                            <Grid item xs={6}>
+                                                <ApartmentContactBlock />
                                             </Grid>
                                             </Grid>
                                         </Grid>

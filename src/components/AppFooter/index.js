@@ -14,7 +14,7 @@ const styles  = theme => ({
     root: {
         background: theme.honest.general.white, 
         height: '350px', 
-        width: '100vw',
+        // width: '100vw',
         marginTop: '2rem',
     },
     logo: {

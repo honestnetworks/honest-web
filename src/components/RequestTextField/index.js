@@ -19,11 +19,13 @@ const styles = (theme) => ({
       border: '1px solid #bebfcc',
       borderRadius: '5px',
       width: '86%',
-      minHeight: '7rem',
       padding: '1rem'
     },
     input: {
-      fontSize: '0.75rem'
+      fontSize: '0.75rem',
+      '& > div': {
+        minHeight: '7rem'
+      }
     },
     avatar: {
       color: '#e9b461',

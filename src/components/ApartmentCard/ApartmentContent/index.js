@@ -50,7 +50,8 @@ const styles = (theme) => ({
         flexWrap:'wrap',
         '& img':{
             display:'block',
-            margin:'0 auto'
+            margin:'0 auto',
+            height: 'auto'
         }
     },
     informationIcon:{
@@ -118,7 +119,7 @@ const ApartmentContent = (props) => {
                             title={'Up time'}
                             subtitle={`${props.upTime} %`}
                         />
-                        <Grid item xs={12}>
+                        <Grid item xs={12}>                            
                             <img src={TemperatureIcon2x} alt="" className={classes.temperatureIcon}/>
                         </Grid>
                     </Grid>

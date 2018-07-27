@@ -123,6 +123,7 @@ class DashboardDetails extends Component {
                                     <Grid item xs={12} lg={11}>
                                         <ApartmentGridView 
                                             building={{...building}}
+                                            preventNavigation={true}
                                         />
                                     </Grid>
                                     <Grid item xs={12} lg={11}>
@@ -141,10 +142,11 @@ class DashboardDetails extends Component {
                                 <Grid container>
                                     <Grid item xs={12}>
                                         <Grid container>
-                                            <Grid item xs={3}>
+                                            {/* <Grid item xs={3}>
                                                 {'Network'}
-                                            </Grid>
-                                            <Grid item xs={12} style={{ paddingTop: '4rem' }}>
+                                            </Grid> */}
+                                            <Grid item xs={12}>
+                                                {/* Network */}
                                                 <NetworkChart />
                                             </Grid>
                                         </Grid>

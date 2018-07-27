@@ -8,12 +8,18 @@ const styles = () => ({
     root: {
         '& .highcharts-credits': {
             display: 'none !important'
+        },
+        '& .highcharts-container': {
+            position: 'relative',
+            bottom: '55px'
         }
+
     }
 });
 
 const NetworkChart = ({ classes }) => (
     <div className={classNames("NetworkChart", classes.root)}>
+        Network
         <ReactHighcharts config={config} />
     </div>
 );

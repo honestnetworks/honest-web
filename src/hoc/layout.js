@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import { NavLink, withRouter } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
 import logoTitle from 'assets/images/login-title-image.png';
-import searchIcon from 'assets/images/search.svg';
+import searchIcon from 'assets/icons/search.svg';
 import AppFooter from 'components/AppFooter';
 import Avatar from '@material-ui/core/Avatar';
 import HonestContainer from 'hoc/HonestContainer';
@@ -202,9 +202,11 @@ class PersistentDrawer extends React.Component {
                             <Toolbar disableGutters={!openDrawer}>
                                 <Grid item xs={4}>
                                     <Hidden only={'xs'}>
-                                        <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                            <img src={logoTitle} alt="logo" />
-                                        </Typography>
+                                <Typography variant="subheading" color="inherit" className={classes.flex}>
+                                    <NavLink to={'/dashboard'}>
+                                        <img src={logoTitle} alt="logo"/>
+                                    </NavLink>
+                                </Typography>
                                     </Hidden>
                                 </Grid>
                                 <Grid item xs={4} style={{ justifyContent: 'center', display: 'flex' }} className={classes.navBlock}>
@@ -216,19 +218,20 @@ class PersistentDrawer extends React.Component {
                                     </NavLink>
                                     <NavLink to={'/contacts'}>Contact</NavLink>
                                 </Grid>
-                                <Grid item xs={4} style={{ justifyContent: 'flex-end', display: 'flex' }}>
-                                    <div style={{ display: 'flex' }}>
-                                        <IconButton>
-                                            <img src={searchIcon} alt="search" />
-                                        </IconButton>
-                                        {auth && (
-                                            <div style={{ display: 'flex', alignItems: 'center', color: '#a0a6b5', fontSize: '0.85rem' }}>
-                                                <IconButton
-                                                    aria-owns={openMenu ? 'menu-appbar' : null}
-                                                    aria-haspopup="true"
-                                                >
-                                                    <Avatar className={classes.avatar}>
-                                                        JN
+                                <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
+                                <div style={{display:'flex'}}>
+                                    <IconButton style={{}}>
+                                        {/* <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/> */}
+                                        <img src={searchIcon} alt="search" />
+                                    </IconButton>
+                                    {auth && (
+                                        <div  style={{display: 'flex', alignItems: 'center', color:'#a0a6b5', fontSize: '0.85rem'}}>
+                                            <IconButton
+                                                aria-owns={openMenu ? 'menu-appbar' : null}
+                                                aria-haspopup="true"
+                                            >
+                                                <Avatar className={classes.avatar}>
+                                                    JN
                                                 </Avatar>
                                                 </IconButton>
                                                 John Nelson

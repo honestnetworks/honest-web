@@ -1,8 +1,8 @@
 import React from 'react';
 import { withStyles } from "@material-ui/core/styles/index";
 import Grid from '@material-ui/core/Grid';
-import phoneIcon from 'assets/images/phone.svg';
-import mailIcon from 'assets/images/mail-blue.svg';
+import phoneIcon from 'assets/icons/phone.svg';
+import mailIcon from 'assets/icons/mail-blue.svg';
 import classNames from 'classnames';
 
 const styles = theme => ({
@@ -17,9 +17,17 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         fontSize: '0.75rem',
-        '&.mail': {
+        '& a': {
+            display: 'flex',
+            alignItems: 'center'
+        },
+        '&.phone a': {
+            color: "#a0a6b5",
+        },
+        '&.mail a': {
             color: theme.honest.general.main
-        }
+        },
+        
     },
     mailIcon: {
         fontSize: '1rem',
@@ -54,30 +62,30 @@ const styles = theme => ({
 const ContactBlock = ({
     classes
 }) => (
-        <div className="ContactBlock">
-            <Grid
-                container
-                spacing={16}
-                className={classes.root}
-            >
-                <Grid item xs={12} className={classNames(classes.contactInfo, 'phone')}>
+    <div className="ContactBlock">
+        <Grid 
+            container 
+            spacing={16}
+            className={classes.root}
+        >
+            <Grid item xs={12} className={classNames(classes.contactInfo, 'phone')}>
+                <a href="tel:+456 789 9800">
                     <div className={classes.phoneWrapper}>
                         <img src={phoneIcon} alt="phone" />
                     </div>
-                    <span>
-                        {'+456 789 9800'}
-                    </span>
-                </Grid>
-                <Grid item xs={12} className={classNames(classes.contactInfo, 'mail')}>
-                    <div className={classes.mailWrapper}>
-                        <img src={mailIcon} alt="mail" />
-                    </div>
-                    <span>
-                        {'landon.tucker@honestnetwork.org'}
-                    </span>
-                </Grid>
+                    {'+456 789 9800'}
+                </a>
             </Grid>
-        </div>
-    );
+            <Grid item xs={12} className={classNames(classes.contactInfo, 'mail')}>
+                <a href="mailto:landon.tucker@honestnetwork.org">
+                    <div className={classes.mailWrapper}>
+                        <img src={mailIcon} alt="email" />
+                    </div>
+                    {'landon.tucker@honestnetwork.org'}
+                </a>
+            </Grid>
+        </Grid>
+    </div>
+);
 
 export default withStyles(styles)(ContactBlock);
