@@ -224,7 +224,7 @@ const ApartmentListView = (props) => {
                                     <Grid item xs={12} md={7}>
                                     <ApartmentContent
                                         buldingName={props.building.name}
-                                        upTime = {'88.99'}
+                                        upTime = {'99.99'}
                                         speed={'980'}
                                     />
                                     </Grid>
