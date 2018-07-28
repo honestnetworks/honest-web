@@ -13,23 +13,32 @@ import YelpLogo from 'assets/icons/yelp-logo.svg';
 const styles  = theme => ({
     root: {
         background: theme.honest.general.white, 
-        height: '350px', 
-        // width: '100vw',
+        minHeight: '350px', 
         marginTop: '2rem',
     },
     logo: {
         width:'63px',
-        paddingTop: '3rem'
+        paddingTop: '3rem',
+        [theme.breakpoints.only('xs')]: {
+            padding: '2rem 1rem',
+            width: '100px',
+            position: 'relative',
+            left: '50%',
+            transform: 'translateX(-50%)'
+        }  
     },
     extendedRoot: {
         background: '#dbe7ff',
-        width: '363px',
+        width: '310px',
         height: '125px',
         marginTop: '3rem',
         display: 'flex',
         alignItems: 'center',
         paddingLeft: '2.5rem',
-        marginLeft: '6.5rem'
+        marginLeft: '6.5rem',
+        [theme.breakpoints.only('xs')]: {
+            margin: 0
+        }    
     },
     extended: {
         color: '#4c84ff'
@@ -43,6 +52,13 @@ const styles  = theme => ({
         display: 'flex',
         justifyContent: 'center',
         paddingBottom: '1rem'
+    },
+    rateContainer: {
+        paddingTop: '4rem', 
+        paddingLeft: '5.5rem' ,
+        [theme.breakpoints.only('xs')]: {
+            padding: '2rem 0', 
+        }  
     }
 });
 
@@ -61,14 +77,14 @@ const AppFooter = ({
         <div className={classNames("footer", classes.root)}>
             <HonestContainer>
                 <Grid container>
-                    <Grid item xs={3}>
+                    <Grid item xs={12} lg={3}>
                         <img 
                             src={logoTitle} 
                             className={classes.logo} 
                             alt="logo"
                         />
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} lg={4} style={{display: 'flex', justifyContent: 'center'}}>
                         <FooterStatisticsGrid
                             classes={{
                                 root: classes.extendedRoot,
@@ -80,7 +96,12 @@ const AppFooter = ({
                             statistics={[...statistics]}
                         />
                     </Grid>
-                    <Grid item xs={5} style={{ paddingTop: '4rem', paddingLeft: '5.5rem' }}>
+                    <Grid 
+                        item 
+                        xs={12} 
+                        lg={5} 
+                        className={classes.rateContainer} 
+                    >
                         <Grid container>
                             <Grid item xs={6}>
                                 <Grid container>

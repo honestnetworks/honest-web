@@ -65,14 +65,22 @@ const statistics = [
 
 const styles = (theme) => ({
     root: {
-        paddingTop: '3rem'
+        paddingTop: '3rem',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: '1.5rem',
+            display: 'flex',
+            justifyContent: 'center'
+        }
     },
     statictics: {
         margin: '1rem 0'
     },
     rightBlock: {
         paddingTop: '1rem',
-        paddingLeft: '1rem'
+        paddingLeft: '1rem',
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: 0
+        }
     },
     blockTitle: {
         paddingTop: '6rem',
@@ -93,6 +101,12 @@ const styles = (theme) => ({
             color: theme.honest.general.white,
             boxShadow: '0px 4px 12px 0px rgba(76, 132, 255, 0.16)'
         }
+    },
+    speedTestWrapper: {
+        paddingTop: '4rem',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column-reverse'
+        }
     }
 });
 
@@ -112,7 +126,7 @@ class DashboardDetails extends Component {
                             container 
                             className={classes.root}
                         >
-                            <Grid item xs={3} lg={4}>
+                            <Grid item xs={11} md={3} lg={4}>
                                 <Grid item xs={12}>
                                     <BackLink 
                                         link={'/dashboard'}
@@ -138,7 +152,7 @@ class DashboardDetails extends Component {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={9} lg={8} className={classes.rightBlock}>
+                            <Grid item xs={11} md={9} lg={8} className={classes.rightBlock}>
                                 <Grid container>
                                     <Grid item xs={12}>
                                         <Grid container>
@@ -151,7 +165,7 @@ class DashboardDetails extends Component {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={11}>
                                         <Grid container>
                                             <Grid item xs={12}>
                                                 <Grid container className={classes.blockTitle}>
@@ -175,12 +189,12 @@ class DashboardDetails extends Component {
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
-                                            <Grid item xs={11}>
-                                                <Grid container style={{paddingTop: '4rem'}}>
-                                                    <Grid item xs={6} lg={7} className={classes.speedCard}>
+                                            <Grid item xs={12} md={11}>
+                                                <Grid container className={classes.speedTestWrapper}>
+                                                    <Grid item xs={12} md={6} lg={7} className={classes.speedCard}>
                                                         <SpeedtestCard />
                                                     </Grid>
-                                                    <Grid item xs={6} lg={5}>
+                                                    <Grid item xs={12} md={6} lg={5}>
                                                         <SpeedtestIndicator
                                                             imageUrl={SpeedIcon}
                                                         />
@@ -189,9 +203,9 @@ class DashboardDetails extends Component {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={11}>
                                         <Grid container>
-                                            <Grid item xs={12} className={classes.blockTitle}>
+                                            <Grid item xs={11} md={12} className={classes.blockTitle}>
                                                 {'WiFi Access Points'}
                                             </Grid>
                                             <Grid item xs={12} style={{padding: '2rem 0'}}>

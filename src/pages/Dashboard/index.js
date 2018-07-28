@@ -17,6 +17,7 @@ import flatImage1 from 'assets/images/flatImage-1.png';
 import flatImage2 from 'assets/images/flatImage-2.png';
 import flatImage3 from 'assets/images/flatImage-3.png';
 import flatImage4 from 'assets/images/flatImage-4.png';
+import { Hidden } from '../../../node_modules/@material-ui/core';
 
 const Buildings = [
     {
@@ -66,7 +67,9 @@ const styles = theme => ({
     },
     homeTitle: {
         [theme.breakpoints.down('sm')]: {
-            marginLeft: '2vh'
+            marginLeft: '1rem',
+            marginBottom: '0rem',
+            marginTop: '2rem',
         },
         marginBottom: '20px',
         marginTop: '40px',
@@ -136,7 +139,11 @@ const styles = theme => ({
         '& span': {
             color: '#171d33',
             paddingLeft: '5px'
-        }
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingRight: 0,
+            fontSize: '0.77rem'
+        },
     },
     detailLink: {
         fontSize: '0.875rem',
@@ -148,6 +155,16 @@ const styles = theme => ({
     gridContactBlock: {
         marginTop: '1rem',
         marginBottom: '2rem'
+    },
+    viewWrapper: {
+        [theme.breakpoints.only('xs')]: {
+            margin: '1rem'
+        }
+    },
+    countWrapper: {
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '0.85rem'
+        }
     }
 });
 
@@ -203,7 +220,7 @@ class Home extends Component {
                 <Grid container>
                     {isList ? (
                         buildings.map((item, index) => (
-                            <Grid item xs={12} key={index}>
+                            <Grid item xs={12} key={index} className={classes.viewWrapper}>
                                 <ApartmentListView
                                     key={item.id}
                                     building={item}
@@ -245,31 +262,33 @@ class Home extends Component {
             <Layout>
                 <HonestContainer>
                     <Grid container justify="center">
-                        <Grid item xs={9} lg={8}>
+                        <Grid item xs={12} lg={8}>
                             <div className={classes.homeTitle}>
                                 <Grid container>
-                                    <Grid item xs={12} lg={6}>
+                                    <Grid item xs={7} lg={6} className={classes.countWrapper}>
                                         Your Properties <Chip label="4" className={classes.chip} />
                                     </Grid>
-                                    <Grid item xs={12} lg={6} className={classes.navBlock}>
+                                    <Grid item xs={5} lg={6} className={classes.navBlock}>
                                         Sort by:<span>Speed</span>
                                         <DropDownIcon style={{ padding: '0 0.5rem' }} />
-                                        <div
-                                            className={classNames(classes.listButton, {
-                                                'active': this.state.isList
-                                            })}
-                                            onClick={this.handleList}
-                                        >
-                                            <img src={listIcon} alt="list" />
-                                        </div>
-                                        <div
-                                            className={classNames(classes.gridButton, {
-                                                'active': !this.state.isList
-                                            })}
-                                            onClick={this.handleGrid}
-                                        >
-                                            <img src={gridIcon} alt="grid" />
-                                        </div>
+                                        <Hidden only={'xs'}>
+                                            <div
+                                                className={classNames(classes.listButton, {
+                                                    'active': this.state.isList
+                                                })}
+                                                onClick={this.handleList}
+                                            >
+                                                <img src={listIcon} alt="list" />
+                                            </div>
+                                            <div
+                                                className={classNames(classes.gridButton, {
+                                                    'active': !this.state.isList
+                                                })}
+                                                onClick={this.handleGrid}
+                                            >
+                                                <img src={gridIcon} alt="grid" />
+                                            </div>
+                                        </Hidden>
                                     </Grid>
                                 </Grid>
                             </div>
