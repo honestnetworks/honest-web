@@ -143,7 +143,7 @@ const ApartmentGridView = (props) => {
                             <ApartmentContent
                                 buldingName={building.name}
                                 upTime={'88.99'}
-                                speed={'980'}
+                                speed={'990'}
                             />
                         </Grid>
                     </Grid>

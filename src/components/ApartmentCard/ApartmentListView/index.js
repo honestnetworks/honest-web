@@ -23,8 +23,8 @@ const styles = (theme) => ({
         position: 'relative',
         boxShadow: '0 1px 3px 0 rgba(201, 203, 209, 0.24)',
         borderRadius: '6px',
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: '2vh'
+        [theme.breakpoints.only('xs')]: {
+            margin: 0
         },
         '@media(max-width: 710px)': {
             // height:'auto'
@@ -122,7 +122,10 @@ const styles = (theme) => ({
     contactBlock: {
         display: 'flex',
         justifyContent: 'center',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        [theme.breakpoints.only('xs')]: {
+            margin: '0.5rem 0.15rem'
+        }
     },
     informationBlocks: {
         display: 'flex',
@@ -138,16 +141,12 @@ const styles = (theme) => ({
         color: 'red'
     },
     chip: {
-        // margin: theme.spacing.unit,
         color: '#22bc8a',
         fontSize: '12px',
         paddingTop: '5px',
         paddingBottom: '5px',
         height: 'auto',
         backgroundColor: '#d4f1e8',
-        // position:'absolute',
-        // top:'-6px',
-        // right:'0',
         '& span:before': {
             content: `''`,
             borderRadius: '90px',
@@ -184,6 +183,12 @@ const styles = (theme) => ({
     contactContainer:{
         display: 'flex',
         alignItems: 'flex-end'
+    },
+    content: {
+        marginTop: '1.2rem',
+        [theme.breakpoints.only('xs')]: {
+            margin: 0
+        }
     }
 });
 
@@ -211,9 +216,9 @@ const ApartmentListView = (props) => {
                                     title="Live from space album cover"
                                 />
                             </Grid>
-                            <Grid item xs={12} md={9}>
+                            <Grid item xs={12} md={9} className={classes.content}>
                                 <Grid container spacing={8} className={classes.informationBlocks}>
-                                    <Grid item xs={5} className={classes.contactBlock}>
+                                    <Grid item xs={12} lg={5} className={classes.contactBlock}>
 
                                         <Grid item xs={12} className={classes.relativeBlock}>
                                             <Typography variant="caption" className={classes.buildCity}>
@@ -232,7 +237,7 @@ const ApartmentListView = (props) => {
                                     <ApartmentContent
                                         buldingName={props.building.name}
                                         upTime = {'99.99'}
-                                        speed={'980'}
+                                        speed={'990'}
                                     />
                                     </Grid>
                                 </Grid>

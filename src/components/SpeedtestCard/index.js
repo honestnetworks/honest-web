@@ -66,7 +66,7 @@ const SpeedtestCard = ({
               <Grid item xs={12}>
                 <InfoHeader 
                   title={'Speed'}
-                  subtitle={'980 Mbps'}
+                  subtitle={'990 Mbps'}
                   caption={'Average: 650 Mbps'}
                   classes={{
                     extendedCaption: classes.caption

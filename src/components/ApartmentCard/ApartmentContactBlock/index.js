@@ -10,7 +10,9 @@ import phoneIcon from 'assets/icons/mail.svg' ;
 
 const styles = (theme) => ({
     contactName: {
-        color: '#bebfcc'
+        color: '#bebfcc',
+        display: 'flex',
+        alignItems: 'center'
     },
     iconButton: {
         fontSize: '0.9rem',

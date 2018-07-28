@@ -93,10 +93,7 @@ const styles = theme => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
         marginTop: '6vh',
-        overflow: 'auto',
-        [theme.breakpoints.only('xs')]: {
-            padding: '4vw 4vw 4vw 0vw',
-        }
+        overflow: 'auto'
     },
     flex: {
         flex: 1,
@@ -200,16 +197,16 @@ class PersistentDrawer extends React.Component {
                         <HonestContainer>
 
                             <Toolbar disableGutters={!openDrawer}>
-                                <Grid item xs={4}>
-                                    <Hidden only={'xs'}>
-                                <Typography variant="subheading" color="inherit" className={classes.flex}>
-                                    <NavLink to={'/dashboard'}>
-                                        <img src={logoTitle} alt="logo"/>
-                                    </NavLink>
-                                </Typography>
-                                    </Hidden>
-                                </Grid>
-                                <Grid item xs={4} style={{ justifyContent: 'center', display: 'flex' }} className={classes.navBlock}>
+                                <Hidden only={'xs'}>
+                                    <Grid item xs={12} lg={4}>
+                                        <Typography variant="subheading" color="inherit" className={classes.flex}>
+                                            <NavLink to={'/dashboard'}>
+                                                <img src={logoTitle} alt="logo"/>
+                                            </NavLink>
+                                        </Typography>
+                                    </Grid>
+                                </Hidden>
+                                <Grid item xs={12} lg={4} style={{ justifyContent: 'center', display: 'flex' }} className={classes.navBlock}>
                                     <NavLink
                                         to={'/dashboard'}
                                         className={classNames({ selected: checkIfDashboardPage(pathname) })}
@@ -218,12 +215,14 @@ class PersistentDrawer extends React.Component {
                                     </NavLink>
                                     <NavLink to={'/contacts'}>Contact</NavLink>
                                 </Grid>
-                                <Grid item xs={4} style={{justifyContent:'flex-end', display:'flex'}}>
+                                <Grid item xs={12} lg={4} style={{justifyContent:'flex-end', display:'flex'}}>
                                 <div style={{display:'flex'}}>
-                                    <IconButton style={{}}>
-                                        {/* <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/> */}
-                                        <img src={searchIcon} alt="search" />
-                                    </IconButton>
+                                    <Hidden only={'xs'}>
+                                        <IconButton style={{}}>
+                                            {/* <SearchIcon style={{width:'1.5rem',height:'1.5rem',transform:'rotate(90deg)', color:'#a0a6b5'}}/> */}
+                                            <img src={searchIcon} alt="search" />
+                                        </IconButton>
+                                    </Hidden>
                                     {auth && (
                                         <div  style={{display: 'flex', alignItems: 'center', color:'#a0a6b5', fontSize: '0.85rem'}}>
                                             <IconButton

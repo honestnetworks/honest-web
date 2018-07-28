@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
 const styles = theme => ({
-  root: {},
+  root: {
+  },
   extendedValue: {},
   extendedUnit: {},
   extendedLabel: {},
