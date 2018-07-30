@@ -159,7 +159,18 @@ const styles = theme => ({
     viewWrapper: {
         [theme.breakpoints.only('xs')]: {
             margin: '1rem'
-        }
+        },
+        [theme.breakpoints.only('sm')]: {
+            padding: '0px 1rem',
+            '@media(max-width: 700px)': {
+                padding: '0',
+                '&:nth-child(even)':{
+                    paddingLeft: '.5rem'
+                }
+            }
+            
+        },
+        
     },
     countWrapper: {
         [theme.breakpoints.down('sm')]: {
@@ -216,11 +227,11 @@ class Home extends Component {
         const { classes } = this.props;
 
         return (
-            <Grid item xs={12} lg={isList ? 8 : 8} style={{ margin: '0 auto' }}>
+            <Grid item xs={12} sm={11} lg={isList ? 8 : 8} style={{ margin: '0 auto' }}>
                 <Grid container>
                     {isList ? (
                         buildings.map((item, index) => (
-                            <Grid item xs={12} key={index} className={classes.viewWrapper}>
+                            <Grid item xs={12} sm={6} md={12} key={index} className={classes.viewWrapper}>
                                 <ApartmentListView
                                     key={item.id}
                                     building={item}
@@ -243,12 +254,12 @@ class Home extends Component {
                                             <Grid item xs={6}>
                                                 <ApartmentContactBlock />
                                             </Grid>
-                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Grid>
+                            </Grid>
                             )
-                            ))}
+                        ))}
                 </Grid>
             </Grid>
         )
@@ -262,8 +273,8 @@ class Home extends Component {
             <Layout>
                 <HonestContainer>
                     <Grid container justify="center">
-                        <Grid item xs={12} lg={8}>
-                            <div className={classes.homeTitle}>
+                        <Grid item xs={12} sm={11} md={11} lg={8}>
+                            <div  className={classes.homeTitle}>
                                 <Grid container>
                                     <Grid item xs={7} lg={6} className={classes.countWrapper}>
                                         Your Properties <Chip label="4" className={classes.chip} />
@@ -271,7 +282,7 @@ class Home extends Component {
                                     <Grid item xs={5} lg={6} className={classes.navBlock}>
                                         Sort by:<span>Speed</span>
                                         <DropDownIcon style={{ padding: '0 0.5rem' }} />
-                                        <Hidden only={'xs'}>
+                                        <Hidden smDown only={'xs'}>
                                             <div
                                                 className={classNames(classes.listButton, {
                                                     'active': this.state.isList

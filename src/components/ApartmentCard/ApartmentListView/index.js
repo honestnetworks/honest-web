@@ -15,7 +15,7 @@ import ApartmentContactBlock from '../ApartmentContactBlock';
 const styles = (theme) => ({
     card: {
         overflow: 'visible',
-        marginRight: '2rem',
+        // marginRight: '2rem',
         minWidth: 275,
         //height:'35vh',
         cursor: 'pointer',
@@ -218,7 +218,7 @@ const ApartmentListView = (props) => {
                             </Grid>
                             <Grid item xs={12} md={9} className={classes.content}>
                                 <Grid container spacing={8} className={classes.informationBlocks}>
-                                    <Grid item xs={12} lg={5} className={classes.contactBlock}>
+                                    <Grid item xs={12} md={6} lg={5} className={classes.contactBlock}>
 
                                         <Grid item xs={12} className={classes.relativeBlock}>
                                             <Typography variant="caption" className={classes.buildCity}>
@@ -233,12 +233,12 @@ const ApartmentListView = (props) => {
                                         </Grid>
 
                                     </Grid>
-                                    <Grid item xs={12} md={7}>
-                                    <ApartmentContent
-                                        buldingName={props.building.name}
-                                        upTime = {'99.99'}
-                                        speed={'990'}
-                                    />
+                                    <Grid item xs={12} md={6}>
+                                        <ApartmentContent
+                                            buldingName={props.building.name}
+                                            upTime = {'99.99'}
+                                            speed={'990'}
+                                        />
                                     </Grid>
                                 </Grid>
                             </Grid>

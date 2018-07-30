@@ -27,7 +27,7 @@ const styles = (theme) => ({
     },
     caption: {
         color: '#bebfcc',
-        fontSize: '0.65rem'
+        fontSize: '0.85rem'
     },
     avatarInfo: {
         fontSize: '0.75rem',
@@ -44,8 +44,12 @@ const styles = (theme) => ({
     },
     infoContainer: {
         '& a':{
-            marginLeft: '1.5rem'
-        }
+            marginLeft: '1.5rem',
+            '@media(max-width: 700px)': {
+                marginLeft: 0,
+            }
+        },
+        
     }
 });
 
@@ -71,7 +75,7 @@ class ContactPerson extends Component {
                             </Avatar>
                             <div item xs={10} className={classes.avatarInfo}>
                                 <div className={classes.name}>
-                                    Robbert Muller
+                                    Robert Muller
                                 </div>
                                 <div className={classes.caption}>
                                     CTO

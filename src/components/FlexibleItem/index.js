@@ -21,50 +21,36 @@ const styles = theme => ({
         minHeight: '2rem',
         minWidth: '2rem',
         marginRight: '1rem'
-    },
-    statusClosed: {
-        color: "#e9b461",
-        '& .roundedImgBG': {
-            background: '#dbe7ff',
-        }
     }
-
-
 });
 
 class FlexibleItem extends Component {
     
-    
+    renderImg = (status) => {
+        const { listItem, classes } = this.props;
+        let  img = 'closed_img';
+        if(status){
+            img = 'open_img';
+        }
+        return (
+            <div className={classes.roundedImgBG}>
+                {/* <img src={img} alt="status" /> */}
+            </div>
+        )
+    }        
+
     render(){
         const {classes, listItem} = this.props;
-
-        const renderImg = (index) => {
-            const { listItem, classes } = this.props;
-            return (
-                <div className={classes.roundedImgBG}>
-                    {/* <img src={require(listItem[index].additional.img)} alt="" />*/}
-                </div>
-            )
-        }    
-        const renderLink = (index) => {
-            const { listItem, classes } = this.props;
-            return (
-                <Link to={listItem[index].additional.link}>{listItem[index].label}</Link>
-            )
-        } 
-
         // console.log(listItem);
         return (
             listItem.map((element, index) => (
-                <div key={index} xs={12} className={classNames(classes.flexItem, element.additional.status ? classes.statusClosed: classes.statusOpen)} justify={ !index ? 'flex-start' : 'center'}>
-                    {/* { element.additional.img ? renderImg(index) : '' } */}
-                    {/* { element.additional.link ? renderLink(index) : '' } */}
-                    <span className={element.additional.status ? classes.statusClosed: classes.statusOpen}>{element.label}</span>
+                <div key={index}  xs={12} className={classNames(classes.flexItem, listItem.status ? classes.statusClosed: classes.statusOpen)}>
+                    {index == 0 ? this.renderImg(element.status) : ''}
+                    <span>{element.label}</span>
                 </div>
             ))
         );
     }
 }
-
 
 export default withStyles(styles)(FlexibleItem);

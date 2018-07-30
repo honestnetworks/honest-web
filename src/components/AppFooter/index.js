@@ -16,6 +16,16 @@ const styles  = theme => ({
         minHeight: '350px', 
         marginTop: '2rem',
     },
+    logoContainer: {
+        [theme.breakpoints.only('sm')]: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            '& img': {
+                width: '100px',
+            }
+        }
+    },
     logo: {
         width:'63px',
         paddingTop: '3rem',
@@ -38,7 +48,10 @@ const styles  = theme => ({
         marginLeft: '6.5rem',
         [theme.breakpoints.only('xs')]: {
             margin: 0
-        }    
+        },
+        [theme.breakpoints.only('sm')]: {
+            marginLeft: 0
+        }      
     },
     extended: {
         color: '#4c84ff'
@@ -58,7 +71,11 @@ const styles  = theme => ({
         paddingLeft: '5.5rem' ,
         [theme.breakpoints.only('xs')]: {
             padding: '2rem 0', 
-        }  
+        },
+        [theme.breakpoints.only('sm')]: {
+            paddingLeft: '0' ,
+        } 
+          
     }
 });
 
@@ -77,14 +94,14 @@ const AppFooter = ({
         <div className={classNames("footer", classes.root)}>
             <HonestContainer>
                 <Grid container>
-                    <Grid item xs={12} lg={3}>
+                    <Grid item xs={12} md={3} lg={3} className={classes.logoContainer} >
                         <img 
                             src={logoTitle} 
                             className={classes.logo} 
                             alt="logo"
                         />
                     </Grid>
-                    <Grid item xs={12} lg={4} style={{display: 'flex', justifyContent: 'center'}}>
+                    <Grid item xs={12} md={5} lg={4} style={{display: 'flex', justifyContent: 'center'}}>
                         <FooterStatisticsGrid
                             classes={{
                                 root: classes.extendedRoot,
@@ -99,6 +116,7 @@ const AppFooter = ({
                     <Grid 
                         item 
                         xs={12} 
+                        md={4}
                         lg={5} 
                         className={classes.rateContainer} 
                     >

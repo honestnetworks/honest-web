@@ -14,6 +14,9 @@ const styles = (theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         padding: '0 2rem',
+        '@media(max-width: 500px)': {
+            padding: 0,
+        },
         '& img:hover': {
             cursor: 'pointer'
         }
@@ -25,7 +28,7 @@ class SocialsBlock extends Component{
     render(){
         const {classes} = this.props;
         return(
-            <Grid xs={12} className={classes.socials}>
+            <Grid item xs={12} className={classes.socials}>
                 <img src={facebookIcon} alt="facebook" />
                 <img src={twitterIcon} alt="twitter" />
                 <img src={yelpIcon} alt="yelp" />

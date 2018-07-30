@@ -9,6 +9,7 @@ import LoginIcon from 'assets/icons/login-icon.png';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {isValidEmail, isValidPassword} from "utils/validations";
+import { Button } from '../../../node_modules/@material-ui/core';
 
 const styles = theme => ({
     paper: {
@@ -30,17 +31,21 @@ const styles = theme => ({
     },
     loginButton: {
         border: 'none',
+        color: "#fff",
         width: '299px',
         height: '3.5rem',
         minHeight: '56px',
         borderRadius: '28px',
         backgroundColor: '#4c84ff',
+        boxShadow: '0px 5px 8px 0px #7d7d7d',
+        transition: '.3s all ease',
         color: 'white',
         fontSize: '1rem',
         position: 'relative',
         marginTop: '1rem',
         '&:hover': {
-            cursor: 'pointer'
+            cursor: 'pointer',
+            boxShadow: 'none'
         }
     },
     endAdornment: {
@@ -238,8 +243,8 @@ class LoginForm extends Component {
                                     className={classes.loginButton}>
                                 Log In
                                 <span className={classes.endButtonAdornment}>
-                            <img src={LoginIcon} alt=""/>
-                        </span>
+                                    <img src={LoginIcon} alt=""/>
+                                </span>
                             </button>
                         </div>
                         <div className={classes.forgotPasswordBlock}>

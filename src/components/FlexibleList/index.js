@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
 import FlexibleItem from '../FlexibleItem';
 import { withStyles } from '@material-ui/core';
+import classNames from 'classnames';
 
 const styles = theme => ({
     flexList: {
@@ -14,6 +15,12 @@ const styles = theme => ({
         minHeight: '3rem',
         alignItems: 'center',
         padding: '0 1.5rem 0 1rem'
+    },
+    open: {
+        color: "#e9b461",
+        '& .roundedImgBG': {
+            background: '#dbe7ff',
+        }
     }    
 });
 class FlexibleList extends Component {
@@ -23,17 +30,8 @@ class FlexibleList extends Component {
         console.log(list);
         return (
             list.map((listItem, index) => (
-                <Grid item xs={12}  key={index} className={classes.flexList}>                    
-                    <FlexibleItem listItem={[...listItem]} />
-                    {/* <Grid item xs={4}>
-                        {item.name}       
-                    </Grid>
-                    <Grid item xs={4}>
-                        {item.status}       
-                    </Grid>
-                    <Grid item xs={4}>
-                        <a href={item.link}>Read More</a>
-                    </Grid> */}
+                <Grid item xs={12}  key={index} className={classNames(classes.flexList, listItem.status ? classes.open : '') }>                    
+                    <FlexibleItem listItem={[...listItem.options]} />
                 </Grid>
             ))
         );
