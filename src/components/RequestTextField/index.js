@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import classNames from 'classnames';
+// import Button from '@material-ui/core/Button';
+// import classNames from 'classnames';
 import ContactBlock from 'components/ContactBlock';
+import TextArea from 'components/TextArea';
 
 const styles = (theme) => ({
     card: {
         boxShadow:'0 1px 3px 0 rgba(201, 203, 209, 0.24)',
         borderRadius:'5px',
-        padding: '1.2rem'
+        padding: '1.5rem'
     },
     textField: {
       border: '1px solid #bebfcc',
@@ -66,6 +67,9 @@ const styles = (theme) => ({
   },
   clearButton: {
     color: '#a0a6b5'
+  },
+  textareaSmall:  {
+    width: '86%'
   }
 });
 
@@ -94,37 +98,37 @@ class RequestTextField extends Component {
     });
   };
 
-  renderTextField = () => {
-    const { placeholder, classes } = this.props;
-    const { text } = this.state;
-    return (
-      <TextField
-        id="multiline-flexible"
-        placeholder={placeholder}
-        multiline
-        rowsMax="5"
-        value={text}
-        onChange={this.handleChange}
-        className={classes.textField}
-        InputProps={{
-          disableUnderline: true,
-          classes: {
-            root: classes.input
-          }
-        }}
-        margin="normal"
-      />
-    )
-  }
+  // renderTextField = () => {
+  //   const { placeholder, classes } = this.props;
+  //   const { text } = this.state;
+  //   return (
+  //     <TextField
+  //       id="multiline-flexible"
+  //       placeholder={placeholder}
+  //       multiline
+  //       rowsMax="5"
+  //       value={text}
+  //       onChange={this.handleChange}
+  //       className={classes.textField}
+  //       InputProps={{
+  //         disableUnderline: true,
+  //         classes: {
+  //           root: classes.input
+  //         }
+  //       }}
+  //       margin="normal"
+  //     />
+  //   )
+  // }
 
   render() {
     const { classes } = this.props;
-    const textField = this.renderTextField();
+    // const textField = this.renderTextField();
 
     return (
       <Grid item xs={12} style={{margin:'0 auto'}}>
           <Card className={classes.card}>
-              <Grid container spacing={8} className={classes.mainContent}>
+              <Grid container className={classes.mainContent}>
 
                   <Grid item xs={12}>
                     <Grid container>
@@ -144,7 +148,8 @@ class RequestTextField extends Component {
                     </Grid>
                   </Grid>
 
-                  <Grid item xs={12} className={classes.mediaContainer}>
+                  <TextArea placeholder="Enter your request message ..." />
+                  {/* <Grid item xs={12} className={classes.mediaContainer}>
                     {textField}
                   </Grid>
 
@@ -162,7 +167,7 @@ class RequestTextField extends Component {
                             Send
                         </Button>
                       </Grid>
-                  </Grid>
+                  </Grid> */}
 
                   <Grid item xs={12} className={classes.infoContainer}>
                       <Grid container>
