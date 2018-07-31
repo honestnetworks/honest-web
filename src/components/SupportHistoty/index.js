@@ -61,13 +61,13 @@ class SupportHistory extends Component {
       }
       return(
         <span className={classNames(classes.roundedImgBG, classBG)}>
-          <img src={img} />
+          <img src={img} alt="status"/>
         </span>
       )
     }
 
     renderStatus = (status) => {
-      const { classes } = this.props;
+      // const { classes } = this.props;
       let colorStatus = 'open';
       let textStatus = 'Open';
       if(status){

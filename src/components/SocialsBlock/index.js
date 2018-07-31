@@ -1,13 +1,13 @@
 import { withStyles } from '@material-ui/core';
 import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
-import facebookIcon from 'assets/icons/facebook.svg';
-import twitterIcon from 'assets/icons/twitter.svg';
-import yelpIcon from 'assets/icons/yelp.svg';
-import linkedinIcon from 'assets/icons/linkedin.svg';
-import googlePlusIcon from 'assets/icons/google-plus.svg';
-import babyfaceIcon from 'assets/icons/babyface.svg';
-import rssIcon from 'assets/icons/rss.svg';
+import facebookIcon from 'assets/icons/facebook-logo.svg';
+import twitterIcon from 'assets/icons/twitter-logo.svg';
+import yelpIcon from 'assets/icons/yelp-logo.svg';
+import linkedinIcon from 'assets/icons/linkedin-logo.svg';
+import googlePlusIcon from 'assets/icons/google-plus-logo.svg';
+import babyfaceIcon from 'assets/icons/babyface-logo.svg';
+import rssIcon from 'assets/icons/rss-logo.svg';
 
 const styles = (theme) => ({
     socials: {
@@ -17,8 +17,13 @@ const styles = (theme) => ({
         '@media(max-width: 500px)': {
             padding: 0,
         },
+        '& img': {
+            filter: 'grayscale(100%) contrast(0)',
+            transition: 'all .2s ease'
+        },
         '& img:hover': {
-            cursor: 'pointer'
+            cursor: 'pointer',
+            filter: 'grayscale(0)'
         }
     }    
 });
