@@ -5,8 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core';
 import TextArea from 'components/TextArea';
 import ContactPerson from 'components/ContactPerson';
-import FlexibleList from 'components/FlexibleList';
-// import WiFiAccessPointsGrid from 'components/WiFiAccessPointsGrid';
 import SocialsBlock from 'components/SocialsBlock';
 import SupportHistoty from 'components/SupportHistoty';
 
@@ -37,7 +35,7 @@ const styles = (theme) => ({
 const listItems = [    
     {
         status: true,
-        label: 'Ticket 83257'
+        label: 'Ticket 34567'
     },
     {
         status: false,
@@ -67,16 +65,16 @@ class Contact extends Component {
                                 </Grid>
                             </Grid>
                             <Grid item xs={11} md={8} lg={8} className={classes.rightBlock}>
+
+                                
                                 <Grid container>
-                                    
-                                    <h4 className={classes.blockTitle}>Support Request</h4>
+                                    <h4 className={classes.blockTitle}>Support Request</h4>    
                                     <Grid item xs={12} md={12} className={classes.mainBlokcs}>
                                         <TextArea placeholder="Enter your request message ..."  />
                                     </Grid>
                                     
                                     <h4 className={classes.blockTitle}>Support History</h4>
                                     <Grid item xs={12} md={12} className={classes.mainBlokcs}>                                        
-                                        {/* <FlexibleList list={[...listItems]} /> */}
                                         <SupportHistoty list={[...listItems]} />
                                     </Grid>
 

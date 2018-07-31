@@ -70,6 +70,7 @@ const styles = theme => ({
             marginLeft: '1rem',
             marginBottom: '0rem',
             marginTop: '2rem',
+            // marginRight: '2rem'
         },
         marginBottom: '20px',
         marginTop: '40px',

@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
-// import FlexibleItem from '../FlexibleItem';
 import { withStyles } from '@material-ui/core';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import openStatus from 'assets/icons/openstatus.svg';
+import closedStatus from 'assets/icons/closedstatus.svg';
 
 
 const styles = theme => ({
     flexList: {
         display: 'flex',
         justifyContent: 'space-between',
-        margin: '0.15rem 0',
+        margin: '0.3rem 0',
         background: '#ffffff',
         borderRadius: '3px',
         fontSize: '0.875rem',
@@ -26,12 +27,14 @@ const styles = theme => ({
     },
     roundedImgBG: {
       borderRadius: '50%',
-      background: '#dbe7ff',
+      background: '#ffedd4',
       minHeight: '2rem',
       minWidth: '2rem',
       marginRight: '1rem',
+      display: 'flex',
+      justifyContent: 'center',
       '&.closed':{
-        background: "#ffedd4"
+        background: "#dbe7ff"
       }
     },
     labelContainer: {
@@ -40,25 +43,25 @@ const styles = theme => ({
     },   
     statusContainer: {
       '& .closed':{
-        color: "#e9b461"
+        color: "#4c84ff"
       },
       '& .open':{
-        color: "#4c84ff"
+        color: "#e9b461"
       }
     }
 });
 class SupportHistory extends Component {
     renderImg = (status) => {
       const { classes } = this.props;
-      let img = '';
+      let img = openStatus;
       let classBG = '';
       if(status){
-        img = '';
+        img = closedStatus;
         classBG = 'closed';
       }
       return(
         <span className={classNames(classes.roundedImgBG, classBG)}>
-          {/* <img src={img} /> */}
+          <img src={img} />
         </span>
       )
     }

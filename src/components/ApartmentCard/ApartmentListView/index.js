@@ -15,7 +15,7 @@ import ApartmentContactBlock from '../ApartmentContactBlock';
 const styles = (theme) => ({
     card: {
         overflow: 'visible',
-        // marginRight: '2rem',
+        marginRight: '2rem',
         minWidth: 275,
         //height:'35vh',
         cursor: 'pointer',
@@ -25,6 +25,9 @@ const styles = (theme) => ({
         borderRadius: '6px',
         [theme.breakpoints.only('xs')]: {
             margin: 0
+        },
+        [theme.breakpoints.only('sm')]: {
+            marginRight: 0,
         },
         '@media(max-width: 710px)': {
             // height:'auto'
@@ -129,6 +132,7 @@ const styles = (theme) => ({
     },
     informationBlocks: {
         display: 'flex',
+        justifyContent: 'space-between',
         flexWrap: 'wrap',
         '& img': {
             display: 'block',

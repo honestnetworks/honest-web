@@ -58,6 +58,7 @@ const styles = (theme) => ({
         marginTop: '0'
     },
     informationBlocks: {
+        marginTop: '0.5rem'
     },
     actionButton: {
         display: 'inline-flex',

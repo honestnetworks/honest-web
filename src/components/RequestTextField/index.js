@@ -130,7 +130,7 @@ class RequestTextField extends Component {
           <Card className={classes.card}>
               <Grid container className={classes.mainContent}>
 
-                  <Grid item xs={12}>
+                  <Grid item xs={12} style={{marginBottom:'1rem'}}>
                     <Grid container>
                       <Grid item xs={2}>
                         <Avatar className={classes.avatar}>
@@ -149,25 +149,6 @@ class RequestTextField extends Component {
                   </Grid>
 
                   <TextArea placeholder="Enter your request message ..." />
-                  {/* <Grid item xs={12} className={classes.mediaContainer}>
-                    {textField}
-                  </Grid>
-
-                  <Grid item xs={12} className={classes.actionContainer}>
-                      <Grid container justify="flex-end">
-                        <Button 
-                          className={classNames(classes.button, classes.clearButton)}
-                          onClick={this.onClearClick}>
-                            Clear
-                        </Button>
-                        <Button 
-                          className={classNames(classes.button, classes.submitButton)}
-                          variant="raised"
-                          onClick={this.onSubmitClick}>
-                            Send
-                        </Button>
-                      </Grid>
-                  </Grid> */}
 
                   <Grid item xs={12} className={classes.infoContainer}>
                       <Grid container>

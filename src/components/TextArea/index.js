@@ -14,11 +14,10 @@ const styles = (theme) => ({
     textField: {
         border: '1px solid #bebfcc',
         borderRadius: '5px',
-        // width: '86%',
         display: 'block',
         padding: '1rem',
         background: '#fff',
-        margin: '16px 0'
+        marginBottom: '1rem'
     },
     input: {
         fontSize: '0.75rem',
@@ -78,8 +77,8 @@ class TextArea extends Component {
         const { placeholder, classes } = this.props;
         const { text } = this.state;
         return (
-            <Grid container className={classes.mediaContainer}>
-                <Grid item xs={12} >
+            <Grid container justify='center' className={classes.mediaContainer}>
+                <Grid item xs={12} sm={9} md={12} >
                     <TextField
                         id="multiline-flexible"
                         placeholder={placeholder}
@@ -96,7 +95,7 @@ class TextArea extends Component {
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} className={classes.actionContainer}>
+                <Grid item xs={12} sm={9} md={12} className={classes.actionContainer}>
                     <Grid container justify="flex-end">
                     <Button 
                         className={classNames(classes.button, classes.clearButton)}
