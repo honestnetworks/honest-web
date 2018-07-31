@@ -12,10 +12,14 @@ import classNames from 'classnames';
 const styles = (theme) => ({
     card: {
         boxShadow: '0 1px 3px 0 rgba(201, 203, 209, 0.24)',
+        transition: 'all ease .3s',
         borderRadius: '5px',
         '&.link': {
             cursor: 'pointer'
-        }
+        },
+        '&:hover':{
+            boxShadow: '0 0px 6px 3px #e8e8e8',
+        },
     },
     bullet: {
         display: 'inline-block',
@@ -143,7 +147,7 @@ const ApartmentGridView = (props) => {
                         <Grid container spacing={8} className={classes.informationBlocks}>
                             <ApartmentContent
                                 buldingName={building.name}
-                                upTime={'88.99'}
+                                upTime={'99.99'}
                                 speed={'990'}
                             />
                         </Grid>

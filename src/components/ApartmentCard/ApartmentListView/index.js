@@ -21,7 +21,11 @@ const styles = (theme) => ({
         marginBottom: '3vh',
         position: 'relative',
         boxShadow: '0 1px 3px 0 rgba(201, 203, 209, 0.24)',
+        transition: 'box-shadow .3s ease',
         borderRadius: '6px',
+        '&:hover':{
+            boxShadow: '0 0px 6px 3px #e8e8e8',
+        },
         [theme.breakpoints.only('xs')]: {
             margin: 0
         },
