@@ -254,9 +254,7 @@ class LoginForm extends Component {
                                 }}
 
                                 control={
-                                    <Checkbox
-                                        //checked={this.state.checkedA}
-                                        //onChange={this.handleChange('checkedA')}
+                                    <Checkbox                                        
                                         value="checkedA"
                                         style={{borderColor: '#e8ebf3'}}
                                         classes={{

@@ -156,11 +156,7 @@ class DashboardDetails extends Component {
                                 <Grid container>
                                     <Grid item xs={12}>
                                         <Grid container>
-                                            {/* <Grid item xs={3}>
-                                                {'Network'}
-                                            </Grid> */}
                                             <Grid item xs={12}>
-                                                {/* Network */}
                                                 <NetworkChart />
                                             </Grid>
                                         </Grid>

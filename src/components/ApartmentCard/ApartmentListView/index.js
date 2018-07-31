@@ -17,7 +17,6 @@ const styles = (theme) => ({
         overflow: 'visible',
         marginRight: '2rem',
         minWidth: 275,
-        //height:'35vh',
         cursor: 'pointer',
         marginBottom: '3vh',
         position: 'relative',
@@ -28,9 +27,6 @@ const styles = (theme) => ({
         },
         [theme.breakpoints.only('sm')]: {
             marginRight: 0,
-        },
-        '@media(max-width: 710px)': {
-            // height:'auto'
         }
     },
     bullet: {
@@ -210,59 +206,57 @@ const ApartmentListView = (props) => {
     return (
         <Grid container>
             <Grid item xs={12}>
-                {/* <Link to={`/details/${props.building.id}`}> */}
-                    <Card className={classes.card} onClick={()=>handleButtonClick(props.building.id)}>
-                        <Grid container spacing={8} className={classes.mainContent}>
-                            <Grid item xs={12} md={3} className={classes.mediaContainer}>
-                                <CardMedia
-                                    className={classes.cover}
-                                    image={props.building.imageUrl}
-                                    title="Live from space album cover"
-                                />
-                            </Grid>
-                            <Grid item xs={12} md={9} className={classes.content}>
-                                <Grid container spacing={8} className={classes.informationBlocks}>
-                                    <Grid item xs={12} md={6} lg={5} className={classes.contactBlock}>
+                <Card className={classes.card} onClick={()=>handleButtonClick(props.building.id)}>
+                    <Grid container spacing={8} className={classes.mainContent}>
+                        <Grid item xs={12} md={3} className={classes.mediaContainer}>
+                            <CardMedia
+                                className={classes.cover}
+                                image={props.building.imageUrl}
+                                title="Live from space album cover"
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={9} className={classes.content}>
+                            <Grid container spacing={8} className={classes.informationBlocks}>
+                                <Grid item xs={12} md={6} lg={5} className={classes.contactBlock}>
 
-                                        <Grid item xs={12} className={classes.relativeBlock}>
-                                            <Typography variant="caption" className={classes.buildCity}>
-                                                {props.building.city}
-                                            </Typography>
-                                            <div className={classes.buildAddress} >
-                                                {props.building.name} <Chip label="Active" className={classes.chip} />
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={12} className={classes.contactContainer}>
-                                            <ApartmentContactBlock />
-                                        </Grid>
+                                    <Grid item xs={12} className={classes.relativeBlock}>
+                                        <Typography variant="caption" className={classes.buildCity}>
+                                            {props.building.city}
+                                        </Typography>
+                                        <div className={classes.buildAddress} >
+                                            {props.building.name} <Chip label="Active" className={classes.chip} />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12} className={classes.contactContainer}>
+                                        <ApartmentContactBlock />
+                                    </Grid>
 
-                                    </Grid>
-                                    <Grid item xs={12} md={6}>
-                                        <ApartmentContent
-                                            buldingName={props.building.name}
-                                            upTime = {'99.99'}
-                                            speed={'990'}
-                                        />
-                                    </Grid>
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <ApartmentContent
+                                        buldingName={props.building.name}
+                                        upTime = {'99.99'}
+                                        speed={'990'}
+                                    />
                                 </Grid>
                             </Grid>
                         </Grid>
-                        {/* <IconButton
-                            TouchRippleProps={{
-                                classes: {
-                                    root: classes.root
-                                }
-                            }}
-                            className={classes.playButton}
-                            color="primary"
-                            onClick={() => handleButtonClick(props.building.id)}
-                        >
-                            <PlayIcon
-                                className={classes.iconButton}
-                            />
-                        </IconButton> */}
-                    </Card>
-                {/* </Link> */}
+                    </Grid>
+                    {/* <IconButton
+                        TouchRippleProps={{
+                            classes: {
+                                root: classes.root
+                            }
+                        }}
+                        className={classes.playButton}
+                        color="primary"
+                        onClick={() => handleButtonClick(props.building.id)}
+                    >
+                        <PlayIcon
+                            className={classes.iconButton}
+                        />
+                    </IconButton> */}
+                </Card>
             </Grid>
         </Grid>
     );

@@ -6,7 +6,6 @@ import classNames from 'classnames';
 
 const styles = theme => ({
   title: {
-    // marginTop: 16,
     textTransform:'uppercase',
     textAlign:'center',
     fontSize:'0.625rem',

@@ -16,14 +16,16 @@ const config = {
         verticalAlign: 'top',
         layout: 'horizontal',
         itemMarginBottom: 40, 
+        // itemMPaddingLeft: -140, 
         symbolHeight: 2,
         symbolWidth: 25,
         symbolRadius: 1,
+        x: -10,
         squareSymbol: false,
         tickWidth: 0,
         itemStyle: {
             transform: 'translateY(5px)',
-            fontSize: '14px'
+            fontSize: '14px'        
         }
     },
     title: {

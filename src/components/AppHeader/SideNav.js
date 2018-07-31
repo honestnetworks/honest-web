@@ -79,8 +79,7 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: '0 8px',
-        //...theme.mixins.toolbar,
+        padding: '0 8px'
     },
     content: {
         flexGrow: 1,
@@ -180,9 +179,6 @@ class SideNav extends React.Component  {
                     </IconButton>
                 </div>
                 <Divider />
-                {/*<List>{mailFolderListItems}</List>*/}
-
-
                 <List component="nav" className={classes.navList}>
                     <NavLink to="/dashboard">
                         <ListItem button>
@@ -205,7 +201,6 @@ class SideNav extends React.Component  {
 
 
                 <Divider />
-                {/*<List>{otherMailFolderListItems}</List>*/}
             </Drawer>
         );
         let before = null;
@@ -296,5 +291,4 @@ class SideNav extends React.Component  {
     }
 };
 
-// export default SideNav;
 export default withStyles(styles, {withTheme: true})(SideNav);

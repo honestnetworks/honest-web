@@ -7,7 +7,6 @@ import stickAPI from 'api/config';
 import ConfirmPassword from 'components/ResetPassword/ConfirmPassword.js';
 import Login from 'pages/Login';
 import ForgotPassword from 'pages/ForgotPassword';
-import Profile from 'components/Profile';
 import { Route, Switch } from 'react-router-dom';
 import Dashboard from 'pages/Dashboard';
 import DashboardDetails from 'pages/Dashboard/DashboardDetails';
@@ -30,7 +29,6 @@ class App extends Component {
             <ConnectedRouter history={history}>
                 <div className="App">
                         <Switch>
-                            <PrivateRoute path="/profile" component={Profile} isAuthenticated={isAuth} />
                             <PrivateRoute path="/dashboard"   exact component={Dashboard} isAuthenticated={isAuth} />
                             <PrivateRoute path="/contacts"   exact component={Contacts} isAuthenticated={isAuth} />
                             <PrivateRoute path="/details/:id" exact component={DashboardDetails} isAuthenticated={isAuth} />

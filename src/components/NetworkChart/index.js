@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import ReactHighcharts from 'react-highcharts';
 import config from './chartConfig';
 
-const styles = () => ({
+const styles = (theme) => ({
     root: {
         '& .highcharts-credits': {
             display: 'none !important'
@@ -12,14 +12,24 @@ const styles = () => ({
         '& .highcharts-container': {
             position: 'relative',
             bottom: '55px'
+        },
+        '& br':{
+            [theme.breakpoints.up('md')]:{
+                display: 'none'
+            }
         }
-
+    },
+    header: {
+        [theme.breakpoints.down('sm')]:{
+            marginBottom: '2rem'
+        }
+        
     }
 });
 
 const NetworkChart = ({ classes }) => (
     <div className={classNames("NetworkChart", classes.root)}>
-        Network
+        <div className={classes.header}>Network</div><br />
         <ReactHighcharts config={config} />
     </div>
 );

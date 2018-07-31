@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-// import classNames from 'classnames';
 import ContactBlock from 'components/ContactBlock';
 
 const styles = (theme) => ({
@@ -73,14 +72,14 @@ class ContactPerson extends Component {
                             <Avatar className={classes.avatar}>
                                 RM
                             </Avatar>
-                            <div item xs={10} className={classes.avatarInfo}>
+                            <Grid item xs={10} className={classes.avatarInfo}>
                                 <div className={classes.name}>
                                     Robert Muller
                                 </div>
                                 <div className={classes.caption}>
                                     CTO
                                 </div>
-                            </div>
+                            </Grid>
                         </Grid>
                         <div className={classes.separate}></div>
                         <Grid item xs={12} className={classes.infoContainer}>

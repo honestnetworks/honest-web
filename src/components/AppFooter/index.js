@@ -5,7 +5,6 @@ import FooterStatisticsGrid from 'components/FooterStatisticsGrid';
 import InfoHeader from 'components/InfoHeader';
 import HonestContainer from 'hoc/HonestContainer';
 import classNames from 'classnames';
-
 import logoTitle from 'assets/images/login-title-image.png';
 import GoogleLogo from 'assets/icons/google-logo.svg';
 import YelpLogo from 'assets/icons/yelp-logo.svg';

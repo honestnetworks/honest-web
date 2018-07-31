@@ -36,9 +36,6 @@ const styles = (theme) => ({
     pos: {
         marginBottom: 12,
     },
-    informationItem:{
-        //position:'relative'
-    },
     contactBlock:{
         display:'flex',
         justifyContent:'center',
@@ -110,7 +107,7 @@ const ApartmentContent = (props) => {
     const { classes } = props;
 
     return (
-        <Grid item xs={12} className={classes.informationItem}>
+        <Grid item xs={12}>
             <Card className={classes.card}>
                 <Grid container spacing={16}>
 
